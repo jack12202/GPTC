@@ -5,7 +5,6 @@
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>GPT Plus 充值中心</title>
 <meta content="GPT Plus 代充服务｜科技蓝黑风、简洁高转化" name="description"/>
-<!-- ✅ Google tag (gtag.js) 已添加 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8B1WZ4HP5Y"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -40,8 +39,29 @@
   .copy-btn:hover{filter:brightness(1.06)}
   footer{padding:22px; text-align:center; font-size:12px; color:#aebeff99}
   .bottom-bar{position:fixed; left:0; right:0; bottom:0; z-index:9998; background: linear-gradient(135deg, var(--primary-a, #5fa8ff), var(--primary-b, #7b6bff)); border-top: 1px solid #ffffff22; display:flex; justify-content:center; align-items:center; padding: 12px 16px; padding-bottom: calc(12px + env(safe-area-inset-bottom)); box-shadow: 0 -10px 22px rgba(0,0,0,.35);}
-  .bottom-bar a{color:#fff; text-decoration:none; font-weight:900; font-size:16px; letter-spacing:.5px;}
-</style>
+  a.bottom-bar{color:#fff; text-decoration:none; font-weight:900; font-size:16px; letter-spacing:.5px;}
+  .grid{display:grid; grid-template-columns:repeat(4,1fr); gap:12px}
+  @media (max-width:880px){ .grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .grid{grid-template-columns:1fr;} }
+  .card{background: rgba(255,255,255,.06); border:1px solid #ffffff22; border-radius:14px; padding:14px}
+  .card h4{margin:0 0 8px; font-size:16px}
+  .card p{margin:0; color:#cfd6ff}
+  .toast{position:fixed; left:50%; transform:translateX(-50%); bottom:86px; z-index:10001; background:#111a35e6; color:#fff; border:1px solid #6f80ff66; padding:10px 14px; border-radius:999px; display:none}
+  .toast.show{display:block}
+
+  /* ✅ [新增] 右侧浮窗二维码样式 */
+  .float-qr{position:fixed; right:18px; bottom:116px; z-index:9999; display:flex; flex-direction:column; align-items:center; gap:8px}
+  .float-qr .qr-card{background:#111a35cc; border:1px solid #4150aa66; border-radius:14px; padding:10px; box-shadow:0 10px 28px rgba(0,0,0,.45);}
+  .float-qr img{width:108px; height:108px; object-fit:cover; border-radius:10px; display:block; cursor:pointer;}
+  .float-qr .tip{font-size:12px; color:#cfe1ff; text-align:center; padding-top: 4px;}
+  .float-qr .mini-btn{height:36px; padding:0 12px; border-radius:10px; border:1px solid #6f80ff66; background:linear-gradient(135deg,var(--primary-a),var(--primary-b)); color:#fff; font-weight:800; cursor:pointer; margin-top: 4px;}
+  
+  /* ✅ [新增] 放大预览样式 */
+  .modal{position:fixed; inset:0; z-index:10000; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.6)}
+  .modal.open{display:flex}
+  .modal img{max-width:min(86vw,520px); max-height:80vh; border-radius:16px; border:1px solid #ffffff2a; box-shadow:0 30px 60px rgba(0,0,0,.55)}
+  .modal .close{position:absolute; top:22px; right:22px; color:#fff; font-size:18px; background:#00000066; border:1px solid #ffffff30; padding:8px 10px; border-radius:10px; cursor:pointer}
+</style> 
 </head>
 <body>
 <div class="grid-bg"></div>
@@ -52,16 +72,14 @@
 <div class="cta">
 <a class="btn btn-primary" href="https://sa.dtyuedan.cn//details/975EBAAD" rel="noopener noreferrer" target="_blank">购买GPT Plus激活码</a>
 <div class="btn-row">
-<a class="btn btn-tertiary small-btn" href="https://sa.dtyuedan.cn//details/975EBAAD" rel="noopener noreferrer" target="_blank">购买普通账号</a>
+<a class="btn btn-tertiary" href="https://sa.dtyuedan.cn//details/975EBAAD" rel="noopener noreferrer" target="_blank">购买GPT Plus成品账号</a>
 </div>
-<!-- 修改后的跳转链接 -->
 <div class="tiny-link"><a href="https://chongzhi.chat" rel="noopener noreferrer" target="_blank">点此跳转充值Plus平台</a></div>
 </div>
 <div class="service-block">
 <div class="service-row"><span>微信：yzz0753</span><button class="copy-btn" onclick="copyText('yzz0753')">复制</button></div>
 <div class="service-row"><span>QQ：552309781</span><button class="copy-btn" onclick="copyText('552309781')">复制</button></div>
 </div>
-<!-- ⚠️ 视频教程已删除 -->
 <div class="grid" style="margin-top:14px">
 <div class="card"><h4>官方对接</h4><p>自动发货 / 秒到</p></div>
 <div class="card"><h4>价格透明</h4><p>稳定 / 无隐藏费用</p></div>
@@ -72,10 +90,24 @@
 <footer>© <span id="y"></span> GPT Plus. All rights reserved.</footer>
 </div>
 <div class="toast" id="toast">已复制内容</div>
+
+<aside class="float-qr" aria-label="客服二维码浮窗">
+  <div class="qr-card">
+    <img src="/企业微信.jpg" alt="企业微信客服二维码" id="qr-thumb"/>
+    <div class="tip">扫码添加企业微信</div>
+    <button class="mini-btn" onclick="copyText('yzz0753')">复制微信号</button>
+  </div>
+</aside>
+
+<div class="modal" id="qr-modal" role="dialog" aria-modal="true" aria-label="二维码预览">
+  <button class="close" id="modal-close">关闭 ×</button>
+  <img src="/企业微信.jpg" alt="企业微信二维码大图"/>
+</div>
+
 <script>
   document.getElementById('y').textContent = new Date().getFullYear();
   function copyText(text){
-    navigator.clipboard.writeText(text).then(()=> showToast('已复制内容'));
+    navigator.clipboard.writeText(text).then(()=> showToast('复制成功 ✅，可直接粘贴'));
   }
   function showToast(msg){
     const t = document.getElementById('toast');
@@ -83,7 +115,17 @@
     t.classList.add('show');
     setTimeout(()=> t.classList.remove('show'), 1600);
   }
+
+  // ✅ [新增] 浮窗点击放大功能JS
+  const modal = document.getElementById('qr-modal');
+  const thumb = document.getElementById('qr-thumb');
+  const closeBtn = document.getElementById('modal-close');
+  if (thumb) { // 增加一个判断，确保元素存在
+    thumb.addEventListener('click',()=> modal.classList.add('open'));
+    closeBtn.addEventListener('click',()=> modal.classList.remove('open'));
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) modal.classList.remove('open') });
+  }
 </script>
-<a class="bottom-bar" href="https://chongzhi.chat" rel="noopener noreferrer" target="_blank">购买GPT Plus激活码</a>
+<a class="bottom-bar" href="https://chongzhi.chat" rel="noopener noreferrer" target="_blank">立即购买 GPT Plus 激活码</a>
 </body>
 </html>
