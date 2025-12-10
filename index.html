@@ -2,282 +2,173 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-s0cale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OpenAI官网ChatGPT Plus代充值服务 | 24小时自助GPT代充 - 安全快速</title>
     <meta name="description" content="提供专业、安全、快速的OpenAI官网ChatGPT Plus会员代充值服务。支持人工客服微信/QQ，24小时自助系统可选。">
     <meta name="keywords" content="gpt充值, GPT代充, gptplus会员, chatgpt plus代充, openai代充, gpt4充值, gpt会员">
-    <meta property="og:title" content="OpenAI官网ChatGPT Plus代充值服务 | 24小时自助">
-    <meta property="og:description" content="专业、安全、快速的服务。优先添加客服微信/QQ对接，支持自助通道。">
-    <meta property="og:type" content="website">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "serviceType": "ChatGPT Plus Subscription Service",
-      "provider": {
-        "@type": "Organization",
-        "name": "ChatGPT Plus 专业代充"
-      },
-      "name": "ChatGPT Plus 会员代充服务",
-      "description": "提供安全、快速的OpenAI官网ChatGPT Plus会员代充值服务。支持添加客服微信/QQ对接。",
-      "offers": {
-        "@type": "Offer",
-        "price": "140.00",
-        "priceCurrency": "CNY",
-        "name": "ChatGPT Plus 会员 (一个月)",
-        "url": "https://ow521.com/recharge"
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "CN"
-      },
-      "keywords": "gpt充值, GPT代充, gptplus会员, chatgpt plus代充"
-    }
-    </script>
+    
     <style>
+        /* ================= 基础重置 ================= */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            /* 新背景渐变色 */
             font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #0f4c81 0%, #1565c0 100%);
             min-height: 100vh; line-height: 1.6; -webkit-font-smoothing: antialiased;
         }
-        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        a { text-decoration: none; }
 
-        /* 头部 */
-        .header { text-align: center; padding: 60px 0 50px; }
+        /* ================= 头部样式 ================= */
+        .header { text-align: center; padding: 50px 0 30px; }
         .header h1 {
-            color: #fff; font-size: 3.2rem; font-weight: 700; margin-bottom: 20px;
+            color: #fff; font-size: 3rem; font-weight: 700; margin-bottom: 15px;
             text-shadow: 0 2px 20px rgba(0,0,0,0.3); letter-spacing: -0.5px;
         }
         .header .subtitle { color: rgba(255,255,255,0.95); font-size: 1.1rem; font-weight: 500; letter-spacing: 1px; }
 
-        /* 公告 */
+        /* ================= 公告栏 ================= */
         .announcement-banner {
             background: #ffc107; color:#333; text-align:center; padding: 15px 20px; border-radius: 12px;
-            margin: -30px auto 30px; max-width: 860px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            margin: 0 auto 20px; max-width: 860px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             border: 1px solid rgba(0,0,0,0.1); font-size: 1rem; line-height: 1.6; font-weight: 500;
         }
-        .announcement-banner p { margin: 5px 0; }
-        
-        /* 优惠信息和二维码的容器样式 */
-        .cta-box {
-            background: rgba(255, 255, 255, 0.15); 
-            backdrop-filter: blur(10px); 
-            border-radius: 20px;
-            padding: 20px 24px;
-            margin: 20px auto;
-            max-width: 320px;
+
+        /* ================= 咨询按钮 ================= */
+        .consult-bar {
+            max-width: 860px; margin: 0 auto 40px; text-align: center;
+        }
+        .consult-btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            color: #fff; padding: 12px 30px; border-radius: 50px;
+            font-size: 1rem; font-weight: 600; cursor: pointer;
+            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .consult-btn:hover {
+            background: #fff; color: #0f4c81; transform: translateY(-2px);
+        }
+        .consult-btn span { margin-right: 8px; font-size: 1.2rem; }
+
+        /* ================= 主要内容区 ================= */
+        .main-content { 
+            background: #fff; 
+            border-radius: 24px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
+            /* 关键点：千万不能加 overflow: hidden，否则阴影会被切掉 */
+            margin-bottom: 50px; 
+            padding: 40px 20px;
         }
 
-        /* 优惠提示样式 */
-        .discount-tip {
-            color: #ff9800; /* 新的橙色 */
-            font-weight: 600; 
-            font-size: 1rem; 
-            margin-bottom: 15px; 
+        .section-title {
+            text-align: center; font-size: 1.8rem; font-weight: 800;
+            color: #4299e1; margin-bottom: 30px; text-shadow: 2px 2px 0px #ebf8ff;
         }
 
-        /* 容器卡片 */
-        .main-content { background: #fff; border-radius: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.15); overflow: hidden; margin-bottom: 50px; }
-
-        /* 产品头图 */
-        .product-section {
-            /* 新的渐变色 */
-            background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%); 
-            color:#fff; padding: 50px 30px; text-align:center; position:relative; overflow:hidden;
-        }
-        .product-section::before {
-            content:''; position:absolute; top:-50%; left:-50%; width:200%; height:200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: float 8s ease-in-out infinite;
-        }
-        @keyframes float { 0%,100%{transform:translate(-50%,-50%) rotate(0)} 50%{transform:translate(-50%,-50%) rotate(180deg)} }
-        .product-badge {
-            display:inline-block; 
-            background:rgba(255,255,255,0.2); 
-            backdrop-filter: blur(10px); 
-            border:1px solid rgba(255,255,255,0.3);
-            padding: 10px 20px; 
-            border-radius: 25px; 
-            font-size: 1rem; 
-            font-weight: 600; 
-            margin-bottom: 20px; 
-            position:relative; 
-            z-index:2; 
-            letter-spacing: 1px;
-        }
-        .product-title { font-size: 2.2rem; font-weight: 800; margin-bottom: 16px; position:relative; z-index:2; letter-spacing:-0.5px; }
-        .product-price {
-            margin-bottom: 10px; position:relative; z-index:2; display:flex; justify-content:center; align-items:baseline; gap:12px; flex-wrap:wrap;
-        }
-        .price-prefix { font-size: 1.2rem; opacity:0.95; }
-        .price-amount {
-            font-size: 3.6rem; font-weight: 900; background: linear-gradient(45deg, #fff, #e6f2ff);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height:1;
-        }
-        .price-suffix { font-size: 1rem; opacity:0.9; }
-
-        /* 微信二维码按钮样式 */
-        .contact-qr-wrapper {
+        /* 布局：横向滚动 - 绝对修复版 */
+        .goods-grid {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-        }
-        .contact-qr-wrapper img {
-            width: 140px; 
-            height: 140px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            cursor: pointer;
-            transition: transform .2s ease, box-shadow .2s ease;
-        }
-        .contact-qr-wrapper img:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+            flex-wrap: nowrap; /* 强制一行 */
+            overflow-x: auto;  /* 允许滚动 */
+            gap: 20px;
+            /* 关键修复：给容器四周足够的 padding，确保第一个元素的左边框和阴影完全显示 */
+            padding: 20px 20px 30px 20px; 
+            -webkit-overflow-scrolling: touch;
+            
+            /* ！！！删除了 justify-content: center，防止大屏下左侧内容溢出屏幕不可见！！！ */
+            justify-content: flex-start; 
         }
 
-        /* 购买选择 */
-        .purchase-section { padding: 40px 30px; background:#fff; }
-        .purchase-title { font-size: 1.4rem; color:#1d1d1f; text-align:center; margin-bottom: 24px; font-weight:800; letter-spacing:-0.3px; }
-        .purchase-options { display:grid; grid-template-columns: 1fr 1fr; gap:18px; margin-bottom: 10px; }
-        .purchase-btn {
-            display:block; padding: 24px 18px; text-decoration:none; border-radius:16px; text-align:center; transition: all .25s;
-            position:relative; overflow:hidden; border:2px solid transparent; box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-        .purchase-btn.primary { background: linear-gradient(135deg, #ff9800, #fb8c00); color:#fff; }
-        .purchase-btn.secondary { background: linear-gradient(135deg, #64b5f6, #42a5f5); color:#fff; }
-        .purchase-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(0,0,0,0.15); }
-        .purchase-btn h3 { font-size: 1.15rem; font-weight:800; margin-bottom: 6px; }
-        .purchase-btn p { opacity:.95; font-size:.95rem; }
+        /* 隐藏滚动条 */
+        .goods-grid::-webkit-scrollbar { height: 6px; }
+        .goods-grid::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .goods-grid::-webkit-scrollbar-track { background: transparent; }
 
-        /* 保障信息 */
-        .guarantee-section { padding: 40px 30px; background: linear-gradient(135deg, #f0f7ff 0%, #e6f2ff 100%); }
+        /* 单个商品卡片 */
+        .goods-card {
+            background: #fff; border-radius: 16px; padding: 24px;
+            display: flex; flex-direction: column; align-items: center;
+            position: relative; transition: all 0.3s ease;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent; 
+            flex-shrink: 0; width: 220px; /* 固定卡片宽度 */
+        }
+        .goods-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+
+        .border-orange { border-color: #f97316; }
+        .border-blue { border-color: #3b82f6; }
+
+        .recommend-tag {
+            position: absolute; top: -10px; right: -10px;
+            background: #f97316; color: #fff; font-size: 0.75rem; font-weight: 700;
+            padding: 4px 8px; border-radius: 999px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .goods-title {
+            font-size: 1.1rem; font-weight: 700; color: #1e40af; text-align: center;
+            margin-bottom: 12px; line-height: 1.4; min-height: 3.2rem;
+            display: flex; align-items: center; justify-content: center;
+        }
+
+        .goods-price-box {
+            flex: 1; display: flex; flex-direction: column; align-items: center;
+            justify-content: center; margin: 15px 0; width: 100%;
+        }
+        .goods-price { font-size: 1.8rem; font-weight: 800; color: #dc2626; margin-bottom: 5px; }
+        .goods-desc { font-size: 0.85rem; color: #6b7280; text-align: center; }
+
+        .buy-btn {
+            width: 100%; padding: 12px 0; border-radius: 12px; font-weight: 700;
+            text-align: center; color: #fff; transition: background 0.3s;
+            margin-top: 10px; font-size: 0.95rem; border: none; cursor: pointer;
+        }
+        .btn-orange { background: #f97316; }
+        .btn-orange:hover { background: #ea580c; }
+        .btn-purple { background: #9333ea; }
+        .btn-purple:hover { background: #7e22ce; }
+
+        /* ================= 底部保障 ================= */
+        .guarantee-section { 
+            padding: 30px 0; border-top: 1px solid #edf2f7; margin-top: 20px;
+        }
         .guarantee-title { font-size: 1.4rem; color:#1e293b; margin-bottom: 20px; text-align:center; font-weight:800; }
-        .guarantee-list { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:18px; }
-        .guarantee-item { display:flex; align-items:flex-start; padding: 20px; background:#fff; border-radius:16px; box-shadow: 0 8px 25px rgba(0,122,255,0.08); border:1px solid rgba(0,122,255,0.1); }
-        .guarantee-icon { font-size:1.6rem; margin-right:14px; margin-top:2px; }
-        .guarantee-text h4 { color:#1e293b; font-weight:800; margin-bottom: 6px; font-size:1rem; }
-        .guarantee-text p { color:#64748b; font-size:.95rem; line-height:1.5; }
+        .guarantee-list { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:18px; }
+        .guarantee-item { display:flex; align-items:flex-start; padding: 15px; background:#f8fafc; border-radius:12px; border:1px solid #e2e8f0; }
+        .guarantee-icon { font-size:1.6rem; margin-right:10px; }
+        .guarantee-text h4 { color:#1e293b; font-weight:800; margin-bottom: 4px; font-size:0.95rem; }
+        .guarantee-text p { color:#64748b; font-size:0.85rem; line-height:1.4; }
 
-        /* 底部特色 */
-        .features { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; padding: 0 30px 40px; }
-        .feature-card { background: rgba(255,255,255,0.95); padding: 26px 20px; border-radius: 16px; text-align:center; box-shadow: 0 12px 30px rgba(0,122,255,0.15); border: 1px solid rgba(0,122,255,0.2); }
-        .feature-icon { font-size: 2rem; margin-bottom: 12px; display:block; }
-        .feature-card h4 { color:#1e293b; font-weight:800; margin-bottom: 8px; font-size:1.05rem; }
-
-        /* 弹窗 */
-        .modal-overlay {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.6);
-            display: flex; justify-content: center; align-items: center; z-index: 1000;
-            opacity: 0; visibility: hidden; transition: opacity .25s ease, visibility .25s ease;
-        }
-        .modal-overlay.visible { opacity: 1; visibility: visible; }
-        .modal-content {
-            background:#fff; padding: 18px; border-radius: 14px; text-align:center; box-shadow: 0 10px 30px rgba(0,0,0,.25);
-            max-width: 92%; width: 420px; transform: translateY(10px); transition: transform .25s ease;
-        }
-        .modal-overlay.visible .modal-content { transform: translateY(0); }
-        .qr { width: 280px; height: 280px; border-radius: 12px; display:block; margin: 10px auto 8px; background:#f8fafc; object-fit: contain; }
-        .contact-row { margin-top: 10px; font-size:.95rem; color:#334155; }
-        .contact-row code { background:#f1f5f9; padding: 2px 6px; border-radius: 6px; }
-        .modal-actions { display:flex; gap:10px; justify-content:center; margin-top: 12px; flex-wrap: wrap; }
-        .btn.small { padding: 10px 14px; border-radius: 10px; font-weight: 700; border: none; }
-        .btn.gray { background:#e2e8f0; color:#111827; }
-        .toast { position: fixed; left:50%; bottom: 26px; transform: translateX(-50%); background: rgba(17,24,39,.92); color:#fff; padding: 10px 14px; border-radius: 10px; font-size:.95rem; opacity:0; pointer-events:none; transition: opacity .25s ease; z-index: 1100; }
-        .toast.show { opacity: 1; }
-
-        /* 浮动图片按钮 */
+        /* ================= 浮动按钮和弹窗 ================= */
         .fixed-contact-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 60px;
-            height: 60px;
-            background: #fff;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            z-index: 999;
+            position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px;
+            background: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            cursor: pointer; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); z-index: 999;
             transition: transform 0.2s ease;
         }
-        .fixed-contact-btn:hover {
-            transform: translateY(-3px);
-        }
-        .fixed-contact-btn img {
-            width: 40px;
-            height: 40px;
-        }
+        .fixed-contact-btn:hover { transform: translateY(-3px); }
+        .fixed-contact-btn img { width: 40px; height: 40px; }
         
-        /* 图片放大弹窗的样式调整 */
         .image-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            display: none; 
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); display: none; justify-content: center; align-items: center; z-index: 2000;
         }
-        .image-modal-overlay.show {
-            display: flex;
-        }
-        .image-modal-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            width: 320px;
-        }
-        .image-modal-content img {
-            display: block;
-            max-width: 100%;
-            max-height: 100%;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-        }
+        .image-modal-overlay.show { display: flex; }
+        .image-modal-content { position: relative; max-width: 90%; max-height: 90%; width: 320px; }
+        .image-modal-content img { display: block; max-width: 100%; max-height: 100%; border-radius: 12px; }
         .image-modal-close {
-            position: absolute;
-            top: -30px;
-            right: -30px;
-            color: #fff;
-            font-size: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            opacity: 0.8;
-            transition: opacity 0.2s ease;
+            position: absolute; top: -30px; right: -30px; color: #fff; font-size: 30px;
+            font-weight: bold; cursor: pointer; opacity: 0.8;
         }
-        .image-modal-close:hover {
-            opacity: 1;
-        }
-        /* 响应式 */
+
         @media (max-width: 768px) {
             .container { padding: 12px; }
             .header { padding: 36px 0 24px; }
             .header h1 { font-size: 2rem; }
-            .product-title { font-size: 1.4rem; }
-            .price-amount { font-size: 2.6rem; }
-            .purchase-options { grid-template-columns: 1fr; gap: 14px; }
-            .fixed-contact-btn {
-                width: 50px;
-                height: 50px;
-                bottom: 15px;
-                right: 15px;
-            }
-            .fixed-contact-btn img {
-                width: 32px;
-                height: 32px;
-            }
+            .main-content { padding: 20px 15px; }
+            .goods-grid::-webkit-scrollbar { display: none; }
         }
     </style>
 </head>
@@ -293,41 +184,65 @@
             <p>价格包含：官网订阅成本 + 风险/维护成本；警惕“异常低价”。</p>
         </div>
 
+        <div class="consult-bar">
+            <button class="consult-btn" id="top-consult-btn">
+                <span>💬</span> 充值前有疑问？点击咨询企业微信客服
+            </button>
+        </div>
+
         <div class="main-content">
-            <section class="product-section">
-                <div class="product-badge">✨ 靠谱给力</div>
-                <h2 class="product-title">官网 ChatGPT Plus 会员</h2>
-                <div class="product-price">
-                    <span class="price-prefix">现价</span>
-                    <div class="price-amount">首充 139 元          续费 169 元</div>
-                    <span class="price-suffix">/ 月</span>
-                </div>
-                
-                <div class="cta-box">
-                    <p class="discount-tip">🎉 充值问题联系咨询客服🎉</p>
-                    <div class="contact-qr-wrapper">
-                        <img src="/企业微信.jpg" alt="扫码添加企业微信">
+            
+            <h2 class="section-title">商品种类</h2>
+
+            <div class="goods-grid">
+                <div class="goods-card border-orange">
+                    <span class="recommend-tag">推荐</span>
+                    <h3 class="goods-title">GPT Plus<br>首充</h3>
+                    <div class="goods-price-box">
+                        <div class="goods-price">¥139</div>
+                        <div class="goods-desc">账号首次充值官方特惠</div>
                     </div>
+                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" class="buy-btn btn-orange">立即购买</a>
                 </div>
 
-                <div class="product-period" style="margin-top:12px; position:relative; z-index:2; font-weight:600;">
-                    微信：<code>yzz0753</code>　|　QQ：<code>552309781</code>
+                <div class="goods-card border-orange">
+                    <span class="recommend-tag">推荐</span>
+                    <h3 class="goods-title">GPT Plus<br>续费</h3>
+                    <div class="goods-price-box">
+                        <div class="goods-price">¥169</div>
+                        <div class="goods-desc">稳定续费不掉线</div>
+                    </div>
+                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" class="buy-btn btn-orange">立即购买</a>
                 </div>
-            </section>
 
-            <section class="purchase-section">
-                <h3 class="purchase-title">💳 自助渠道（夜间建议自助）</h3>
-                <div class="purchase-options">
-                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="purchase-btn secondary" target="_blank" rel="noopener noreferrer">
-                        <h3>🎫 卡密自助购买</h3>
-                        <p>即买即发，自动发货</p>
-                    </a>
-                    <a href="https://czgpt.plus/" class="purchase-btn primary" target="_blank" rel="noopener noreferrer">
-                        <h3>🤖 24小时代充系统</h3>
-                        <p>如遇问题请优先加微信客服</p>
-                    </a>
+                <div class="goods-card border-orange">
+                    <span class="recommend-tag">推荐</span>
+                    <h3 class="goods-title">Gemini Pro<br>一年</h3>
+                    <div class="goods-price-box">
+                        <div class="goods-price">¥200</div>
+                        <div class="goods-desc">教育特惠成品号</div>
+                    </div>
+                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" class="buy-btn btn-orange">立即购买</a>
                 </div>
-            </section>
+
+                <div class="goods-card border-blue">
+                    <h3 class="goods-title">Claude Pro<br>官方会员</h3>
+                    <div class="goods-price-box">
+                        <div class="goods-price">¥169</div>
+                        <div class="goods-desc">代码之神</div>
+                    </div>
+                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" class="buy-btn btn-purple">立即购买</a>
+                </div>
+
+                <div class="goods-card border-blue">
+                    <h3 class="goods-title">Grok 4.1<br>官方会员</h3>
+                    <div class="goods-price-box">
+                        <div class="goods-price">¥229</div>
+                        <div class="goods-desc">道德底线较低</div>
+                    </div>
+                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" class="buy-btn btn-purple">立即购买</a>
+                </div>
+            </div>
 
             <section class="guarantee-section">
                 <h3 class="guarantee-title">🛡️ 服务保障</h3>
@@ -336,48 +251,30 @@
                         <div class="guarantee-icon">🔒</div>
                         <div class="guarantee-text">
                             <h4>正规可靠</h4>
-                            <p>iOS 官方订阅路径对接，稳定可靠；不需账号密码。</p>
+                            <p>iOS 官方订阅路径对接，稳定可靠。</p>
                         </div>
                     </div>
                     <div class="guarantee-item">
                         <div class="guarantee-icon">💰</div>
                         <div class="guarantee-text">
                             <h4>保障机制</h4>
-                            <p>异常封号零触发；其它风险按天退，明细可查。</p>
+                            <p>异常封号零触发；售后无忧。</p>
                         </div>
                     </div>
                     <div class="guarantee-item">
                         <div class="guarantee-icon">⚡</div>
                         <div class="guarantee-text">
                             <h4>快速开通</h4>
-                            <p>自助与人工并行，常规 5 分钟内完成。</p>
+                            <p>自助与人工并行，5分钟完成。</p>
                         </div>
                     </div>
                     <div class="guarantee-item">
                         <div class="guarantee-icon">🧾</div>
                         <div class="guarantee-text">
                             <h4>开票支持</h4>
-                            <p>如需发票可加客服说明（可能产生税费）。</p>
+                            <p>如需发票可加客服说明。</p>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            <section class="features">
-                <div class="feature-card">
-                    <span class="feature-icon">⭐</span>
-                    <h4>信誉保证</h4>
-                    <p>多年经验，口碑积累，复购率高。</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">🎯</span>
-                    <h4>专业服务</h4>
-                    <p>专注 Plus 代充与售后支持。</p>
-                </div>
-                <div class="feature-card">
-                    <span class="feature-icon">💎</span>
-                    <h4>品质保障</h4>
-                    <p>全程留痕，问题闭环处理。</p>
                 </div>
             </section>
         </div>
@@ -397,11 +294,10 @@
     <script>
     (function() {
         const fixedContactBtn = document.getElementById('fixed-contact-btn');
+        const topConsultBtn = document.getElementById('top-consult-btn');
         const imageModal = document.getElementById('image-modal');
         const imageModalCloseBtn = document.getElementById('image-modal-close');
         
-        const mainQrImg = document.querySelector('.contact-qr-wrapper img');
-
         function showImageModal() {
             imageModal.classList.add('show');
         }
@@ -411,8 +307,7 @@
         }
 
         fixedContactBtn && fixedContactBtn.addEventListener('click', showImageModal);
-        mainQrImg && mainQrImg.addEventListener('click', showImageModal);
-
+        topConsultBtn && topConsultBtn.addEventListener('click', showImageModal);
         imageModalCloseBtn && imageModalCloseBtn.addEventListener('click', hideImageModal);
 
         imageModal && imageModal.addEventListener('click', (e) => {
