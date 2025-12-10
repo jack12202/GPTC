@@ -29,40 +29,61 @@
         /* ================= 公告栏 ================= */
         .announcement-banner {
             background: #ffc107; color:#333; text-align:center; padding: 15px 20px; border-radius: 12px;
-            margin: 0 auto 20px; max-width: 860px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            margin: 0 auto 30px; max-width: 860px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             border: 1px solid rgba(0,0,0,0.1); font-size: 1rem; line-height: 1.6; font-weight: 500;
         }
 
-        /* ================= 咨询按钮 ================= */
-        .consult-bar {
-            max-width: 860px; margin: 0 auto 40px; text-align: center;
+        /* ================= 恢复：原来的2个大按钮 (位置A) ================= */
+        .purchase-options-container {
+            max-width: 860px; margin: 0 auto 40px; 
+            display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
         }
-        .consult-btn {
-            display: inline-flex; align-items: center; justify-content: center;
-            background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: #fff; padding: 12px 30px; border-radius: 50px;
-            font-size: 1rem; font-weight: 600; cursor: pointer;
-            transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        .purchase-btn {
+            display: block; padding: 25px 20px; text-decoration: none; border-radius: 16px;
+            text-align: center; transition: all .25s; position: relative; overflow: hidden;
+            border: 2px solid transparent; box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            color: #fff;
         }
-        .consult-btn:hover {
-            background: #fff; color: #0f4c81; transform: translateY(-2px);
-        }
-        .consult-btn span { margin-right: 8px; font-size: 1.2rem; }
+        .purchase-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(0,0,0,0.2); }
+        .purchase-btn h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 8px; }
+        .purchase-btn p { opacity: .95; font-size: 0.95rem; font-weight: 500; }
+
+        /* 蓝色按钮风格 (原来Style A) */
+        .btn-style-blue { background: linear-gradient(135deg, #64b5f6, #42a5f5); }
+        /* 橙色按钮风格 */
+        .btn-style-orange { background: linear-gradient(135deg, #ff9800, #fb8c00); }
+
 
         /* ================= 主要内容区 ================= */
         .main-content { 
             background: #fff; 
             border-radius: 24px; 
             box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
-            /* 关键点：千万不能加 overflow: hidden，否则阴影会被切掉 */
             margin-bottom: 50px; 
             padding: 40px 20px;
         }
 
+        /* 标题区域：包含标题和客服按钮 */
+        .section-header {
+            display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+            gap: 15px; margin-bottom: 30px;
+        }
+
         .section-title {
             text-align: center; font-size: 1.8rem; font-weight: 800;
-            color: #4299e1; margin-bottom: 30px; text-shadow: 2px 2px 0px #ebf8ff;
+            color: #4299e1; text-shadow: 2px 2px 0px #ebf8ff; margin: 0;
+        }
+
+        /* 标题旁边的联系客服按钮 */
+        .title-contact-btn {
+            display: inline-flex; align-items: center;
+            background: #e0f2fe; color: #0284c7;
+            padding: 6px 16px; border-radius: 50px;
+            font-size: 0.9rem; font-weight: 700;
+            transition: all 0.2s; border: 1px solid #bae6fd;
+        }
+        .title-contact-btn:hover {
+            background: #0284c7; color: #fff; transform: scale(1.05);
         }
 
         /* 布局：横向滚动 - 绝对修复版 */
@@ -74,8 +95,6 @@
             /* 关键修复：给容器四周足够的 padding，确保第一个元素的左边框和阴影完全显示 */
             padding: 20px 20px 30px 20px; 
             -webkit-overflow-scrolling: touch;
-            
-            /* ！！！删除了 justify-content: center，防止大屏下左侧内容溢出屏幕不可见！！！ */
             justify-content: flex-start; 
         }
 
@@ -169,6 +188,8 @@
             .header h1 { font-size: 2rem; }
             .main-content { padding: 20px 15px; }
             .goods-grid::-webkit-scrollbar { display: none; }
+            /* 手机端按钮堆叠 */
+            .purchase-options-container { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -184,15 +205,25 @@
             <p>价格包含：官网订阅成本 + 风险/维护成本；警惕“异常低价”。</p>
         </div>
 
-        <div class="consult-bar">
-            <button class="consult-btn" id="top-consult-btn">
-                <span>💬</span> 充值前有疑问？点击咨询企业微信客服
-            </button>
+        <div class="purchase-options-container">
+            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" class="purchase-btn btn-style-blue">
+                <h3>🎫 卡密自助购买</h3>
+                <p>即买即发 自动发货</p>
+            </a>
+            <a href="https://czgpt.plus/" target="_blank" class="purchase-btn btn-style-orange">
+                <h3>🤖 24小时代充系统</h3>
+                <p>如遇问题优先加客服</p>
+            </a>
         </div>
 
         <div class="main-content">
             
-            <h2 class="section-title">商品种类</h2>
+            <div class="section-header">
+                <h2 class="section-title">商品种类</h2>
+                <a href="https://work.weixin.qq.com/kfid/kfca514f0a95b0e01d1" target="_blank" class="title-contact-btn">
+                    点此联系微信客服 &rarr;
+                </a>
+            </div>
 
             <div class="goods-grid">
                 <div class="goods-card border-orange">
@@ -294,7 +325,6 @@
     <script>
     (function() {
         const fixedContactBtn = document.getElementById('fixed-contact-btn');
-        const topConsultBtn = document.getElementById('top-consult-btn');
         const imageModal = document.getElementById('image-modal');
         const imageModalCloseBtn = document.getElementById('image-modal-close');
         
@@ -307,7 +337,6 @@
         }
 
         fixedContactBtn && fixedContactBtn.addEventListener('click', showImageModal);
-        topConsultBtn && topConsultBtn.addEventListener('click', showImageModal);
         imageModalCloseBtn && imageModalCloseBtn.addEventListener('click', hideImageModal);
 
         imageModal && imageModal.addEventListener('click', (e) => {
