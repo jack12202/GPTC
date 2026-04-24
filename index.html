@@ -1,384 +1,280 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenAI官网ChatGPT Plus代充值服务 | 24小时自助GPT代充 - 安全快速</title>
-    <meta name="description" content="提供专业、安全、快速的OpenAI官网ChatGPT Plus会员代充值服务。支持人工客服微信/QQ，24小时自助系统可选。">
-    <meta name="keywords" content="gpt充值, GPT代充, gptplus会员, chatgpt plus代充, openai代充, gpt4充值, gpt会员">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ChatGPT Plus 代充服务</title>
+    <meta name="description" content="ChatGPT Plus 代充服务，页面简洁清晰，支持新客户首单、续费及人工协助。" />
+    <meta name="keywords" content="ChatGPT Plus, GPT Plus 代充, GPT 续费, GPT 新客户首单" />
 
     <style>
         :root {
-            --text: #334155;
-            --muted: #64748b;
-            --primary: #0f4c81;
-            --primary-2: #2563eb;
-            --accent: #f97316;
-            --accent-2: #fb923c;
-            --bg-deep: #07111f;
-            --bg-mid: #0d2740;
-            --bg-light: #17456a;
-            --card: #ffffff;
-            --line: #e2e8f0;
-            --soft: #f8fafc;
-            --success: #16a34a;
-            --shadow: 0 20px 40px rgba(2, 8, 23, 0.14);
-            --shop-url: "https://fe.dtyuedan.cn/shop/VA3AB5CB";
+            --bg: #081423;
+            --bg-soft: #0d1d31;
+            --panel: rgba(255, 255, 255, 0.06);
+            --panel-strong: rgba(255, 255, 255, 0.1);
+            --line: rgba(255, 255, 255, 0.12);
+            --line-dark: #e5e7eb;
+            --text: #0f172a;
+            --text-soft: #64748b;
+            --text-white: rgba(255, 255, 255, 0.94);
+            --text-white-soft: rgba(255, 255, 255, 0.68);
+            --brand: #2563eb;
+            --brand-dark: #1d4ed8;
+            --accent: #dc2626;
+            --card-bg: #ffffff;
+            --card-muted: #f8fafc;
+            --shadow: 0 20px 40px rgba(2, 6, 23, 0.16);
+            --radius-xl: 28px;
+            --radius-lg: 22px;
+            --radius-md: 18px;
+            --radius-sm: 14px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         html {
             scroll-behavior: smooth;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
-            background:
-                radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 24%),
-                linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-mid) 52%, var(--bg-light) 100%);
-            min-height: 100vh;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            font-family: "SF Pro Display", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
             color: var(--text);
+            background:
+                radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 28%),
+                linear-gradient(180deg, #081423 0%, #0b1830 52%, #0f203b 100%);
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
         }
 
-        a { text-decoration: none; color: inherit; }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font: inherit;
+        }
 
         .container {
-            max-width: 1200px;
+            width: min(1180px, calc(100% - 32px));
             margin: 0 auto;
-            padding: 20px;
         }
 
-        .header {
+        .hero {
+            padding: 92px 0 34px;
             text-align: center;
-            padding: 72px 0 40px;
-            position: relative;
         }
 
-        .hero-badge {
+        .hero-mark {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            justify-content: center;
             padding: 8px 14px;
             border-radius: 999px;
-            background: rgba(255,255,255,0.12);
-            color: rgba(255,255,255,0.95);
-            border: 1px solid rgba(255,255,255,0.18);
-            font-size: 0.92rem;
-            font-weight: 700;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-white-soft);
+            font-size: 13px;
+            letter-spacing: 0.08em;
             margin-bottom: 18px;
             backdrop-filter: blur(10px);
         }
 
-        .header h1 {
-            color: #fff;
-            font-size: 3.2rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.25);
-            letter-spacing: -0.8px;
+        .hero h1 {
+            color: #ffffff;
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 14px;
         }
 
-        .header .subtitle {
-            color: rgba(255,255,255,0.92);
-            font-size: 1.08rem;
-            font-weight: 600;
-            letter-spacing: 0.4px;
-            max-width: 860px;
-            margin: 0 auto 18px;
-        }
-
-        .hero-note {
-            max-width: 900px;
+        .hero p {
+            max-width: 760px;
             margin: 0 auto;
-            color: rgba(255,255,255,0.76);
-            font-size: 0.96rem;
+            color: var(--text-white-soft);
+            font-size: 16px;
+            line-height: 1.85;
         }
 
-        .hero-mini-guide {
-            max-width: 960px;
-            margin: 28px auto 0;
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 16px;
-        }
-
-        .hero-mini-card {
-            background: rgba(255,255,255,0.12);
-            border: 1px solid rgba(255,255,255,0.16);
-            border-radius: 18px;
-            padding: 18px 16px;
-            color: #fff;
-            text-align: left;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 18px 40px rgba(0,0,0,0.12);
-        }
-
-        .hero-mini-card strong {
-            display: block;
-            font-size: 1rem;
-            margin-bottom: 6px;
-        }
-
-        .hero-mini-card p {
-            color: rgba(255,255,255,0.86);
-            font-size: 0.92rem;
-            line-height: 1.6;
-        }
-
-        .section-shell {
-            background: #fff;
-            border-radius: 28px;
+        .main-shell {
+            background: #ffffff;
+            border-radius: var(--radius-xl);
             box-shadow: var(--shadow);
-            margin-bottom: 28px;
             overflow: hidden;
+            margin-bottom: 40px;
         }
 
-        .main-content {
-            padding: 38px 20px 32px;
+        .section {
+            padding: 42px 28px;
         }
 
-        .section-header {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 18px;
+        .section + .section {
+            border-top: 1px solid #eef2f7;
         }
 
-        .section-title {
+        .section-head {
             text-align: center;
-            font-size: 1.9rem;
-            font-weight: 900;
-            color: #1565c0;
-            text-shadow: 2px 2px 0 #ebf8ff;
-            margin: 0;
+            margin-bottom: 28px;
         }
 
-        .section-subtitle {
-            max-width: 860px;
-            margin: 0 auto;
-            text-align: center;
-            color: var(--muted);
-            font-size: 1rem;
-            line-height: 1.75;
-        }
-
-        .step-guide {
-            max-width: 900px;
-            margin: 24px auto 26px;
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 14px;
-        }
-
-        .step-item {
-            background: linear-gradient(180deg, #f8fbff 0%, #eef6ff 100%);
-            border: 1px solid #dbeafe;
-            border-radius: 18px;
-            padding: 16px;
-            text-align: center;
-        }
-
-        .step-no {
-            display: inline-flex;
-            width: 34px;
-            height: 34px;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: var(--primary-2);
-            color: #fff;
-            font-weight: 900;
+        .section-head h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: #0f172a;
+            font-weight: 700;
+            letter-spacing: -0.02em;
             margin-bottom: 10px;
         }
 
-        .step-item h3 {
-            font-size: 1rem;
-            color: #0f172a;
-            margin-bottom: 6px;
-            font-weight: 800;
+        .section-head p {
+            max-width: 760px;
+            margin: 0 auto;
+            color: var(--text-soft);
+            font-size: 15px;
+            line-height: 1.8;
         }
 
-        .step-item p {
-            font-size: 0.92rem;
-            color: var(--muted);
-        }
-
-        .goods-tip-banner {
-            max-width: 920px;
-            margin: 0 auto 16px;
-            background: linear-gradient(135deg, #fff7ed 0%, #fff 100%);
-            border: 1px solid rgba(249, 115, 22, 0.22);
-            border-radius: 18px;
-            padding: 14px 16px;
+        .mini-guide {
+            max-width: 880px;
+            margin: 0 auto 22px;
+            padding: 14px 18px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
             text-align: center;
-            color: #9a3412;
-            font-weight: 800;
-            box-shadow: 0 10px 24px rgba(249, 115, 22, 0.08);
+            color: #334155;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .mini-guide strong {
+            color: #0f172a;
+            font-weight: 700;
         }
 
         .goods-grid {
-            display: flex;
-            flex-wrap: nowrap;
-            overflow-x: auto;
-            gap: 20px;
-            padding: 18px 20px 30px;
-            -webkit-overflow-scrolling: touch;
-            justify-content: flex-start;
-            scroll-snap-type: x proximity;
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
         }
 
-        .goods-grid::-webkit-scrollbar { height: 6px; }
-        .goods-grid::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-        .goods-grid::-webkit-scrollbar-track { background: transparent; }
-
         .goods-card {
-            background: #fff;
-            border-radius: 20px;
-            padding: 24px 18px 20px;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            position: relative;
-            transition: all 0.28s ease;
-            box-shadow: 0 12px 22px rgba(15, 23, 42, 0.10);
-            border: 2px solid transparent;
-            flex-shrink: 0;
-            width: 240px;
-            cursor: pointer;
-            scroll-snap-align: start;
+            min-height: 290px;
+            padding: 22px 20px 20px;
+            background: var(--card-bg);
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius-md);
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
         }
 
         .goods-card:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 22px 30px rgba(15, 23, 42, 0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 18px 34px rgba(15, 23, 42, 0.10);
+            border-color: #cbd5e1;
         }
 
-        .border-orange { border-color: #f97316; }
-        .border-blue { border-color: #3b82f6; }
-
-        .recommend-tag {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            background: #f97316;
-            color: #fff;
-            font-size: 0.75rem;
-            font-weight: 800;
-            padding: 5px 9px;
-            border-radius: 999px;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+        .goods-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 18px;
         }
 
-        .goods-mini-label {
-            display: inline-block;
-            padding: 5px 10px;
+        .goods-badge {
+            display: inline-flex;
+            align-items: center;
+            min-height: 28px;
+            padding: 0 10px;
             border-radius: 999px;
             background: #eff6ff;
             color: #1d4ed8;
-            font-size: 0.75rem;
-            font-weight: 800;
-            margin-bottom: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .goods-tag {
+            font-size: 12px;
+            color: #94a3b8;
+            white-space: nowrap;
         }
 
         .goods-title {
-            font-size: 1.12rem;
-            font-weight: 800;
-            color: #1e40af;
-            text-align: center;
-            margin-bottom: 12px;
-            line-height: 1.45;
-            min-height: 3.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .goods-price-box {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 14px 0 10px;
-            width: 100%;
-        }
-
-        .goods-price {
-            font-size: 1.9rem;
-            font-weight: 900;
-            color: #dc2626;
-            margin-bottom: 6px;
+            font-size: 22px;
+            line-height: 1.4;
+            color: #0f172a;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 14px;
         }
 
         .goods-desc {
-            font-size: 0.88rem;
-            color: #6b7280;
-            text-align: center;
-            min-height: 2.5rem;
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.8;
+            min-height: 52px;
+            margin-bottom: 18px;
         }
 
-        .goods-cta {
-            width: 100%;
-            margin-top: 14px;
-            display: inline-flex;
+        .goods-price {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            margin-bottom: 20px;
+        }
+
+        .goods-price .currency {
+            color: var(--accent);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .goods-price .value {
+            color: var(--accent);
+            font-size: 34px;
+            line-height: 1;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+        }
+
+        .goods-price .unit {
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        .goods-action {
+            margin-top: auto;
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 11px 14px;
+            min-height: 48px;
             border-radius: 14px;
-            background: linear-gradient(135deg, #2563eb, #1d4ed8);
-            color: #fff;
-            font-size: 0.94rem;
-            font-weight: 800;
-            box-shadow: 0 10px 24px rgba(37, 99, 235, 0.22);
+            background: #0f172a;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            transition: background 0.2s ease;
         }
 
-        .goods-hint {
-            margin-top: 8px;
-            font-size: 0.78rem;
-            color: #64748b;
-            font-weight: 700;
+        .goods-card:hover .goods-action {
+            background: #111f35;
+        }
+
+        .goods-foot {
             text-align: center;
-        }
-
-        .guide-footnote {
-            text-align: center;
-            color: var(--muted);
-            font-size: 0.92rem;
-            margin-top: 2px;
-        }
-
-        .proof-section {
-            padding: 36px 20px 38px;
-            background:
-                linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
-            border-top: 1px solid #edf2f7;
-        }
-
-        .proof-wrap {
-            max-width: 1060px;
-            margin: 0 auto;
-        }
-
-        .proof-title {
-            font-size: 1.7rem;
-            color: #0f4c81;
-            text-align: center;
-            font-weight: 900;
-            margin-bottom: 10px;
-        }
-
-        .proof-subtitle {
-            max-width: 760px;
-            margin: 0 auto 22px;
-            text-align: center;
-            color: var(--muted);
-            line-height: 1.8;
+            margin-top: 14px;
+            color: #94a3b8;
+            font-size: 13px;
         }
 
         .proof-grid {
@@ -388,247 +284,140 @@
         }
 
         .proof-card {
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 12px 24px rgba(15, 23, 42, 0.07);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .proof-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 32px rgba(15, 23, 42, 0.12);
-        }
-
-        .proof-thumb {
+            display: none;
             position: relative;
-            aspect-ratio: 4 / 5;
-            background:
-                linear-gradient(135deg, #eff6ff, #dbeafe);
             overflow: hidden;
+            border-radius: 18px;
+            border: 1px solid #e2e8f0;
+            background: #f8fafc;
+            cursor: zoom-in;
+            aspect-ratio: 4 / 5;
+            box-shadow: 0 12px 28px rgba(15, 23, 42, 0.06);
         }
 
-        .proof-thumb img {
+        .proof-card.is-ready {
+            display: block;
+        }
+
+        .proof-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
-            cursor: zoom-in;
+            transition: transform 0.28s ease;
         }
 
-        .proof-placeholder {
-            width: 100%;
-            height: 100%;
+        .proof-card:hover img {
+            transform: scale(1.02);
+        }
+
+        .proof-empty {
             display: none;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 18px;
-            color: #1e40af;
-            font-weight: 800;
-            line-height: 1.7;
-            background:
-                radial-gradient(circle at top right, rgba(255,255,255,0.8), transparent 35%),
-                linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
-        }
-
-        .proof-card.is-placeholder .proof-placeholder {
-            display: flex;
-        }
-
-        .proof-card.is-placeholder img {
-            display: none;
-        }
-
-        .proof-meta {
-            padding: 14px 14px 16px;
-        }
-
-        .proof-meta h4 {
-            font-size: 0.98rem;
-            color: #0f172a;
-            font-weight: 800;
-            margin-bottom: 6px;
-        }
-
-        .proof-meta p {
-            font-size: 0.88rem;
-            color: var(--muted);
-            line-height: 1.65;
-        }
-
-        .proof-note {
-            text-align: center;
-            color: #94a3b8;
-            font-size: 0.88rem;
-            margin-top: 14px;
-        }
-
-        .guarantee-section {
-            padding: 34px 0 8px;
-            border-top: 1px solid #edf2f7;
-            margin-top: 14px;
-        }
-
-        .guarantee-title {
-            font-size: 1.4rem;
-            color: #1e293b;
-            margin-bottom: 20px;
-            text-align: center;
-            font-weight: 900;
-        }
-
-        .guarantee-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 18px;
-        }
-
-        .guarantee-item {
-            display: flex;
-            align-items: flex-start;
-            padding: 16px;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 18px 20px;
+            border-radius: 16px;
             background: #f8fafc;
-            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .proof-empty.show {
+            display: block;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .service-item {
+            padding: 18px 16px;
+            border-radius: 18px;
+            background: #f8fafc;
             border: 1px solid #e2e8f0;
         }
 
-        .guarantee-icon {
-            font-size: 1.6rem;
-            margin-right: 10px;
+        .service-item h3 {
+            font-size: 16px;
+            color: #0f172a;
+            font-weight: 700;
+            margin-bottom: 8px;
         }
 
-        .guarantee-text h4 {
-            color: #1e293b;
-            font-weight: 900;
-            margin-bottom: 4px;
-            font-size: 0.96rem;
-        }
-
-        .guarantee-text p {
+        .service-item p {
             color: #64748b;
-            font-size: 0.86rem;
-            line-height: 1.5;
+            font-size: 14px;
+            line-height: 1.8;
         }
 
         .fixed-contact-btn {
             position: fixed;
-            bottom: 20px;
             right: 20px;
-            width: 64px;
-            height: 64px;
-            background: #fff;
+            bottom: 20px;
+            z-index: 1100;
+            width: 62px;
+            height: 62px;
+            border: 0;
             border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: #ffffff;
+            box-shadow: 0 16px 30px rgba(15, 23, 42, 0.2);
             cursor: pointer;
-            box-shadow: 0 12px 26px rgba(15, 23, 42, 0.22);
-            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: transform 0.2s ease;
         }
 
-        .fixed-contact-btn:hover { transform: translateY(-3px); }
+        .fixed-contact-btn:hover {
+            transform: translateY(-3px);
+        }
 
         .fixed-contact-btn img {
-            width: 42px;
-            height: 42px;
+            width: 40px;
+            height: 40px;
             object-fit: cover;
-        }
-
-        .image-modal-overlay,
-        .video-modal-overlay,
-        .article-modal-overlay,
-        .notice-modal-overlay {
-            position: fixed;
-            inset: 0;
-        }
-
-        .image-modal-overlay {
-            background: rgba(0, 0, 0, 0.85);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            padding: 16px;
-        }
-
-        .image-modal-overlay.show { display: flex; }
-
-        .image-modal-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            width: 360px;
-        }
-
-        .image-modal-content img {
-            display: block;
-            max-width: 100%;
-            max-height: 72vh;
             border-radius: 12px;
-            margin: 0 auto;
-        }
-
-        .image-modal-close {
-            position: absolute;
-            top: -34px;
-            right: -6px;
-            color: #fff;
-            font-size: 30px;
-            font-weight: bold;
-            cursor: pointer;
-            opacity: 0.9;
-        }
-
-        .image-modal-meta {
-            margin-top: 12px;
-            text-align: center;
-            color: #fff;
-        }
-
-        .image-modal-title {
-            font-size: 1rem;
-            font-weight: 800;
-        }
-
-        .image-modal-desc {
-            font-size: 0.9rem;
-            opacity: 0.92;
         }
 
         .top-left-nav-btn,
         .top-right-video-btn {
             position: fixed;
             top: calc(16px + env(safe-area-inset-top));
-            z-index: 1500;
+            z-index: 1200;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 10px 14px;
+            justify-content: center;
+            min-height: 44px;
+            padding: 0 14px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
             border-radius: 14px;
-            border: 1px solid rgba(255,255,255,0.35);
-            background: rgba(255,255,255,0.18);
-            color: #fff;
-            font-weight: 800;
-            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            backdrop-filter: blur(12px);
             cursor: pointer;
-            -webkit-backdrop-filter: blur(10px);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.18);
-            transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
-            user-select: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: background 0.2s ease, transform 0.2s ease;
         }
-
-        .top-left-nav-btn { left: calc(16px + env(safe-area-inset-left)); }
-        .top-right-video-btn { right: calc(16px + env(safe-area-inset-right)); }
 
         .top-left-nav-btn:hover,
         .top-right-video-btn:hover {
+            background: rgba(255, 255, 255, 0.12);
             transform: translateY(-2px);
-            background: rgba(255,255,255,0.24);
-            box-shadow: 0 14px 28px rgba(0,0,0,0.22);
+        }
+
+        .top-left-nav-btn {
+            left: calc(16px + env(safe-area-inset-left));
+            gap: 10px;
+        }
+
+        .top-right-video-btn {
+            right: calc(16px + env(safe-area-inset-right));
         }
 
         .nav-hamburger {
@@ -643,377 +432,380 @@
             display: block;
             height: 2px;
             width: 100%;
-            background: rgba(255,255,255,0.95);
-            border-radius: 2px;
-            transition: transform .25s ease, opacity .25s ease;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.94);
+            transition: transform 0.25s ease, opacity 0.25s ease;
         }
 
-        .top-left-nav-btn.active .nav-hamburger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
-        .top-left-nav-btn.active .nav-hamburger span:nth-child(2) { opacity: 0; }
-        .top-left-nav-btn.active .nav-hamburger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+        .top-left-nav-btn.active .nav-hamburger span:nth-child(1) {
+            transform: translateY(6px) rotate(45deg);
+        }
 
-        .drawer-overlay {
+        .top-left-nav-btn.active .nav-hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .top-left-nav-btn.active .nav-hamburger span:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
+        .drawer-overlay,
+        .image-modal-overlay,
+        .video-modal-overlay,
+        .article-modal-overlay,
+        .notice-modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.35);
-            -webkit-backdrop-filter: blur(2px);
-            backdrop-filter: blur(2px);
-            z-index: 1450;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity .2s ease;
         }
 
-        .drawer-overlay.open { opacity: 1; pointer-events: auto; }
+        .drawer-overlay {
+            z-index: 1180;
+            background: rgba(2, 6, 23, 0.4);
+            backdrop-filter: blur(2px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .drawer-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
 
         .side-drawer {
             position: fixed;
             top: 0;
             left: 0;
-            width: min(300px, 84vw);
+            z-index: 1190;
+            width: min(320px, 86vw);
             height: 100vh;
-            padding: calc(18px + env(safe-area-inset-top)) 16px 16px;
-            background: rgba(15, 23, 42, 0.92);
-            -webkit-backdrop-filter: blur(14px);
-            backdrop-filter: blur(14px);
-            border-right: 1px solid rgba(255,255,255,0.12);
-            z-index: 1490;
+            padding: calc(18px + env(safe-area-inset-top)) 16px 18px;
+            background: rgba(10, 19, 33, 0.96);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
             transform: translateX(-105%);
-            transition: transform .22s ease;
+            transition: transform 0.24s ease;
             display: flex;
             flex-direction: column;
             gap: 14px;
         }
 
-        .side-drawer.open { transform: translateX(0); }
+        .side-drawer.open {
+            transform: translateX(0);
+        }
 
         .drawer-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 8px 6px 12px;
-            border-bottom: 1px solid rgba(255,255,255,0.10);
+            padding: 6px 4px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .drawer-title {
-            font-size: 1rem;
-            font-weight: 900;
-            letter-spacing: .5px;
-            color: rgba(255,255,255,0.95);
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 15px;
+            font-weight: 600;
         }
 
         .drawer-close {
             width: 36px;
             height: 36px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.18);
-            background: rgba(255,255,255,0.08);
-            color: #fff;
-            font-size: 22px;
+            background: rgba(255, 255, 255, 0.06);
+            color: #ffffff;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform .15s ease, background .15s ease;
-        }
-
-        .drawer-close:hover {
-            transform: rotate(90deg);
-            background: rgba(255,255,255,0.14);
         }
 
         .drawer-item {
+            width: 100%;
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 12px 14px;
+            min-height: 48px;
+            padding: 0 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 14px;
-            border: 1px solid rgba(255,255,255,0.12);
-            background: rgba(255,255,255,0.06);
-            color: rgba(255,255,255,0.92);
-            font-weight: 800;
-            transition: background .15s ease, transform .15s ease;
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 14px;
+            font-weight: 500;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.18s ease;
         }
 
         .drawer-item:hover {
-            background: rgba(255,255,255,0.12);
-            transform: translateY(-1px);
-        }
-
-        .drawer-icon {
-            font-size: 1.2rem;
-            width: 24px;
-            text-align: center;
+            background: rgba(255, 255, 255, 0.09);
         }
 
         .drawer-footer {
             margin-top: auto;
-            padding-top: 12px;
-            border-top: 1px solid rgba(255,255,255,0.10);
-            color: rgba(255,255,255,0.65);
-            font-size: 0.8rem;
-            line-height: 1.5;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.56);
+            font-size: 12px;
+            line-height: 1.8;
         }
 
-        .video-modal-overlay {
-            background: rgba(0,0,0,0.85);
+        .image-modal-overlay,
+        .video-modal-overlay,
+        .article-modal-overlay,
+        .notice-modal-overlay {
             display: none;
             align-items: center;
             justify-content: center;
-            z-index: 2100;
             padding: 16px;
         }
 
-        .video-modal-overlay.show { display: flex; }
+        .image-modal-overlay.show,
+        .video-modal-overlay.show,
+        .article-modal-overlay.show,
+        .notice-modal-overlay.show {
+            display: flex;
+        }
 
-        .video-modal-content {
-            width: min(860px, 96vw);
-            background: rgba(255,255,255,0.10);
-            border: 1px solid rgba(255,255,255,0.22);
-            border-radius: 16px;
-            -webkit-backdrop-filter: blur(14px);
-            backdrop-filter: blur(14px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.55);
-            padding: 16px 16px 14px;
+        .image-modal-overlay {
+            z-index: 1300;
+            background: rgba(2, 6, 23, 0.78);
+        }
+
+        .image-modal-content {
+            width: min(560px, 94vw);
             position: relative;
         }
 
-        .video-modal-title {
-            color: #fff;
-            font-size: 1.05rem;
-            font-weight: 900;
-            margin: 2px 0 12px;
-            text-align: center;
-            letter-spacing: .3px;
-        }
-
-        .video-modal-close {
+        .image-modal-close,
+        .video-modal-close,
+        .article-modal-close {
             position: absolute;
             top: 10px;
             right: 10px;
-            width: 36px;
-            height: 36px;
+            width: 38px;
+            height: 38px;
+            border: 0;
             border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.18);
-            background: rgba(0,0,0,0.25);
-            color: #fff;
-            font-size: 22px;
+            background: rgba(15, 23, 42, 0.72);
+            color: #ffffff;
+            font-size: 20px;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform .15s ease, background .15s ease;
         }
 
-        .video-modal-close:hover {
-            transform: rotate(90deg);
-            background: rgba(0,0,0,0.35);
+        .image-modal-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 24px 60px rgba(2, 6, 23, 0.24);
+        }
+
+        .image-modal-card img {
+            display: block;
+            width: 100%;
+            max-height: 78vh;
+            object-fit: contain;
+            background: #f8fafc;
+        }
+
+        .image-modal-meta {
+            padding: 16px 18px 18px;
+        }
+
+        .image-modal-title {
+            font-size: 16px;
+            color: #0f172a;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .image-modal-desc {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.8;
+        }
+
+        .video-modal-overlay,
+        .article-modal-overlay,
+        .notice-modal-overlay {
+            z-index: 1300;
+            background: rgba(2, 6, 23, 0.72);
+            backdrop-filter: blur(4px);
+        }
+
+        .video-modal-content,
+        .article-modal-content,
+        .notice-modal-content {
+            position: relative;
+            width: min(920px, 96vw);
+            background: #ffffff;
+            border-radius: 22px;
+            box-shadow: 0 30px 80px rgba(2, 6, 23, 0.24);
+            overflow: hidden;
+        }
+
+        .video-modal-content {
+            padding: 18px;
+            background: #0f172a;
+        }
+
+        .video-modal-title {
+            color: #ffffff;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 14px;
         }
 
         #tutorialVideo {
             width: 100%;
-            max-height: min(70vh, 520px);
-            border-radius: 12px;
-            background: #000;
-            outline: none;
+            max-height: 72vh;
+            border-radius: 16px;
+            background: #000000;
+            display: block;
         }
 
         .video-fallback-link {
             display: block;
-            margin-top: 10px;
             text-align: center;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: rgba(255,255,255,0.92);
-            text-decoration: underline;
-            text-underline-offset: 3px;
+            margin-top: 12px;
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 14px;
         }
 
         .video-key-cta {
+            margin-top: 16px;
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 18px;
             flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
         }
 
-        .article-modal-overlay {
-            background: rgba(0,0,0,0.78);
-            display: none;
+        .cta-primary {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            z-index: 2300;
-            padding: 18px;
-            backdrop-filter: blur(5px);
-        }
-
-        .article-modal-overlay.show { display: flex; }
-
-        .article-modal-content {
-            width: min(920px, 96vw);
-            max-height: min(86vh, 860px);
-            background: #ffffff;
-            border-radius: 18px;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.35);
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(0,0,0,0.08);
-        }
-
-        .article-modal-close {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            width: 40px;
-            height: 40px;
+            min-height: 42px;
+            padding: 0 16px;
             border-radius: 12px;
-            border: 1px solid rgba(0,0,0,0.08);
-            background: rgba(255,255,255,0.9);
-            cursor: pointer;
-            font-size: 22px;
-            font-weight: 900;
-            color: #0f4c81;
-            transition: transform .15s ease, background .15s ease;
-            z-index: 2;
+            background: #ffffff;
+            color: #0f172a;
+            font-size: 14px;
+            font-weight: 600;
         }
 
-        .article-modal-close:hover {
-            transform: rotate(90deg);
-            background: #eef6ff;
+        .article-modal-content,
+        .notice-modal-content {
+            max-height: 86vh;
         }
 
-        .article-modal-body {
-            padding: 46px 22px 26px;
-            max-height: min(86vh, 860px);
+        .article-modal-body,
+        .notice-modal-body {
+            padding: 46px 24px 26px;
             overflow-y: auto;
+            max-height: 86vh;
         }
 
         .article-modal-body h1 {
-            margin: 0 0 8px;
-            color: #0f4c81;
-            font-size: 1.8rem;
-            font-weight: 900;
+            font-size: 28px;
             text-align: center;
+            color: #0f172a;
+            margin-bottom: 12px;
+            font-weight: 700;
         }
 
         .article-modal-body h2 {
             margin: 22px 0 10px;
-            font-size: 1.2rem;
-            font-weight: 900;
-            color: #1565c0;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #e5effa;
+            color: #1d4ed8;
+            font-size: 18px;
+            font-weight: 700;
         }
 
         .article-modal-body h3 {
-            margin: 16px 0 8px;
-            font-size: 1.05rem;
-            font-weight: 900;
-            color: #1e40af;
+            margin: 18px 0 8px;
+            color: #0f172a;
+            font-size: 16px;
+            font-weight: 700;
         }
 
-        .article-modal-body p {
-            margin: 10px 0;
-            color: #334155;
-            line-height: 1.75;
+        .article-modal-body p,
+        .article-modal-body li {
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.85;
         }
 
         .article-modal-body ul {
-            margin: 10px 0 10px 18px;
-            color: #334155;
+            margin-left: 18px;
         }
 
-        .article-modal-body li { margin: 6px 0; }
-
         .article-modal-body pre {
-            margin: 12px 0;
+            margin-top: 12px;
             padding: 14px;
             border-radius: 14px;
             background: #0f172a;
             color: #e2e8f0;
-            overflow-x: auto;
             white-space: pre-wrap;
             word-break: break-word;
+            overflow-x: auto;
         }
 
-        .article-lead {
-            text-align: center;
-            color: #475569;
-            margin: 0 auto 10px;
-            max-width: 680px;
-            font-weight: 700;
+        .article-note,
+        .article-box,
+        .faq-item,
+        .compare-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            background: #f8fafc;
+        }
+
+        .article-box,
+        .compare-card {
+            padding: 14px;
         }
 
         .article-note {
-            margin-top: 18px;
+            margin-top: 16px;
             padding: 12px 14px;
-            border-radius: 14px;
-            background: #f1f8ff;
-            border: 1px solid #dbeafe;
             color: #1e3a8a;
-            font-weight: 700;
         }
-
-        .article-box {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            padding: 12px 14px;
-        }
-
-        .article-box p { margin: 8px 0; }
 
         .compare-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 14px;
             margin-top: 12px;
         }
 
-        .compare-card {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 16px;
-            padding: 16px;
-        }
-
-        .compare-icon { font-size: 2.2rem; }
-        .compare-desc { color: #475569; font-weight: 700; }
-
         .faq-item {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 14px;
-            margin: 10px 0;
+            margin-top: 12px;
             overflow: hidden;
         }
 
         .faq-q {
-            padding: 14px 14px;
-            cursor: pointer;
-            font-weight: 900;
-            color: #0f4c81;
+            min-height: 52px;
+            padding: 0 14px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 10px;
-        }
-
-        .faq-icon {
-            transition: transform .2s ease;
-            color: #1565c0;
+            cursor: pointer;
+            color: #0f172a;
+            font-weight: 600;
         }
 
         .faq-a {
             max-height: 0;
             overflow: hidden;
             padding: 0 14px;
-            transition: max-height .25s ease, padding .25s ease;
+            transition: max-height 0.22s ease, padding 0.22s ease;
         }
 
         .faq-item.active .faq-a {
-            max-height: 600px;
+            max-height: 320px;
             padding: 0 14px 14px;
+        }
+
+        .faq-icon {
+            color: #64748b;
+            transition: transform 0.2s ease;
         }
 
         .faq-item.active .faq-icon {
@@ -1022,402 +814,263 @@
 
         .article-cta {
             margin-top: 18px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .cta-primary {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 18px;
-            border-radius: 14px;
-            font-weight: 800;
-            background: #2563eb;
-            color: #fff;
-            box-shadow: 0 8px 22px rgba(37,99,235,.25);
-            margin: 5px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .cta-primary:hover { background: #1d4ed8; }
-
-        .cta-note {
-            margin-top: 8px;
             text-align: center;
-            font-size: 12px;
-            color: rgba(255,255,255,0.6);
-            width: 100%;
-        }
-
-        .notice-modal-overlay {
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 18px;
-            background: rgba(7, 12, 22, 0.78);
-            z-index: 2600;
-            backdrop-filter: blur(6px);
-        }
-
-        .notice-modal-overlay.show { display: flex; }
-
-        .notice-modal-content {
-            width: min(720px, 96vw);
-            max-height: min(82vh, 760px);
-            overflow: auto;
-            border-radius: 22px;
-            background: linear-gradient(180deg, #fff7ed 0%, #ffffff 100%);
-            border: 1px solid rgba(251, 146, 60, 0.25);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
-            padding: 26px 22px 20px;
         }
 
         .notice-modal-title {
-            font-size: 1.45rem;
-            font-weight: 900;
-            color: #c2410c;
             text-align: center;
-            margin-bottom: 10px;
+            font-size: 24px;
+            color: #0f172a;
+            font-weight: 700;
+            margin-bottom: 12px;
         }
 
         .notice-modal-text {
-            color: #7c2d12;
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.9;
             white-space: pre-wrap;
             word-break: break-word;
-            line-height: 1.8;
-            font-size: 0.98rem;
         }
 
-        .notice-modal-tip {
-            margin-top: 14px;
-            text-align: center;
-            color: #9a3412;
-            font-size: 0.9rem;
-            font-weight: 700;
+        body.drawer-open {
+            overflow: hidden;
         }
 
-        @media (max-width: 980px) {
-            .hero-mini-guide,
-            .step-guide,
-            .proof-grid {
+        @media (max-width: 1100px) {
+            .goods-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .service-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
         }
 
-        @media (max-width: 768px) {
-            .container { padding: 12px; }
-            .header { padding: 84px 0 28px; }
-            .header h1 { font-size: 2.1rem; }
-            .header .subtitle { font-size: 0.98rem; }
-            .hero-mini-guide,
-            .step-guide,
-            .proof-grid {
+        @media (max-width: 760px) {
+            .container {
+                width: min(100% - 20px, 1180px);
+            }
+
+            .hero {
+                padding: 84px 0 28px;
+            }
+
+            .section {
+                padding: 28px 16px;
+            }
+
+            .goods-grid,
+            .proof-grid,
+            .service-grid,
+            .compare-grid {
                 grid-template-columns: 1fr;
             }
-            .main-content { padding: 22px 14px 24px; }
-            .proof-section { padding: 26px 14px 28px; }
-            .goods-grid::-webkit-scrollbar { display: none; }
-            .top-left-nav-btn,
-            .top-right-video-btn {
-                padding: 9px 12px;
-                font-size: 0.9rem;
-                border-radius: 12px;
-                gap: 8px;
-            }
-            .top-right-video-btn .video-text { display: none; }
-            .image-modal-close { right: 0; }
-            .proof-thumb { aspect-ratio: 16 / 15; }
-        }
 
-        body.drawer-open { overflow: hidden; }
+            .goods-card {
+                min-height: auto;
+            }
+
+            .top-right-video-btn span:last-child {
+                display: none;
+            }
+
+            .fixed-contact-btn {
+                width: 58px;
+                height: 58px;
+            }
+
+            .fixed-contact-btn img {
+                width: 36px;
+                height: 36px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <header class="header">
-            <div class="hero-badge">24小时自助下单 · 人工客服协助 · 全程指引</div>
+        <header class="hero">
+            <div class="hero-mark">CHONGZHI.CHAT</div>
             <h1>ChatGPT Plus 代充服务</h1>
-            <div class="subtitle">专业 • 快速 • 有引导 | 请收藏：chongzhi.chat 防失联</div>
-            <p class="hero-note">如果你是第一次购买，不知道该选哪个商品，也不用担心。先看下面的商品说明，点进对应商品后即可进入下一步购买流程；右上角有视频教程，右下角可直接联系客服。</p>
-
-            <div class="hero-mini-guide">
-                <div class="hero-mini-card">
-                    <strong>新用户怎么买</strong>
-                    <p>优先看“GPT Plus 新客首充”，按页面提示进入下一步即可。</p>
-                </div>
-                <div class="hero-mini-card">
-                    <strong>老用户怎么续费</strong>
-                    <p>已有账号并且需要延续会员，直接选择“GPT Plus 续费”。</p>
-                </div>
-                <div class="hero-mini-card">
-                    <strong>不会操作怎么办</strong>
-                    <p>先看右上角视频教程，或者直接点右下角客服二维码咨询。</p>
-                </div>
-            </div>
+            <p>请选择你当前的购买需求，点击商品后进入下一步。新客户首单 149 元，已有会员请选择续费；如果不确定怎么操作，可查看右上角视频教程或联系右下角客服。</p>
         </header>
 
-        <div class="section-shell">
-            <div class="main-content">
-                <div class="section-header">
-                    <h2 class="section-title">商品种类</h2>
-                </div>
-                <p class="section-subtitle">先选适合你的商品，再点击卡片进入下一步购买。不会选的话，优先看价格下方说明；如果还是不确定，联系客服会更快。</p>
-
-                <div class="step-guide">
-                    <div class="step-item">
-                        <div class="step-no">1</div>
-                        <h3>先判断自己是哪种用户</h3>
-                        <p>第一次开通选“新客首充”，已有会员要继续用就选“续费”。</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-no">2</div>
-                        <h3>点击对应商品卡片</h3>
-                        <p>每张卡片都能直接进入下一步购买页面，不需要额外找入口。</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-no">3</div>
-                        <h3>按提示完成购买</h3>
-                        <p>遇到不会的步骤，先看视频教程，或者联系客服协助处理。</p>
-                    </div>
+        <main class="main-shell">
+            <section class="section">
+                <div class="section-head">
+                    <h2>商品种类</h2>
+                    <p>页面尽量做得直接一些，你只需要判断自己属于哪一种需求，然后点击对应商品卡片继续。</p>
                 </div>
 
-                <div class="goods-tip-banner">请直接点击下方商品卡片进入下一步购买，首充和续费不要选错。</div>
+                <div class="mini-guide">
+                    <strong>快速选择：</strong>
+                    新客户请选择 <strong>GPT Plus 新客户首单 149 元</strong>；
+                    已有会员请选择 <strong>GPT Plus 续费</strong>；
+                    不确定需求时，可优先联系右下角客服。
+                </div>
 
                 <div class="goods-grid">
-                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" rel="noopener" class="goods-card border-orange" data-shop-link>
-                        <span class="recommend-tag">推荐</span>
-                        <span class="goods-mini-label">适合第一次开通</span>
-                        <h3 class="goods-title">GPT Plus<br>新客首充</h3>
-                        <div class="goods-price-box">
-                            <div class="goods-price">¥149</div>
-                            <div class="goods-desc">新客户首单特惠，第一次购买优先选这个</div>
+                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" rel="noopener" class="goods-card" data-shop-link>
+                        <div class="goods-card-top">
+                            <span class="goods-badge">推荐</span>
+                            <span class="goods-tag">新客户</span>
                         </div>
-                        <div class="goods-cta">点击进入下一步购买 →</div>
-                        <div class="goods-hint">首次开通用户直接点这里</div>
+                        <h3 class="goods-title">GPT Plus 新客户首单</h3>
+                        <p class="goods-desc">适合新客户首单购买。确认需求后，点击卡片即可进入下一步。</p>
+                        <div class="goods-price">
+                            <span class="currency">¥</span>
+                            <span class="value">149</span>
+                            <span class="unit">元</span>
+                        </div>
+                        <div class="goods-action">进入下一步购买</div>
                     </a>
 
-                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" rel="noopener" class="goods-card border-orange" data-shop-link>
-                        <span class="recommend-tag">推荐</span>
-                        <span class="goods-mini-label">适合已有账号续期</span>
-                        <h3 class="goods-title">GPT Plus<br>续费</h3>
-                        <div class="goods-price-box">
-                            <div class="goods-price">¥169</div>
-                            <div class="goods-desc">适合已有会员继续续期，稳定省心</div>
+                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" rel="noopener" class="goods-card" data-shop-link>
+                        <div class="goods-card-top">
+                            <span class="goods-badge">常用</span>
+                            <span class="goods-tag">老用户</span>
                         </div>
-                        <div class="goods-cta">点击进入下一步购买 →</div>
-                        <div class="goods-hint">老用户继续开通选这里</div>
+                        <h3 class="goods-title">GPT Plus 续费</h3>
+                        <p class="goods-desc">适合已有会员继续续费。点击后按页面提示继续操作即可。</p>
+                        <div class="goods-price">
+                            <span class="currency">¥</span>
+                            <span class="value">169</span>
+                            <span class="unit">元</span>
+                        </div>
+                        <div class="goods-action">进入下一步购买</div>
                     </a>
 
-                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" rel="noopener" class="goods-card border-blue" data-shop-link>
-                        <span class="goods-mini-label">偏代码与长文档</span>
-                        <h3 class="goods-title">Claude Pro<br>官方会员</h3>
-                        <div class="goods-price-box">
-                            <div class="goods-price">¥169</div>
-                            <div class="goods-desc">适合代码、写作、长文档处理等场景</div>
+                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" rel="noopener" class="goods-card" data-shop-link>
+                        <div class="goods-card-top">
+                            <span class="goods-badge">代码 / 长文档</span>
+                            <span class="goods-tag">Claude</span>
                         </div>
-                        <div class="goods-cta">点击进入下一步购买 →</div>
-                        <div class="goods-hint">重度办公或编程可考虑</div>
+                        <h3 class="goods-title">Claude Pro 官方会员</h3>
+                        <p class="goods-desc">适合代码协作、写作、长文档处理等需求，按需选择即可。</p>
+                        <div class="goods-price">
+                            <span class="currency">¥</span>
+                            <span class="value">169</span>
+                            <span class="unit">元</span>
+                        </div>
+                        <div class="goods-action">进入下一步购买</div>
                     </a>
 
-                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" rel="noopener" class="goods-card border-blue" data-shop-link>
-                        <span class="goods-mini-label">偏热点和实时信息</span>
-                        <h3 class="goods-title">Grok 4.2<br>官方会员</h3>
-                        <div class="goods-price-box">
-                            <div class="goods-price">¥180</div>
-                            <div class="goods-desc">适合资讯、热点追踪、快速观点整理</div>
+                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" rel="noopener" class="goods-card" data-shop-link>
+                        <div class="goods-card-top">
+                            <span class="goods-badge">实时 / 热点</span>
+                            <span class="goods-tag">Grok</span>
                         </div>
-                        <div class="goods-cta">点击进入下一步购买 →</div>
-                        <div class="goods-hint">需要实时感较强可选</div>
+                        <h3 class="goods-title">Grok 4.2 官方会员</h3>
+                        <p class="goods-desc">适合资讯跟进、热点整理、快速观点梳理等使用场景。</p>
+                        <div class="goods-price">
+                            <span class="currency">¥</span>
+                            <span class="value">180</span>
+                            <span class="unit">元</span>
+                        </div>
+                        <div class="goods-action">进入下一步购买</div>
                     </a>
                 </div>
 
-                <div class="guide-footnote">点击任意商品卡片后，即可进入对应购买页面继续操作。</div>
+                <div class="goods-foot">点击任意商品卡片，即可进入对应购买页面。</div>
+            </section>
 
-                <section class="guarantee-section">
-                    <h3 class="guarantee-title">服务保障</h3>
-                    <div class="guarantee-list">
-                        <div class="guarantee-item">
-                            <div class="guarantee-icon">🔒</div>
-                            <div class="guarantee-text">
-                                <h4>流程清晰</h4>
-                                <p>页面结构简洁明了，新手也能快速找到对应购买入口。</p>
-                            </div>
-                        </div>
-                        <div class="guarantee-item">
-                            <div class="guarantee-icon">⚡</div>
-                            <div class="guarantee-text">
-                                <h4>响应较快</h4>
-                                <p>支持自助流程与人工协助并行，减少等待与沟通成本。</p>
-                            </div>
-                        </div>
-                        <div class="guarantee-item">
-                            <div class="guarantee-icon">🎬</div>
-                            <div class="guarantee-text">
-                                <h4>视频引导</h4>
-                                <p>右上角可直接查看视频教程，跟着操作更省时间。</p>
-                            </div>
-                        </div>
-                        <div class="guarantee-item">
-                            <div class="guarantee-icon">🧾</div>
-                            <div class="guarantee-text">
-                                <h4>售后沟通</h4>
-                                <p>如遇特殊情况，可联系客服说明订单信息与具体问题。</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
+            <section class="section">
+                <div class="section-head">
+                    <h2>真实成交截图</h2>
+                    <p>只保留简洁展示。支持最多 6 张，点击图片可放大查看。</p>
+                </div>
 
-            <section class="proof-section">
-                <div class="proof-wrap">
-                    <h3 class="proof-title">真实成交截图</h3>
-                    <p class="proof-subtitle">下方最多可展示 6 张成交截图。默认已经预留好位置，你只需要把图片放到当前 HTML 同目录下，命名为“成交截图1.jpg”到“成交截图6.jpg”即可自动显示。</p>
+                <div class="proof-grid" id="proofGrid">
+                    <div class="proof-card"><img src="./成交截图1.jpg" alt="成交截图1" loading="lazy" data-proof-image data-proof-title="成交截图 1" /></div>
+                    <div class="proof-card"><img src="./成交截图2.jpg" alt="成交截图2" loading="lazy" data-proof-image data-proof-title="成交截图 2" /></div>
+                    <div class="proof-card"><img src="./成交截图3.jpg" alt="成交截图3" loading="lazy" data-proof-image data-proof-title="成交截图 3" /></div>
+                    <div class="proof-card"><img src="./成交截图4.jpg" alt="成交截图4" loading="lazy" data-proof-image data-proof-title="成交截图 4" /></div>
+                    <div class="proof-card"><img src="./成交截图5.jpg" alt="成交截图5" loading="lazy" data-proof-image data-proof-title="成交截图 5" /></div>
+                    <div class="proof-card"><img src="./成交截图6.jpg" alt="成交截图6" loading="lazy" data-proof-image data-proof-title="成交截图 6" /></div>
+                </div>
 
-                    <div class="proof-grid" id="proofGrid">
-                        <div class="proof-card">
-                            <div class="proof-thumb">
-                                <img src="./成交截图1.jpg" alt="成交截图1" data-proof-image data-proof-title="成交截图 1">
-                                <div class="proof-placeholder">请放入图片<br>成交截图1.jpg</div>
-                            </div>
-                            <div class="proof-meta">
-                                <h4>成交记录展示 1</h4>
-                                <p>用于展示真实下单或到账相关截图，增强用户信任感。</p>
-                            </div>
-                        </div>
-
-                        <div class="proof-card">
-                            <div class="proof-thumb">
-                                <img src="./成交截图2.jpg" alt="成交截图2" data-proof-image data-proof-title="成交截图 2">
-                                <div class="proof-placeholder">请放入图片<br>成交截图2.jpg</div>
-                            </div>
-                            <div class="proof-meta">
-                                <h4>成交记录展示 2</h4>
-                                <p>建议优先放成功付款、到账结果、沟通确认等高信任截图。</p>
-                            </div>
-                        </div>
-
-                        <div class="proof-card">
-                            <div class="proof-thumb">
-                                <img src="./成交截图3.jpg" alt="成交截图3" data-proof-image data-proof-title="成交截图 3">
-                                <div class="proof-placeholder">请放入图片<br>成交截图3.jpg</div>
-                            </div>
-                            <div class="proof-meta">
-                                <h4>成交记录展示 3</h4>
-                                <p>图片建议适当打码，仅保留能体现结果的信息即可。</p>
-                            </div>
-                        </div>
-
-                        <div class="proof-card">
-                            <div class="proof-thumb">
-                                <img src="./成交截图4.jpg" alt="成交截图4" data-proof-image data-proof-title="成交截图 4">
-                                <div class="proof-placeholder">请放入图片<br>成交截图4.jpg</div>
-                            </div>
-                            <div class="proof-meta">
-                                <h4>成交记录展示 4</h4>
-                                <p>可展示不同商品、不同时间段、不同到账结果的截图内容。</p>
-                            </div>
-                        </div>
-
-                        <div class="proof-card">
-                            <div class="proof-thumb">
-                                <img src="./成交截图5.jpg" alt="成交截图5" data-proof-image data-proof-title="成交截图 5">
-                                <div class="proof-placeholder">请放入图片<br>成交截图5.jpg</div>
-                            </div>
-                            <div class="proof-meta">
-                                <h4>成交记录展示 5</h4>
-                                <p>如果图片不足 6 张，未上传的图片位会自动显示占位提示。</p>
-                            </div>
-                        </div>
-
-                        <div class="proof-card">
-                            <div class="proof-thumb">
-                                <img src="./成交截图6.jpg" alt="成交截图6" data-proof-image data-proof-title="成交截图 6">
-                                <div class="proof-placeholder">请放入图片<br>成交截图6.jpg</div>
-                            </div>
-                            <div class="proof-meta">
-                                <h4>成交记录展示 6</h4>
-                                <p>用户点击截图可放大查看，适合展示关键信息与成交氛围。</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="proof-note">建议图片统一裁剪比例，视觉会更整齐；涉及隐私信息请先打码。</div>
+                <div class="proof-empty" id="proofEmpty">
+                    暂未检测到成交截图。你可以把图片放到当前 HTML 同级目录，并命名为 `成交截图1.jpg` 到 `成交截图6.jpg`。
                 </div>
             </section>
-        </div>
+
+            <section class="section">
+                <div class="section-head">
+                    <h2>服务说明</h2>
+                    <p>只保留必要信息，页面尽量清晰，不增加额外理解负担。</p>
+                </div>
+
+                <div class="service-grid">
+                    <div class="service-item">
+                        <h3>购买路径清晰</h3>
+                        <p>商品卡片就是入口，不需要再找其他跳转按钮。</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>视频教程可看</h3>
+                        <p>右上角可直接打开视频教程，适合先看后操作。</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>客服随时可联系</h3>
+                        <p>右下角悬浮按钮可直接打开客服二维码，遇到问题更方便。</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>公告单独展示</h3>
+                        <p>如有临时通知，会通过公告弹窗展示，不影响主页面结构。</p>
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
 
     <button class="top-left-nav-btn" id="navMenuBtn" type="button" aria-label="打开导航菜单" aria-expanded="false">
         <span class="nav-hamburger" aria-hidden="true">
-            <span></span><span></span><span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </span>
         <span>菜单</span>
     </button>
 
     <button class="top-right-video-btn" id="videoBtn" type="button" aria-label="打开视频教程">
-        🎬 <span class="video-text">视频教程</span>
+        <span>视频教程</span>
     </button>
 
     <div class="drawer-overlay" id="drawerOverlay"></div>
+
     <aside class="side-drawer" id="sideDrawer" aria-hidden="true">
         <div class="drawer-header">
             <div class="drawer-title">导航菜单</div>
             <button class="drawer-close" id="drawerClose" type="button" aria-label="关闭菜单">×</button>
         </div>
 
-        <a class="drawer-item" href="https://chongzhi.chat/" target="_self">
-            <span class="drawer-icon">🏠</span>
-            <span>充值主页</span>
-        </a>
-
-        <button type="button" class="drawer-item drawer-action" data-article="guide">
-            <span class="drawer-icon">📖</span>
-            <span>ChatGPT使用指南</span>
-        </button>
-
-        <button type="button" class="drawer-item drawer-action" data-article="compare">
-            <span class="drawer-icon">🆚</span>
-            <span>Plus与Pro对比</span>
-        </button>
-
-        <button type="button" class="drawer-item drawer-action" data-article="faq">
-            <span class="drawer-icon">❓</span>
-            <span>常见问题解答</span>
-        </button>
-
-        <button type="button" class="drawer-item drawer-action" data-article="claude">
-            <span class="drawer-icon">🤖</span>
-            <span>Claude Pro 使用指南</span>
-        </button>
-
-        <button type="button" class="drawer-item drawer-action" data-article="grok">
-            <span class="drawer-icon">𝕏</span>
-            <span>Grok 使用指南</span>
-        </button>
+        <a class="drawer-item" href="https://chongzhi.chat/" target="_self">充值主页</a>
+        <button type="button" class="drawer-item drawer-action" data-article="guide">ChatGPT 使用指南</button>
+        <button type="button" class="drawer-item drawer-action" data-article="compare">Plus 与 Pro 对比</button>
+        <button type="button" class="drawer-item drawer-action" data-article="faq">常见问题解答</button>
+        <button type="button" class="drawer-item drawer-action" data-article="claude">Claude Pro 使用指南</button>
+        <button type="button" class="drawer-item drawer-action" data-article="grok">Grok 使用指南</button>
 
         <div class="drawer-footer">
-            <div>提示：右上角有视频教程，右下角可直接联系客服。</div>
-            <div style="margin-top:6px; opacity:.9;">域名：chongzhi.chat</div>
+            右上角可查看视频教程。<br />
+            右下角可直接联系人工客服。<br />
+            域名：chongzhi.chat
         </div>
     </aside>
 
     <div class="video-modal-overlay" id="videoModal" aria-hidden="true">
-        <div class="video-modal-content" role="dialog" aria-modal="true" aria-label="充值视频教程">
+        <div class="video-modal-content" role="dialog" aria-modal="true" aria-label="视频教程">
             <button class="video-modal-close" id="videoClose" type="button" aria-label="关闭视频">×</button>
-            <div class="video-modal-title">充值视频教程</div>
+            <div class="video-modal-title">视频教程</div>
             <video id="tutorialVideo" controls playsinline preload="metadata">
-                <source src="./视频教程.mp4" type="video/mp4">
+                <source src="./视频教程.mp4" type="video/mp4" />
                 您的浏览器不支持视频播放。<a href="./视频教程.mp4" target="_blank" rel="noopener">点此打开视频</a>
             </video>
-            <a class="video-fallback-link" href="./视频教程.mp4" target="_blank" rel="noopener">无法播放？点此在新窗口打开</a>
+            <a class="video-fallback-link" href="./视频教程.mp4" target="_blank" rel="noopener">无法播放时，可在新窗口打开</a>
 
             <div class="video-key-cta">
                 <a class="cta-primary" href="https://www.chatgpt.com" target="_blank" rel="noopener">登录 GPT 账号</a>
                 <a class="cta-primary" href="https://chatgpt.com/api/auth/session" target="_blank" rel="noopener">获取充值密钥</a>
-                <a class="cta-primary" href="https://gcn6188hiuwm.feishu.cn/wiki/XCeCwqkOHiRBzLkw3c6cQSugnuc?from=from_copylink" target="_blank" rel="noopener">超详细充值文档</a>
-                <div class="cta-note">只做转发，不留存，无存档</div>
+                <a class="cta-primary" href="https://gcn6188hiuwm.feishu.cn/wiki/XCeCwqkOHiRBzLkw3c6cQSugnuc?from=from_copylink" target="_blank" rel="noopener">查看详细文档</a>
             </div>
         </div>
     </div>
@@ -1431,340 +1084,357 @@
 
     <div class="notice-modal-overlay" id="noticeModal" aria-hidden="true">
         <div class="notice-modal-content" role="dialog" aria-modal="true" aria-label="网站公告">
-            <div class="notice-modal-title">网站公告</div>
-            <div class="notice-modal-text" id="noticeText">公告加载中...</div>
-            <div class="notice-modal-tip">点击任意位置关闭</div>
+            <div class="notice-modal-body">
+                <div class="notice-modal-title">网站公告</div>
+                <div class="notice-modal-text" id="noticeText">公告加载中...</div>
+            </div>
         </div>
     </div>
 
     <template id="tpl-guide">
-        <h1>📖 ChatGPT 使用指南</h1>
-        <p class="article-lead">这不是“玄学使用手册”，只是让你更快写出有效提示词的正常说明。</p>
+        <h1>ChatGPT 使用指南</h1>
+        <p>使用时把需求说清楚，通常会比堆很多话更有效。目标、限制、素材、输出格式，四件事越明确，结果越稳定。</p>
 
-        <h2>1. 先把目标说清楚</h2>
-        <ul>
-            <li><strong>说明场景</strong>：你要做什么，给谁用。</li>
-            <li><strong>给出限制</strong>：字数、语气、格式、语言。</li>
-            <li><strong>提供素材</strong>：原文、数据、链接、要求优先级。</li>
-        </ul>
-
-        <h2>2. 提示词写法（直接套用）</h2>
+        <h2>建议写法</h2>
         <div class="article-box">
-            <p><strong>角色：</strong>你是一个【领域】专家。</p>
-            <p><strong>任务：</strong>帮我完成【目标】。</p>
-            <p><strong>输入：</strong>这是我的资料：…</p>
-            <p><strong>输出：</strong>请用【格式】输出，包含【要点】。</p>
-            <p><strong>校验：</strong>最后列出你做了哪些假设，以及我还需要补充什么。</p>
+            <p>角色：你是某个领域的专业助手。</p>
+            <p>任务：帮我完成什么目标。</p>
+            <p>输入：这是我已有的资料或上下文。</p>
+            <p>输出：请按什么格式、什么语气、什么长度输出。</p>
         </div>
 
-        <h2>3. 常见高效用法</h2>
+        <h2>常见用法</h2>
         <ul>
-            <li><strong>写作</strong>：先给提纲，再逐段扩写，再润色。</li>
-            <li><strong>办公</strong>：把会议纪要变成待办清单和风险点。</li>
-            <li><strong>学习</strong>：让它当“助教”，按你的水平讲解并出练习题。</li>
-            <li><strong>代码</strong>：贴报错 + 贴关键代码段 + 说明预期行为。</li>
+            <li>写作：先列提纲，再逐段展开，再统一润色。</li>
+            <li>办公：把会议纪要整理成待办、负责人和风险点。</li>
+            <li>学习：按你的水平解释，再配练习题和答案。</li>
+            <li>代码：贴报错、关键代码和你的预期行为。</li>
         </ul>
 
-        <h2>4. 小提醒</h2>
-        <p>不同订阅方案的可用功能与额度可能会调整，以官方页面显示为准。你也可以把自己的需求直接发给客服，让对接更快。</p>
-
         <div class="article-cta">
-            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>点此购买</a>
+            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>进入购买</a>
         </div>
     </template>
 
     <template id="tpl-compare">
-        <h1>🆚 Plus 与 Pro 怎么选</h1>
-        <p class="article-lead">别纠结“哪个更强”，先想清楚你每天要拿它干什么。</p>
+        <h1>Plus 与 Pro 对比</h1>
+        <p>先看你实际用途，不用只看名称。</p>
 
         <div class="compare-grid">
             <div class="compare-card">
-                <div class="compare-icon">🤖</div>
                 <h3>ChatGPT Plus</h3>
-                <p class="compare-desc">适合通用写作、办公、学习、日常问答与多场景协作。</p>
-                <ul>
-                    <li>更稳定的访问体验（高峰期通常更好）</li>
-                    <li>更多功能入口（具体以账号显示为准）</li>
-                    <li>上手成本低，适合大多数人</li>
-                </ul>
+                <p>更适合大多数用户，日常写作、办公、学习、通用问答都比较合适。</p>
             </div>
-
             <div class="compare-card">
-                <div class="compare-icon">🧠</div>
-                <h3>“Pro / 高阶方案”</h3>
-                <p class="compare-desc">适合重度用户：更高的额度、更多高级能力或更强的工作流集成。</p>
-                <ul>
-                    <li>更高的使用上限与更强的生产力配置</li>
-                    <li>更适合团队与长期深度使用</li>
-                    <li>价格更高，适合明确高频需求</li>
-                </ul>
+                <h3>更高阶方案</h3>
+                <p>更适合重度用户，通常更看重额度、能力范围和长期使用效率。</p>
             </div>
         </div>
 
-        <h2>选购建议</h2>
+        <h2>选择建议</h2>
         <ul>
-            <li><strong>新手/通用：</strong>先用 Plus，够用再升级。</li>
-            <li><strong>重度/长期：</strong>如果你每天都靠它吃饭，直接上高阶方案更省事。</li>
-            <li><strong>写代码：</strong>看你偏好，长上下文与代码理解能力往往更关键。</li>
+            <li>通用需求优先看 Plus。</li>
+            <li>高频重度使用，再考虑更高阶方案。</li>
+            <li>代码、长文档、实时信息这类场景，可以按产品特点分别选择。</li>
         </ul>
 
-        <p class="article-note">注：不同产品（ChatGPT / Claude / Grok 等）定位不同，优势也不同。别信“一招通吃”的宣传，测试两天就知道你要什么。</p>
-
         <div class="article-cta">
-            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>点此购买</a>
+            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>进入购买</a>
         </div>
     </template>
 
     <template id="tpl-faq">
-        <h1>❓ 常见问题解答</h1>
+        <h1>常见问题解答</h1>
 
         <div class="faq-item">
-            <div class="faq-q">充值一般需要多久？ <span class="faq-icon">▼</span></div>
+            <div class="faq-q">购买后一般多久处理？ <span class="faq-icon">▼</span></div>
             <div class="faq-a">
-                <p>大多数订单会在几分钟内完成。高峰期或遇到风控校验时可能更久，建议优先看右上角视频教程确认步骤。</p>
+                <p>多数情况下处理较快。若遇到高峰期或特殊情况，建议先查看视频教程，再联系客服协助确认。</p>
             </div>
         </div>
 
         <div class="faq-item">
-            <div class="faq-q">需要提供账号密码吗？ <span class="faq-icon">▼</span></div>
+            <div class="faq-q">不会操作怎么办？ <span class="faq-icon">▼</span></div>
             <div class="faq-a">
-                <p>不需要提供密码。</p>
+                <p>可先看右上角视频教程；如果仍不清楚，直接联系右下角客服即可。</p>
             </div>
         </div>
 
         <div class="faq-item">
-            <div class="faq-q">充值失败或不到账怎么办？ <span class="faq-icon">▼</span></div>
+            <div class="faq-q">如果有问题怎么处理？ <span class="faq-icon">▼</span></div>
             <div class="faq-a">
-                <p>先按视频教程核对步骤，再通过右下角客服提供订单信息处理。一般会补单或退款，具体以沟通结果为准。</p>
+                <p>可提供订单信息和具体情况，方便客服快速协助处理。</p>
             </div>
         </div>
-
-        <div class="faq-item">
-            <div class="faq-q">需要发票怎么办？ <span class="faq-icon">▼</span></div>
-            <div class="faq-a">
-                <p>请先联系人工客服说明开票需求与抬头信息，再进行购买，避免信息缺失导致延误。</p>
-            </div>
-        </div>
-
-        <p class="article-note">如果你不想看文字，右上角“视频教程”更省时间。人类看视频的耐心永远比看说明书强。</p>
 
         <div class="article-cta">
-            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>点此购买</a>
+            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>进入购买</a>
         </div>
     </template>
 
     <template id="tpl-claude">
-        <h2>Claude 是什么</h2>
-        <p>Claude 是 Anthropic 推出的对话式大模型，主打更稳的长文本理解、写作与代码协作，适合做文档、总结、需求拆解、代码评审、重构建议等。</p>
+        <h1>Claude Pro 使用指南</h1>
+        <p>Claude 更适合长文档理解、写作整理、代码协作和需求拆解等场景。</p>
 
-        <h3>适合哪些人</h3>
+        <h2>适合哪些人</h2>
         <ul>
-            <li><b>写作/运营</b>：长文大纲、改写润色、脚本与文案批量产出</li>
-            <li><b>程序员</b>：读代码、改 Bug、写测试、做重构方案对比</li>
-            <li><b>产品/项目</b>：PRD、会议纪要、方案评审、风险清单</li>
+            <li>程序员：读代码、改 Bug、写测试、做重构建议。</li>
+            <li>写作者：长文整理、改写润色、结构梳理。</li>
+            <li>产品或项目角色：PRD、总结、方案评审、风险清单。</li>
         </ul>
 
-        <h3>常用提示词（可直接复制）</h3>
+        <h2>提示词示例</h2>
         <pre><code>你是资深工程师，请先复述我的需求，再给出 3 套实现方案（优缺点、复杂度、风险、测试点）。</code></pre>
-        <pre><code>把下面这段内容整理成：要点列表、行动项、负责人、截止时间，并补充遗漏的问题。</code></pre>
-
-        <h3>小提醒</h3>
-        <ul>
-            <li>模型很强，但它也会“自信地胡说”。关键结论请你自己做最终确认。</li>
-            <li>涉及隐私/账号信息，别乱贴，安全这事永远靠自己。</li>
-        </ul>
 
         <div class="article-cta">
-            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>点此购买</a>
+            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>进入购买</a>
         </div>
     </template>
 
     <template id="tpl-grok">
-        <h2>Grok 是什么</h2>
-        <p>Grok 是 xAI 推出的对话式模型，偏实时信息检索、热点追踪和快速讨论，适合做资讯解读、趋势整理、话题拆解、观点碰撞等。</p>
+        <h1>Grok 使用指南</h1>
+        <p>Grok 更适合热点整理、资讯跟进、观点碰撞和实时感较强的使用需求。</p>
 
-        <h3>适合哪些场景</h3>
+        <h2>适合哪些场景</h2>
         <ul>
-            <li><b>热点跟进</b>：把复杂新闻拆成时间线、利害关系、关键数据</li>
-            <li><b>观点对撞</b>：同一问题给出正反立场与证据清单</li>
-            <li><b>内容创作</b>：选题、标题、段落结构、短视频脚本</li>
+            <li>热点事件拆解和时间线整理。</li>
+            <li>正反观点对照和论点梳理。</li>
+            <li>内容创作选题、标题和脚本方向整理。</li>
         </ul>
 
-        <h3>常用提示词（可直接复制）</h3>
+        <h2>提示词示例</h2>
         <pre><code>请把这个热点按：事件经过、核心争议、各方观点、可能走向、我该怎么看 进行结构化整理。</code></pre>
-        <pre><code>围绕这个主题给我 10 个选题角度，每个角度附 3 条可验证的信息点（需要来源就标注）。</code></pre>
-
-        <h3>小提醒</h3>
-        <ul>
-            <li>任何“实时”内容都可能有误，重要信息请二次核对来源。</li>
-            <li>别把模型当权威，把它当助手就行了。</li>
-        </ul>
 
         <div class="article-cta">
-            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>点此购买</a>
+            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>进入购买</a>
         </div>
     </template>
 
-    <div class="fixed-contact-btn" id="fixed-contact-btn" aria-label="联系客服">
-        <img src="/企业微信.jpg" alt="企业微信图标">
-    </div>
+    <button class="fixed-contact-btn" id="fixedContactBtn" type="button" aria-label="联系客服">
+        <img src="./企业微信.jpg" alt="联系客服" />
+    </button>
 
-    <div class="image-modal-overlay" id="image-modal" aria-hidden="true">
+    <div class="image-modal-overlay" id="imageModal" aria-hidden="true">
         <div class="image-modal-content" role="dialog" aria-modal="true" aria-label="图片预览">
-            <span class="image-modal-close" id="image-modal-close">&times;</span>
-            <img src="/企业微信.jpg" alt="预览图片" id="image-modal-target">
-            <div class="image-modal-meta">
-                <div class="image-modal-title" id="image-modal-title">联系客服</div>
-                <div class="image-modal-desc" id="image-modal-desc">微信：jg-3355　QQ：552309781</div>
+            <button class="image-modal-close" id="imageModalClose" type="button" aria-label="关闭图片">×</button>
+            <div class="image-modal-card">
+                <img id="imageModalTarget" src="./企业微信.jpg" alt="预览图片" />
+                <div class="image-modal-meta">
+                    <div class="image-modal-title" id="imageModalTitle">图片预览</div>
+                    <div class="image-modal-desc" id="imageModalDesc"></div>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        const SHOP_URL = 'https://fe.dtyuedan.cn/shop/VA3AB5CB';
+        const SHOP_URL = "https://fe.dtyuedan.cn/shop/VA3AB5CB";
 
-        (function() {
-            const fixedContactBtn = document.getElementById('fixed-contact-btn');
-            const imageModal = document.getElementById('image-modal');
-            const imageModalCloseBtn = document.getElementById('image-modal-close');
-            const imageModalTarget = document.getElementById('image-modal-target');
-            const imageModalTitle = document.getElementById('image-modal-title');
-            const imageModalDesc = document.getElementById('image-modal-desc');
-            const proofImages = document.querySelectorAll('[data-proof-image]');
+        (function () {
+            const shopLinks = document.querySelectorAll("[data-shop-link]");
 
-            function showImageModal(src, title, desc) {
-                if (!imageModal || !imageModalTarget) return;
-                imageModalTarget.src = src;
-                imageModalTitle.textContent = title || '图片预览';
-                imageModalDesc.textContent = desc || '';
-                imageModal.classList.add('show');
-                imageModal.setAttribute('aria-hidden', 'false');
-            }
-
-            function hideImageModal() {
-                if (!imageModal) return;
-                imageModal.classList.remove('show');
-                imageModal.setAttribute('aria-hidden', 'true');
-            }
-
-            fixedContactBtn && fixedContactBtn.addEventListener('click', () => {
-                showImageModal('/企业微信.jpg', '联系客服', '微信：jg-3355　QQ：552309781');
-            });
-
-            imageModalCloseBtn && imageModalCloseBtn.addEventListener('click', hideImageModal);
-
-            imageModal && imageModal.addEventListener('click', (e) => {
-                if (e.target === imageModal) {
-                    hideImageModal();
+            shopLinks.forEach((link) => {
+                link.setAttribute("href", SHOP_URL);
+                if (link.getAttribute("target") === "_blank") {
+                    link.setAttribute("rel", "noopener");
                 }
-            });
-
-            proofImages.forEach((img, index) => {
-                const card = img.closest('.proof-card');
-
-                img.addEventListener('error', () => {
-                    card && card.classList.add('is-placeholder');
-                });
-
-                img.addEventListener('click', () => {
-                    const title = img.getAttribute('data-proof-title') || ('成交截图 ' + (index + 1));
-                    showImageModal(img.src, title, '点击空白处可关闭预览');
-                });
-
-                if (img.complete && img.naturalWidth === 0) {
-                    card && card.classList.add('is-placeholder');
-                }
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') hideImageModal();
             });
         })();
 
-        (function() {
-            const noticeModal = document.getElementById('noticeModal');
-            const noticeText = document.getElementById('noticeText');
+        (function () {
+            const fixedContactBtn = document.getElementById("fixedContactBtn");
+            const imageModal = document.getElementById("imageModal");
+            const imageModalClose = document.getElementById("imageModalClose");
+            const imageModalTarget = document.getElementById("imageModalTarget");
+            const imageModalTitle = document.getElementById("imageModalTitle");
+            const imageModalDesc = document.getElementById("imageModalDesc");
+            const proofImages = document.querySelectorAll("[data-proof-image]");
+
+            function openImageModal(src, title, desc) {
+                if (!imageModal) return;
+                imageModalTarget.src = src;
+                imageModalTitle.textContent = title || "图片预览";
+                imageModalDesc.textContent = desc || "";
+                imageModal.classList.add("show");
+                imageModal.setAttribute("aria-hidden", "false");
+                document.body.classList.add("drawer-open");
+            }
+
+            function closeImageModal() {
+                if (!imageModal) return;
+                imageModal.classList.remove("show");
+                imageModal.setAttribute("aria-hidden", "true");
+                document.body.classList.remove("drawer-open");
+            }
+
+            fixedContactBtn && fixedContactBtn.addEventListener("click", () => {
+                openImageModal("./企业微信.jpg", "联系客服", "微信：jg-3355    QQ：552309781");
+            });
+
+            imageModalClose && imageModalClose.addEventListener("click", closeImageModal);
+
+            imageModal && imageModal.addEventListener("click", (e) => {
+                if (e.target === imageModal) closeImageModal();
+            });
+
+            proofImages.forEach((img, index) => {
+                const card = img.closest(".proof-card");
+                const title = img.getAttribute("data-proof-title") || "成交截图 " + (index + 1);
+
+                function markReady() {
+                    card && card.classList.add("is-ready");
+                }
+
+                function bindPreview() {
+                    img.addEventListener("click", () => {
+                        openImageModal(img.src, title, "");
+                    });
+                }
+
+                if (img.complete && img.naturalWidth > 0) {
+                    markReady();
+                    bindPreview();
+                } else {
+                    img.addEventListener("load", () => {
+                        markReady();
+                        bindPreview();
+                    }, { once: true });
+                }
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeImageModal();
+            });
+        })();
+
+        (function () {
+            const proofGrid = document.getElementById("proofGrid");
+            const proofEmpty = document.getElementById("proofEmpty");
+            const proofCards = proofGrid ? proofGrid.querySelectorAll(".proof-card") : [];
+            let checked = 0;
+
+            function finalizeProofState() {
+                checked += 1;
+                if (checked < proofCards.length) return;
+
+                const visibleCount = proofGrid.querySelectorAll(".proof-card.is-ready").length;
+                if (visibleCount === 0 && proofEmpty) {
+                    proofEmpty.classList.add("show");
+                }
+            }
+
+            proofCards.forEach((card) => {
+                const img = card.querySelector("img");
+                if (!img) {
+                    finalizeProofState();
+                    return;
+                }
+
+                if (img.complete) {
+                    finalizeProofState();
+                } else {
+                    img.addEventListener("load", finalizeProofState, { once: true });
+                    img.addEventListener("error", finalizeProofState, { once: true });
+                }
+
+                img.addEventListener("error", () => {
+                    card.remove();
+                }, { once: true });
+            });
+
+            if (proofCards.length === 0 && proofEmpty) {
+                proofEmpty.classList.add("show");
+            }
+        })();
+
+        (function () {
+            const noticeModal = document.getElementById("noticeModal");
+            const noticeText = document.getElementById("noticeText");
 
             function closeNotice() {
                 if (!noticeModal) return;
-                noticeModal.classList.remove('show');
-                noticeModal.setAttribute('aria-hidden', 'true');
+                noticeModal.classList.remove("show");
+                noticeModal.setAttribute("aria-hidden", "true");
+                document.body.classList.remove("drawer-open");
             }
 
             async function loadNotice() {
                 if (!noticeModal || !noticeText) return;
 
                 try {
-                    const response = await fetch('./公告.txt', { cache: 'no-store' });
-                    if (!response.ok) throw new Error('notice load failed');
+                    const response = await fetch("./公告.txt", { cache: "no-store" });
+                    if (!response.ok) throw new Error("notice load failed");
                     const text = (await response.text()).trim();
                     if (!text) return;
+
                     noticeText.textContent = text;
-                    noticeModal.classList.add('show');
-                    noticeModal.setAttribute('aria-hidden', 'false');
+                    noticeModal.classList.add("show");
+                    noticeModal.setAttribute("aria-hidden", "false");
+                    document.body.classList.add("drawer-open");
                 } catch (error) {
-                    console.warn('公告加载失败:', error);
+                    console.warn("公告加载失败:", error);
                 }
             }
 
-            noticeModal && noticeModal.addEventListener('click', closeNotice);
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeNotice();
+            noticeModal && noticeModal.addEventListener("click", closeNotice);
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeNotice();
             });
 
             loadNotice();
         })();
 
-        (function() {
-            const shopLinks = document.querySelectorAll('[data-shop-link]');
-            const navMenuBtn = document.getElementById('navMenuBtn');
-            const sideDrawer = document.getElementById('sideDrawer');
-            const drawerOverlay = document.getElementById('drawerOverlay');
-            const drawerClose = document.getElementById('drawerClose');
-            const drawerActions = document.querySelectorAll('.drawer-action');
+        (function () {
+            const navMenuBtn = document.getElementById("navMenuBtn");
+            const sideDrawer = document.getElementById("sideDrawer");
+            const drawerOverlay = document.getElementById("drawerOverlay");
+            const drawerClose = document.getElementById("drawerClose");
+            const drawerActions = document.querySelectorAll(".drawer-action");
 
-            const videoBtn = document.getElementById('videoBtn');
-            const videoModal = document.getElementById('videoModal');
-            const videoClose = document.getElementById('videoClose');
-            const tutorialVideo = document.getElementById('tutorialVideo');
+            const videoBtn = document.getElementById("videoBtn");
+            const videoModal = document.getElementById("videoModal");
+            const videoClose = document.getElementById("videoClose");
+            const tutorialVideo = document.getElementById("tutorialVideo");
 
-            const articleModal = document.getElementById('articleModal');
-            const articleClose = document.getElementById('articleClose');
-            const articleBody = document.getElementById('articleBody');
+            const articleModal = document.getElementById("articleModal");
+            const articleClose = document.getElementById("articleClose");
+            const articleBody = document.getElementById("articleBody");
 
-            shopLinks.forEach((link) => {
-                link.setAttribute('href', SHOP_URL);
-                if (link.getAttribute('target') === '_blank') {
-                    link.setAttribute('rel', 'noopener');
-                }
-            });
+            function isDrawerOpen() {
+                return !!(sideDrawer && sideDrawer.classList.contains("open"));
+            }
 
-            function isDrawerOpen() { return !!(sideDrawer && sideDrawer.classList.contains('open')); }
-            function isVideoOpen() { return !!(videoModal && videoModal.classList.contains('show')); }
-            function isArticleOpen() { return !!(articleModal && articleModal.classList.contains('show')); }
+            function isVideoOpen() {
+                return !!(videoModal && videoModal.classList.contains("show"));
+            }
+
+            function isArticleOpen() {
+                return !!(articleModal && articleModal.classList.contains("show"));
+            }
 
             function syncScrollLock() {
-                const anyOpen = isDrawerOpen() || isVideoOpen() || isArticleOpen();
-                document.body.classList.toggle('drawer-open', anyOpen);
+                const hasModalOpen = isDrawerOpen() || isVideoOpen() || isArticleOpen();
+                document.body.classList.toggle("drawer-open", hasModalOpen);
             }
 
             function openDrawer() {
                 if (!sideDrawer || !drawerOverlay || !navMenuBtn) return;
-                sideDrawer.classList.add('open');
-                drawerOverlay.classList.add('open');
-                navMenuBtn.classList.add('active');
-                navMenuBtn.setAttribute('aria-expanded', 'true');
-                sideDrawer.setAttribute('aria-hidden', 'false');
+                sideDrawer.classList.add("open");
+                drawerOverlay.classList.add("open");
+                navMenuBtn.classList.add("active");
+                navMenuBtn.setAttribute("aria-expanded", "true");
+                sideDrawer.setAttribute("aria-hidden", "false");
                 syncScrollLock();
             }
 
             function closeDrawer() {
                 if (!sideDrawer || !drawerOverlay || !navMenuBtn) return;
-                sideDrawer.classList.remove('open');
-                drawerOverlay.classList.remove('open');
-                navMenuBtn.classList.remove('active');
-                navMenuBtn.setAttribute('aria-expanded', 'false');
-                sideDrawer.setAttribute('aria-hidden', 'true');
+                sideDrawer.classList.remove("open");
+                drawerOverlay.classList.remove("open");
+                navMenuBtn.classList.remove("active");
+                navMenuBtn.setAttribute("aria-expanded", "false");
+                sideDrawer.setAttribute("aria-hidden", "true");
                 syncScrollLock();
             }
 
@@ -1776,96 +1446,96 @@
                 if (!videoModal) return;
                 closeArticle();
                 closeDrawer();
-                videoModal.classList.add('show');
-                videoModal.setAttribute('aria-hidden', 'false');
+                videoModal.classList.add("show");
+                videoModal.setAttribute("aria-hidden", "false");
                 syncScrollLock();
             }
 
             function closeVideo() {
                 if (!videoModal) return;
-                videoModal.classList.remove('show');
-                videoModal.setAttribute('aria-hidden', 'true');
+                videoModal.classList.remove("show");
+                videoModal.setAttribute("aria-hidden", "true");
                 if (tutorialVideo) tutorialVideo.pause();
                 syncScrollLock();
             }
 
             function bindFaqEvents() {
-                const items = articleBody.querySelectorAll('.faq-item');
+                const items = articleBody.querySelectorAll(".faq-item");
                 items.forEach((item) => {
-                    const q = item.querySelector('.faq-q');
+                    const q = item.querySelector(".faq-q");
                     if (!q) return;
-                    q.addEventListener('click', () => {
+
+                    q.addEventListener("click", () => {
                         items.forEach((current) => {
-                            if (current !== item) current.classList.remove('active');
+                            if (current !== item) current.classList.remove("active");
                         });
-                        item.classList.toggle('active');
+                        item.classList.toggle("active");
                     });
                 });
             }
 
             function openArticle(type) {
                 if (!articleModal || !articleBody) return;
+
                 closeVideo();
                 closeDrawer();
 
-                const tpl = document.getElementById('tpl-' + type);
+                const tpl = document.getElementById("tpl-" + type);
                 if (!tpl) return;
 
                 articleBody.innerHTML = tpl.innerHTML;
-                articleModal.classList.add('show');
-                articleModal.setAttribute('aria-hidden', 'false');
-                syncScrollLock();
+                articleModal.classList.add("show");
+                articleModal.setAttribute("aria-hidden", "false");
 
-                if (type === 'faq') bindFaqEvents();
+                if (type === "faq") bindFaqEvents();
+                syncScrollLock();
             }
 
             function closeArticle() {
                 if (!articleModal || !articleBody) return;
-                articleModal.classList.remove('show');
-                articleModal.setAttribute('aria-hidden', 'true');
-                articleBody.innerHTML = '';
+                articleModal.classList.remove("show");
+                articleModal.setAttribute("aria-hidden", "true");
+                articleBody.innerHTML = "";
                 syncScrollLock();
             }
 
-            navMenuBtn && navMenuBtn.addEventListener('click', toggleDrawer);
-            drawerOverlay && drawerOverlay.addEventListener('click', closeDrawer);
-            drawerClose && drawerClose.addEventListener('click', closeDrawer);
+            navMenuBtn && navMenuBtn.addEventListener("click", toggleDrawer);
+            drawerOverlay && drawerOverlay.addEventListener("click", closeDrawer);
+            drawerClose && drawerClose.addEventListener("click", closeDrawer);
 
             drawerActions.forEach((btn) => {
-                btn.addEventListener('click', () => {
-                    const type = btn.getAttribute('data-article');
+                btn.addEventListener("click", () => {
+                    const type = btn.getAttribute("data-article");
                     openArticle(type);
                 });
             });
 
-            videoBtn && videoBtn.addEventListener('click', openVideo);
-            videoClose && videoClose.addEventListener('click', closeVideo);
+            videoBtn && videoBtn.addEventListener("click", openVideo);
+            videoClose && videoClose.addEventListener("click", closeVideo);
 
-            videoModal && videoModal.addEventListener('click', (e) => {
+            videoModal && videoModal.addEventListener("click", (e) => {
                 if (e.target === videoModal) closeVideo();
             });
 
-            articleClose && articleClose.addEventListener('click', closeArticle);
-            articleModal && articleModal.addEventListener('click', (e) => {
+            articleClose && articleClose.addEventListener("click", closeArticle);
+            articleModal && articleModal.addEventListener("click", (e) => {
                 if (e.target === articleModal) closeArticle();
             });
 
-            articleBody && articleBody.addEventListener('click', (e) => {
-                const target = e.target.closest('.article-buy-link');
+            articleBody && articleBody.addEventListener("click", (e) => {
+                const target = e.target.closest(".article-buy-link");
                 if (!target) return;
                 e.preventDefault();
                 closeArticle();
-                window.open(SHOP_URL, '_blank', 'noopener');
+                window.open(SHOP_URL, "_blank", "noopener");
             });
 
-            document.addEventListener('keydown', (e) => {
-                if (e.key !== 'Escape') return;
+            document.addEventListener("keydown", (e) => {
+                if (e.key !== "Escape") return;
                 if (isVideoOpen()) return closeVideo();
                 if (isArticleOpen()) return closeArticle();
                 if (isDrawerOpen()) return closeDrawer();
             });
-
-            sideDrawer && sideDrawer.addEventListener('click', (e) => e.stopPropagation());
         })();
     </script>
 </body>
