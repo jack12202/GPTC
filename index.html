@@ -8,182 +8,598 @@
     <meta name="keywords" content="gpt充值, GPT代充, gptplus会员, chatgpt plus代充, openai代充, gpt4充值, gpt会员">
 
     <style>
-        /* ================= 基础重置 ================= */
+        :root {
+            --text: #334155;
+            --muted: #64748b;
+            --primary: #0f4c81;
+            --primary-2: #2563eb;
+            --accent: #f97316;
+            --accent-2: #fb923c;
+            --bg-deep: #07111f;
+            --bg-mid: #0d2740;
+            --bg-light: #17456a;
+            --card: #ffffff;
+            --line: #e2e8f0;
+            --soft: #f8fafc;
+            --success: #16a34a;
+            --shadow: 0 20px 40px rgba(2, 8, 23, 0.14);
+            --shop-url: "https://fe.dtyuedan.cn/shop/VA3AB5CB";
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #0b1220 0%, #0f2a43 52%, #1f4b6e 100%);
-            min-height: 100vh; line-height: 1.6; -webkit-font-smoothing: antialiased;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+            background:
+                radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 24%),
+                linear-gradient(135deg, var(--bg-deep) 0%, var(--bg-mid) 52%, var(--bg-light) 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            color: var(--text);
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        a { text-decoration: none; }
 
-        /* ================= 头部样式 ================= */
-        .header { text-align: center; padding: 50px 0 30px; }
+        a { text-decoration: none; color: inherit; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 72px 0 40px;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.95);
+            border: 1px solid rgba(255,255,255,0.18);
+            font-size: 0.92rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            backdrop-filter: blur(10px);
+        }
+
         .header h1 {
-            color: #fff; font-size: 3rem; font-weight: 700; margin-bottom: 15px;
-            text-shadow: 0 2px 20px rgba(0,0,0,0.3); letter-spacing: -0.5px;
-        }
-        .header .subtitle { color: rgba(255,255,255,0.95); font-size: 1.1rem; font-weight: 500; letter-spacing: 1px; }
-
-        /* ================= 公告栏 ================= */
-        .announcement-banner {
-            background: #ffc107; color:#333; text-align:center; padding: 15px 20px; border-radius: 12px;
-            margin: 0 auto 30px; max-width: 860px; box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            border: 1px solid rgba(0,0,0,0.1); font-size: 1rem; line-height: 1.6; font-weight: 500;
-        }
-
-        /* ================= 恢复：原来的2个大按钮 (位置A) ================= */
-        .purchase-options-container {
-            max-width: 860px; margin: 0 auto 40px; 
-            display: grid; grid-template-columns: 1fr; gap: 20px;
-        }
-        .purchase-btn {
-            display: block; padding: 25px 20px; text-decoration: none; border-radius: 16px;
-            text-align: center; transition: all .25s; position: relative; overflow: hidden;
-            border: 2px solid transparent; box-shadow: 0 8px 20px rgba(0,0,0,0.15);
             color: #fff;
-        }
-        .purchase-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(0,0,0,0.2); }
-        .purchase-btn h3 { font-size: 1.25rem; font-weight: 800; margin-bottom: 8px; }
-        .purchase-btn p { opacity: .95; font-size: 0.95rem; font-weight: 500; }
-
-        /* 蓝色按钮风格 (原来Style A) */
-        .btn-style-blue { background: linear-gradient(135deg, #64b5f6, #42a5f5); }
-        /* 橙色按钮风格 */
-        .btn-style-orange { background: linear-gradient(135deg, #ff9800, #fb8c00); }
-
-
-        /* ================= 主要内容区 ================= */
-        .main-content { 
-            background: #fff; 
-            border-radius: 24px; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
-            margin-bottom: 50px; 
-            padding: 40px 20px;
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.25);
+            letter-spacing: -0.8px;
         }
 
-        /* 标题区域：包含标题和客服按钮 */
+        .header .subtitle {
+            color: rgba(255,255,255,0.92);
+            font-size: 1.08rem;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            max-width: 860px;
+            margin: 0 auto 18px;
+        }
+
+        .hero-note {
+            max-width: 900px;
+            margin: 0 auto;
+            color: rgba(255,255,255,0.76);
+            font-size: 0.96rem;
+        }
+
+        .hero-mini-guide {
+            max-width: 960px;
+            margin: 28px auto 0;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .hero-mini-card {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.16);
+            border-radius: 18px;
+            padding: 18px 16px;
+            color: #fff;
+            text-align: left;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+        }
+
+        .hero-mini-card strong {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 6px;
+        }
+
+        .hero-mini-card p {
+            color: rgba(255,255,255,0.86);
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .section-shell {
+            background: #fff;
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            margin-bottom: 28px;
+            overflow: hidden;
+        }
+
+        .main-content {
+            padding: 38px 20px 32px;
+        }
+
         .section-header {
-            display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
-            gap: 15px; margin-bottom: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 18px;
         }
 
         .section-title {
-            text-align: center; font-size: 1.8rem; font-weight: 800;
-            color: #4299e1; text-shadow: 2px 2px 0px #ebf8ff; margin: 0;
+            text-align: center;
+            font-size: 1.9rem;
+            font-weight: 900;
+            color: #1565c0;
+            text-shadow: 2px 2px 0 #ebf8ff;
+            margin: 0;
         }
 
-        /* 标题旁边的联系客服按钮 */
-        .title-contact-btn {
-            display: inline-flex; align-items: center;
-            background: #e0f2fe; color: #0284c7;
-            padding: 6px 16px; border-radius: 50px;
-            font-size: 0.9rem; font-weight: 700;
-            transition: all 0.2s; border: 1px solid #bae6fd;
-        }
-        .title-contact-btn:hover {
-            background: #0284c7; color: #fff; transform: scale(1.05);
+        .section-subtitle {
+            max-width: 860px;
+            margin: 0 auto;
+            text-align: center;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.75;
         }
 
-        /* 布局：横向滚动 - 绝对修复版 */
+        .step-guide {
+            max-width: 900px;
+            margin: 24px auto 26px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .step-item {
+            background: linear-gradient(180deg, #f8fbff 0%, #eef6ff 100%);
+            border: 1px solid #dbeafe;
+            border-radius: 18px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .step-no {
+            display: inline-flex;
+            width: 34px;
+            height: 34px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--primary-2);
+            color: #fff;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .step-item h3 {
+            font-size: 1rem;
+            color: #0f172a;
+            margin-bottom: 6px;
+            font-weight: 800;
+        }
+
+        .step-item p {
+            font-size: 0.92rem;
+            color: var(--muted);
+        }
+
+        .goods-tip-banner {
+            max-width: 920px;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, #fff7ed 0%, #fff 100%);
+            border: 1px solid rgba(249, 115, 22, 0.22);
+            border-radius: 18px;
+            padding: 14px 16px;
+            text-align: center;
+            color: #9a3412;
+            font-weight: 800;
+            box-shadow: 0 10px 24px rgba(249, 115, 22, 0.08);
+        }
+
         .goods-grid {
             display: flex;
-            flex-wrap: nowrap; /* 强制一行 */
-            overflow-x: auto;  /* 允许滚动 */
+            flex-wrap: nowrap;
+            overflow-x: auto;
             gap: 20px;
-            /* 关键修复：给容器四周足够的 padding，确保第一个元素的左边框和阴影完全显示 */
-            padding: 20px 20px 30px 20px; 
+            padding: 18px 20px 30px;
             -webkit-overflow-scrolling: touch;
-            justify-content: flex-start; 
+            justify-content: flex-start;
+            scroll-snap-type: x proximity;
         }
 
-        /* 隐藏滚动条 */
         .goods-grid::-webkit-scrollbar { height: 6px; }
         .goods-grid::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
         .goods-grid::-webkit-scrollbar-track { background: transparent; }
 
-        /* 单个商品卡片 */
         .goods-card {
-            background: #fff; border-radius: 16px; padding: 24px;
-            display: flex; flex-direction: column; align-items: center;
-            position: relative; transition: all 0.3s ease;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            border: 2px solid transparent; 
-            flex-shrink: 0; width: 220px; /* 固定卡片宽度 */
+            background: #fff;
+            border-radius: 20px;
+            padding: 24px 18px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            transition: all 0.28s ease;
+            box-shadow: 0 12px 22px rgba(15, 23, 42, 0.10);
+            border: 2px solid transparent;
+            flex-shrink: 0;
+            width: 240px;
+            cursor: pointer;
+            scroll-snap-align: start;
         }
+
         .goods-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 22px 30px rgba(15, 23, 42, 0.15);
         }
 
         .border-orange { border-color: #f97316; }
         .border-blue { border-color: #3b82f6; }
 
         .recommend-tag {
-            position: absolute; top: -10px; right: -10px;
-            background: #f97316; color: #fff; font-size: 0.75rem; font-weight: 700;
-            padding: 4px 8px; border-radius: 999px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #f97316;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 5px 9px;
+            border-radius: 999px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+        }
+
+        .goods-mini-label {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 999px;
+            background: #eff6ff;
+            color: #1d4ed8;
+            font-size: 0.75rem;
+            font-weight: 800;
+            margin-bottom: 12px;
         }
 
         .goods-title {
-            font-size: 1.1rem; font-weight: 700; color: #1e40af; text-align: center;
-            margin-bottom: 12px; line-height: 1.4; min-height: 3.2rem;
-            display: flex; align-items: center; justify-content: center;
+            font-size: 1.12rem;
+            font-weight: 800;
+            color: #1e40af;
+            text-align: center;
+            margin-bottom: 12px;
+            line-height: 1.45;
+            min-height: 3.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .goods-price-box {
-            flex: 1; display: flex; flex-direction: column; align-items: center;
-            justify-content: center; margin: 15px 0; width: 100%;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 14px 0 10px;
+            width: 100%;
         }
-        .goods-price { font-size: 1.8rem; font-weight: 800; color: #dc2626; margin-bottom: 5px; }
-        .goods-desc { font-size: 0.85rem; color: #6b7280; text-align: center; }
 
-        .buy-btn {
-            width: 100%; padding: 12px 0; border-radius: 12px; font-weight: 700;
-            text-align: center; color: #fff; transition: background 0.3s;
-            margin-top: 10px; font-size: 0.95rem; border: none; cursor: pointer;
+        .goods-price {
+            font-size: 1.9rem;
+            font-weight: 900;
+            color: #dc2626;
+            margin-bottom: 6px;
         }
-        .btn-orange { background: #f97316; }
-        .btn-orange:hover { background: #ea580c; }
-        .btn-purple { background: #9333ea; }
-        .btn-purple:hover { background: #7e22ce; }
 
-        /* ================= 底部保障 ================= */
-        .guarantee-section { 
-            padding: 30px 0; border-top: 1px solid #edf2f7; margin-top: 20px;
+        .goods-desc {
+            font-size: 0.88rem;
+            color: #6b7280;
+            text-align: center;
+            min-height: 2.5rem;
         }
-        .guarantee-title { font-size: 1.4rem; color:#1e293b; margin-bottom: 20px; text-align:center; font-weight:800; }
-        .guarantee-list { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:18px; }
-        .guarantee-item { display:flex; align-items:flex-start; padding: 15px; background:#f8fafc; border-radius:12px; border:1px solid #e2e8f0; }
-        .guarantee-icon { font-size:1.6rem; margin-right:10px; }
-        .guarantee-text h4 { color:#1e293b; font-weight:800; margin-bottom: 4px; font-size:0.95rem; }
-        .guarantee-text p { color:#64748b; font-size:0.85rem; line-height:1.4; }
 
-        /* ================= 浮动按钮和弹窗 ================= */
+        .goods-cta {
+            width: 100%;
+            margin-top: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 11px 14px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: #fff;
+            font-size: 0.94rem;
+            font-weight: 800;
+            box-shadow: 0 10px 24px rgba(37, 99, 235, 0.22);
+        }
+
+        .goods-hint {
+            margin-top: 8px;
+            font-size: 0.78rem;
+            color: #64748b;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .guide-footnote {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.92rem;
+            margin-top: 2px;
+        }
+
+        .proof-section {
+            padding: 36px 20px 38px;
+            background:
+                linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+            border-top: 1px solid #edf2f7;
+        }
+
+        .proof-wrap {
+            max-width: 1060px;
+            margin: 0 auto;
+        }
+
+        .proof-title {
+            font-size: 1.7rem;
+            color: #0f4c81;
+            text-align: center;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .proof-subtitle {
+            max-width: 760px;
+            margin: 0 auto 22px;
+            text-align: center;
+            color: var(--muted);
+            line-height: 1.8;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .proof-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 12px 24px rgba(15, 23, 42, 0.07);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .proof-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 32px rgba(15, 23, 42, 0.12);
+        }
+
+        .proof-thumb {
+            position: relative;
+            aspect-ratio: 4 / 5;
+            background:
+                linear-gradient(135deg, #eff6ff, #dbeafe);
+            overflow: hidden;
+        }
+
+        .proof-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            cursor: zoom-in;
+        }
+
+        .proof-placeholder {
+            width: 100%;
+            height: 100%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 18px;
+            color: #1e40af;
+            font-weight: 800;
+            line-height: 1.7;
+            background:
+                radial-gradient(circle at top right, rgba(255,255,255,0.8), transparent 35%),
+                linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
+        }
+
+        .proof-card.is-placeholder .proof-placeholder {
+            display: flex;
+        }
+
+        .proof-card.is-placeholder img {
+            display: none;
+        }
+
+        .proof-meta {
+            padding: 14px 14px 16px;
+        }
+
+        .proof-meta h4 {
+            font-size: 0.98rem;
+            color: #0f172a;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .proof-meta p {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        .proof-note {
+            text-align: center;
+            color: #94a3b8;
+            font-size: 0.88rem;
+            margin-top: 14px;
+        }
+
+        .guarantee-section {
+            padding: 34px 0 8px;
+            border-top: 1px solid #edf2f7;
+            margin-top: 14px;
+        }
+
+        .guarantee-title {
+            font-size: 1.4rem;
+            color: #1e293b;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 900;
+        }
+
+        .guarantee-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+        }
+
+        .guarantee-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 16px;
+            background: #f8fafc;
+            border-radius: 14px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .guarantee-icon {
+            font-size: 1.6rem;
+            margin-right: 10px;
+        }
+
+        .guarantee-text h4 {
+            color: #1e293b;
+            font-weight: 900;
+            margin-bottom: 4px;
+            font-size: 0.96rem;
+        }
+
+        .guarantee-text p {
+            color: #64748b;
+            font-size: 0.86rem;
+            line-height: 1.5;
+        }
+
         .fixed-contact-btn {
-            position: fixed; bottom: 20px; right: 20px; width: 60px; height: 60px;
-            background: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center;
-            cursor: pointer; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); z-index: 999;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 64px;
+            height: 64px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 12px 26px rgba(15, 23, 42, 0.22);
+            z-index: 999;
             transition: transform 0.2s ease;
         }
+
         .fixed-contact-btn:hover { transform: translateY(-3px); }
-        .fixed-contact-btn img { width: 40px; height: 40px; }
+
+        .fixed-contact-btn img {
+            width: 42px;
+            height: 42px;
+            object-fit: cover;
+        }
+
+        .image-modal-overlay,
+        .video-modal-overlay,
+        .article-modal-overlay,
+        .notice-modal-overlay {
+            position: fixed;
+            inset: 0;
+        }
 
         .image-modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.85); display: none; justify-content: center; align-items: center; z-index: 2000;
-        }
-        .image-modal-overlay.show { display: flex; }
-        .image-modal-content { position: relative; max-width: 90%; max-height: 90%; width: 320px; }
-        .image-modal-content img { display: block; max-width: 100%; max-height: 100%; border-radius: 12px; }
-        .image-modal-close {
-            position: absolute; top: -30px; right: -30px; color: #fff; font-size: 30px;
-            font-weight: bold; cursor: pointer; opacity: 0.8;
+            background: rgba(0, 0, 0, 0.85);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 16px;
         }
 
-        /* ================= 新增：左上角菜单 + 右上角视频教程 ================= */
-        .top-left-nav-btn, .top-right-video-btn{
+        .image-modal-overlay.show { display: flex; }
+
+        .image-modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            width: 360px;
+        }
+
+        .image-modal-content img {
+            display: block;
+            max-width: 100%;
+            max-height: 72vh;
+            border-radius: 12px;
+            margin: 0 auto;
+        }
+
+        .image-modal-close {
+            position: absolute;
+            top: -34px;
+            right: -6px;
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            opacity: 0.9;
+        }
+
+        .image-modal-meta {
+            margin-top: 12px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .image-modal-title {
+            font-size: 1rem;
+            font-weight: 800;
+        }
+
+        .image-modal-desc {
+            font-size: 0.9rem;
+            opacity: 0.92;
+        }
+
+        .top-left-nav-btn,
+        .top-right-video-btn {
             position: fixed;
             top: calc(16px + env(safe-area-inset-top));
             z-index: 1500;
@@ -204,36 +620,41 @@
             transition: transform .18s ease, background .18s ease, box-shadow .18s ease;
             user-select: none;
         }
-        .top-left-nav-btn{ left: calc(16px + env(safe-area-inset-left)); }
-        .top-right-video-btn{ right: calc(16px + env(safe-area-inset-right)); }
 
-        .top-left-nav-btn:hover, .top-right-video-btn:hover{
+        .top-left-nav-btn { left: calc(16px + env(safe-area-inset-left)); }
+        .top-right-video-btn { right: calc(16px + env(safe-area-inset-right)); }
+
+        .top-left-nav-btn:hover,
+        .top-right-video-btn:hover {
             transform: translateY(-2px);
             background: rgba(255,255,255,0.24);
             box-shadow: 0 14px 28px rgba(0,0,0,0.22);
         }
 
-        .nav-hamburger{
-            width: 18px; height: 14px;
+        .nav-hamburger {
+            width: 18px;
+            height: 14px;
             display: inline-flex;
             flex-direction: column;
             justify-content: space-between;
         }
-        .nav-hamburger span{
-            display:block;
+
+        .nav-hamburger span {
+            display: block;
             height: 2px;
             width: 100%;
             background: rgba(255,255,255,0.95);
             border-radius: 2px;
             transition: transform .25s ease, opacity .25s ease;
         }
-        .top-left-nav-btn.active .nav-hamburger span:nth-child(1){ transform: translateY(6px) rotate(45deg); }
-        .top-left-nav-btn.active .nav-hamburger span:nth-child(2){ opacity: 0; }
-        .top-left-nav-btn.active .nav-hamburger span:nth-child(3){ transform: translateY(-6px) rotate(-45deg); }
 
-        /* 侧边抽屉 */
-        .drawer-overlay{
-            position: fixed; inset: 0;
+        .top-left-nav-btn.active .nav-hamburger span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+        .top-left-nav-btn.active .nav-hamburger span:nth-child(2) { opacity: 0; }
+        .top-left-nav-btn.active .nav-hamburger span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
             background: rgba(0,0,0,0.35);
             -webkit-backdrop-filter: blur(2px);
             backdrop-filter: blur(2px);
@@ -242,11 +663,13 @@
             pointer-events: none;
             transition: opacity .2s ease;
         }
-        .drawer-overlay.open{ opacity: 1; pointer-events: auto; }
 
-        .side-drawer{
+        .drawer-overlay.open { opacity: 1; pointer-events: auto; }
+
+        .side-drawer {
             position: fixed;
-            top: 0; left: 0;
+            top: 0;
+            left: 0;
             width: min(300px, 84vw);
             height: 100vh;
             padding: calc(18px + env(safe-area-inset-top)) 16px 16px;
@@ -261,39 +684,47 @@
             flex-direction: column;
             gap: 14px;
         }
-        .side-drawer.open{ transform: translateX(0); }
 
-        .drawer-header{
-            display:flex;
-            align-items:center;
+        .side-drawer.open { transform: translateX(0); }
+
+        .drawer-header {
+            display: flex;
+            align-items: center;
             justify-content: space-between;
             padding: 8px 6px 12px;
             border-bottom: 1px solid rgba(255,255,255,0.10);
         }
-        .drawer-title{
+
+        .drawer-title {
             font-size: 1rem;
             font-weight: 900;
             letter-spacing: .5px;
             color: rgba(255,255,255,0.95);
         }
-        .drawer-close{
-            width: 36px; height: 36px;
+
+        .drawer-close {
+            width: 36px;
+            height: 36px;
             border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.18);
             background: rgba(255,255,255,0.08);
             color: #fff;
             font-size: 22px;
             cursor: pointer;
-            display:flex;
-            align-items:center;
-            justify-content:center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: transform .15s ease, background .15s ease;
         }
-        .drawer-close:hover{ transform: rotate(90deg); background: rgba(255,255,255,0.14); }
 
-        .drawer-item{
-            display:flex;
-            align-items:center;
+        .drawer-close:hover {
+            transform: rotate(90deg);
+            background: rgba(255,255,255,0.14);
+        }
+
+        .drawer-item {
+            display: flex;
+            align-items: center;
             gap: 12px;
             padding: 12px 14px;
             border-radius: 14px;
@@ -301,13 +732,21 @@
             background: rgba(255,255,255,0.06);
             color: rgba(255,255,255,0.92);
             font-weight: 800;
-            text-decoration: none;
             transition: background .15s ease, transform .15s ease;
         }
-        .drawer-item:hover{ background: rgba(255,255,255,0.12); transform: translateY(-1px); }
-        .drawer-icon{ font-size: 1.2rem; width: 24px; text-align: center; }
 
-        .drawer-footer{
+        .drawer-item:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-1px);
+        }
+
+        .drawer-icon {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .drawer-footer {
             margin-top: auto;
             padding-top: 12px;
             border-top: 1px solid rgba(255,255,255,0.10);
@@ -316,9 +755,7 @@
             line-height: 1.5;
         }
 
-        /* 视频教程弹窗 */
-        .video-modal-overlay{
-            position: fixed; inset: 0;
+        .video-modal-overlay {
             background: rgba(0,0,0,0.85);
             display: none;
             align-items: center;
@@ -326,8 +763,10 @@
             z-index: 2100;
             padding: 16px;
         }
-        .video-modal-overlay.show{ display:flex; }
-        .video-modal-content{
+
+        .video-modal-overlay.show { display: flex; }
+
+        .video-modal-content {
             width: min(860px, 96vw);
             background: rgba(255,255,255,0.10);
             border: 1px solid rgba(255,255,255,0.22);
@@ -338,40 +777,48 @@
             padding: 16px 16px 14px;
             position: relative;
         }
-        .video-modal-title{
-            color:#fff;
+
+        .video-modal-title {
+            color: #fff;
             font-size: 1.05rem;
             font-weight: 900;
             margin: 2px 0 12px;
             text-align: center;
             letter-spacing: .3px;
         }
-        .video-modal-close{
+
+        .video-modal-close {
             position: absolute;
             top: 10px;
             right: 10px;
-            width: 36px; height: 36px;
+            width: 36px;
+            height: 36px;
             border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.18);
             background: rgba(0,0,0,0.25);
             color: #fff;
             font-size: 22px;
             cursor: pointer;
-            display:flex;
-            align-items:center;
-            justify-content:center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: transform .15s ease, background .15s ease;
         }
-        .video-modal-close:hover{ transform: rotate(90deg); background: rgba(0,0,0,0.35); }
 
-        #tutorialVideo{
+        .video-modal-close:hover {
+            transform: rotate(90deg);
+            background: rgba(0,0,0,0.35);
+        }
+
+        #tutorialVideo {
             width: 100%;
             max-height: min(70vh, 520px);
             border-radius: 12px;
             background: #000;
             outline: none;
         }
-        .video-fallback-link{
+
+        .video-fallback-link {
             display: block;
             margin-top: 10px;
             text-align: center;
@@ -382,11 +829,15 @@
             text-underline-offset: 3px;
         }
 
-        
-        /* ================= 新增：文章阅读弹窗 ================= */
-        .article-modal-overlay{
-            position: fixed;
-            inset: 0;
+        .video-key-cta {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 18px;
+            flex-wrap: wrap;
+        }
+
+        .article-modal-overlay {
             background: rgba(0,0,0,0.78);
             display: none;
             align-items: center;
@@ -395,9 +846,10 @@
             padding: 18px;
             backdrop-filter: blur(5px);
         }
-        .article-modal-overlay.show{ display: flex; }
 
-        .article-modal-content{
+        .article-modal-overlay.show { display: flex; }
+
+        .article-modal-content {
             width: min(920px, 96vw);
             max-height: min(86vh, 860px);
             background: #ffffff;
@@ -407,7 +859,8 @@
             overflow: hidden;
             border: 1px solid rgba(0,0,0,0.08);
         }
-        .article-modal-close{
+
+        .article-modal-close {
             position: absolute;
             top: 12px;
             right: 12px;
@@ -423,21 +876,27 @@
             transition: transform .15s ease, background .15s ease;
             z-index: 2;
         }
-        .article-modal-close:hover{ transform: rotate(90deg); background: #eef6ff; }
 
-        .article-modal-body{
+        .article-modal-close:hover {
+            transform: rotate(90deg);
+            background: #eef6ff;
+        }
+
+        .article-modal-body {
             padding: 46px 22px 26px;
             max-height: min(86vh, 860px);
             overflow-y: auto;
         }
-        .article-modal-body h1{
+
+        .article-modal-body h1 {
             margin: 0 0 8px;
             color: #0f4c81;
             font-size: 1.8rem;
             font-weight: 900;
             text-align: center;
         }
-        .article-modal-body h2{
+
+        .article-modal-body h2 {
             margin: 22px 0 10px;
             font-size: 1.2rem;
             font-weight: 900;
@@ -445,24 +904,47 @@
             padding-bottom: 8px;
             border-bottom: 1px solid #e5effa;
         }
-        .article-modal-body h3{
+
+        .article-modal-body h3 {
             margin: 16px 0 8px;
             font-size: 1.05rem;
             font-weight: 900;
             color: #1e40af;
         }
-        .article-modal-body p{ margin: 10px 0; color:#334155; line-height: 1.75; }
-        .article-modal-body ul{ margin: 10px 0 10px 18px; color:#334155; }
-        .article-modal-body li{ margin: 6px 0; }
 
-        .article-lead{
+        .article-modal-body p {
+            margin: 10px 0;
+            color: #334155;
+            line-height: 1.75;
+        }
+
+        .article-modal-body ul {
+            margin: 10px 0 10px 18px;
+            color: #334155;
+        }
+
+        .article-modal-body li { margin: 6px 0; }
+
+        .article-modal-body pre {
+            margin: 12px 0;
+            padding: 14px;
+            border-radius: 14px;
+            background: #0f172a;
+            color: #e2e8f0;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .article-lead {
             text-align: center;
             color: #475569;
             margin: 0 auto 10px;
             max-width: 680px;
             font-weight: 700;
         }
-        .article-note{
+
+        .article-note {
             margin-top: 18px;
             padding: 12px 14px;
             border-radius: 14px;
@@ -471,208 +953,418 @@
             color: #1e3a8a;
             font-weight: 700;
         }
-        .article-box{
+
+        .article-box {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 14px;
             padding: 12px 14px;
         }
-        .article-box p{ margin: 8px 0; }
 
-        /* 对比卡片 */
-        .compare-grid{
+        .article-box p { margin: 8px 0; }
+
+        .compare-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 14px;
             margin-top: 12px;
         }
-        .compare-card{
+
+        .compare-card {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 16px;
             padding: 16px;
         }
-        .compare-icon{ font-size: 2.2rem; }
-        .compare-desc{ color:#475569; font-weight: 700; }
 
-        /* FAQ 折叠 */
-        .faq-item{
+        .compare-icon { font-size: 2.2rem; }
+        .compare-desc { color: #475569; font-weight: 700; }
+
+        .faq-item {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 14px;
             margin: 10px 0;
             overflow: hidden;
         }
-        .faq-q{
+
+        .faq-q {
             padding: 14px 14px;
             cursor: pointer;
             font-weight: 900;
             color: #0f4c81;
-            display:flex;
-            align-items:center;
+            display: flex;
+            align-items: center;
             justify-content: space-between;
             gap: 10px;
         }
-        .faq-icon{ transition: transform .2s ease; color:#1565c0; }
-        .faq-a{
+
+        .faq-icon {
+            transition: transform .2s ease;
+            color: #1565c0;
+        }
+
+        .faq-a {
             max-height: 0;
             overflow: hidden;
             padding: 0 14px;
             transition: max-height .25s ease, padding .25s ease;
         }
-        .faq-item.active .faq-a{
-            max-height: 420px;
+
+        .faq-item.active .faq-a {
+            max-height: 600px;
             padding: 0 14px 14px;
         }
-        .faq-item.active .faq-icon{ transform: rotate(180deg); }
 
-@media (max-width: 768px) {
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .article-cta {
+            margin-top: 18px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cta-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 18px;
+            border-radius: 14px;
+            font-weight: 800;
+            background: #2563eb;
+            color: #fff;
+            box-shadow: 0 8px 22px rgba(37,99,235,.25);
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-primary:hover { background: #1d4ed8; }
+
+        .cta-note {
+            margin-top: 8px;
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            width: 100%;
+        }
+
+        .notice-modal-overlay {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+            background: rgba(7, 12, 22, 0.78);
+            z-index: 2600;
+            backdrop-filter: blur(6px);
+        }
+
+        .notice-modal-overlay.show { display: flex; }
+
+        .notice-modal-content {
+            width: min(720px, 96vw);
+            max-height: min(82vh, 760px);
+            overflow: auto;
+            border-radius: 22px;
+            background: linear-gradient(180deg, #fff7ed 0%, #ffffff 100%);
+            border: 1px solid rgba(251, 146, 60, 0.25);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+            padding: 26px 22px 20px;
+        }
+
+        .notice-modal-title {
+            font-size: 1.45rem;
+            font-weight: 900;
+            color: #c2410c;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .notice-modal-text {
+            color: #7c2d12;
+            white-space: pre-wrap;
+            word-break: break-word;
+            line-height: 1.8;
+            font-size: 0.98rem;
+        }
+
+        .notice-modal-tip {
+            margin-top: 14px;
+            text-align: center;
+            color: #9a3412;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        @media (max-width: 980px) {
+            .hero-mini-guide,
+            .step-guide,
+            .proof-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
             .container { padding: 12px; }
-            .header { padding: 36px 0 24px; }
-            .header h1 { font-size: 2rem; }
-            .main-content { padding: 20px 15px; }
+            .header { padding: 84px 0 28px; }
+            .header h1 { font-size: 2.1rem; }
+            .header .subtitle { font-size: 0.98rem; }
+            .hero-mini-guide,
+            .step-guide,
+            .proof-grid {
+                grid-template-columns: 1fr;
+            }
+            .main-content { padding: 22px 14px 24px; }
+            .proof-section { padding: 26px 14px 28px; }
             .goods-grid::-webkit-scrollbar { display: none; }
-            /* 手机端按钮堆叠 */
-            .purchase-options-container { grid-template-columns: 1fr; }
-
-            /* 顶部按钮更紧凑 */
-            .top-left-nav-btn, .top-right-video-btn{
+            .top-left-nav-btn,
+            .top-right-video-btn {
                 padding: 9px 12px;
                 font-size: 0.9rem;
                 border-radius: 12px;
                 gap: 8px;
             }
-            .top-right-video-btn .video-text{ display: none; }
+            .top-right-video-btn .video-text { display: none; }
+            .image-modal-close { right: 0; }
+            .proof-thumb { aspect-ratio: 16 / 15; }
         }
 
-        /* 防止抽屉打开时页面乱滚 */
-        body.drawer-open{ overflow: hidden; }
-    
-
-        /* CTA buttons (articles / video) */
-        .article-cta{margin-top:18px;display:flex;justify-content:center}
-        .cta-primary{display:inline-flex;align-items:center;justify-content:center;padding:12px 18px;border-radius:14px;font-weight:800;background:#2563eb;color:#fff;text-decoration:none;box-shadow:0 8px 22px rgba(37,99,235,.25)}
-        .cta-primary:hover{background:#1d4ed8}
-        .cta-note{margin-top:8px;text-align:center;font-size:12px;color:var(--muted)}
-        .video-cta-wrap{margin-top:14px}
-        .contact-text{margin-top:10px;text-align:center;font-size:13px;color:var(--text)}
-        .contact-text b{font-weight:900}
-</style>
+        body.drawer-open { overflow: hidden; }
+    </style>
 </head>
 <body>
     <div class="container">
         <header class="header">
-            <h1>🚀 ChatGPT Plus 代充</h1>
-            <div class="subtitle">专业 • 安全 • 保障 | 请收藏：chongzhi.chat 防失联</div>
+            <div class="hero-badge">24小时自助下单 · 人工客服协助 · 全程指引</div>
+            <h1>ChatGPT Plus 代充服务</h1>
+            <div class="subtitle">专业 • 快速 • 有引导 | 请收藏：chongzhi.chat 防失联</div>
+            <p class="hero-note">如果你是第一次购买，不知道该选哪个商品，也不用担心。先看下面的商品说明，点进对应商品后即可进入下一步购买流程；右上角有视频教程，右下角可直接联系客服。</p>
+
+            <div class="hero-mini-guide">
+                <div class="hero-mini-card">
+                    <strong>新用户怎么买</strong>
+                    <p>优先看“GPT Plus 新客首充”，按页面提示进入下一步即可。</p>
+                </div>
+                <div class="hero-mini-card">
+                    <strong>老用户怎么续费</strong>
+                    <p>已有账号并且需要延续会员，直接选择“GPT Plus 续费”。</p>
+                </div>
+                <div class="hero-mini-card">
+                    <strong>不会操作怎么办</strong>
+                    <p>先看右上角视频教程，或者直接点右下角客服二维码咨询。</p>
+                </div>
+            </div>
         </header>
 
-        
+        <div class="section-shell">
+            <div class="main-content">
+                <div class="section-header">
+                    <h2 class="section-title">商品种类</h2>
+                </div>
+                <p class="section-subtitle">先选适合你的商品，再点击卡片进入下一步购买。不会选的话，优先看价格下方说明；如果还是不确定，联系客服会更快。</p>
 
-        <div class="purchase-options-container">
-<a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" class="purchase-btn btn-style-orange">
-                <h3>🤖 点此购买卡密</h3>
-                <p>如遇问题优先加客服</p>
-            </a>
-        </div>
+                <div class="step-guide">
+                    <div class="step-item">
+                        <div class="step-no">1</div>
+                        <h3>先判断自己是哪种用户</h3>
+                        <p>第一次开通选“新客首充”，已有会员要继续用就选“续费”。</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-no">2</div>
+                        <h3>点击对应商品卡片</h3>
+                        <p>每张卡片都能直接进入下一步购买页面，不需要额外找入口。</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-no">3</div>
+                        <h3>按提示完成购买</h3>
+                        <p>遇到不会的步骤，先看视频教程，或者联系客服协助处理。</p>
+                    </div>
+                </div>
 
-        <div class="main-content">
+                <div class="goods-tip-banner">请直接点击下方商品卡片进入下一步购买，首充和续费不要选错。</div>
 
-            <div class="section-header">
-                <h2 class="section-title">商品种类</h2>
-                
+                <div class="goods-grid">
+                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" rel="noopener" class="goods-card border-orange" data-shop-link>
+                        <span class="recommend-tag">推荐</span>
+                        <span class="goods-mini-label">适合第一次开通</span>
+                        <h3 class="goods-title">GPT Plus<br>新客首充</h3>
+                        <div class="goods-price-box">
+                            <div class="goods-price">¥149</div>
+                            <div class="goods-desc">新客户首单特惠，第一次购买优先选这个</div>
+                        </div>
+                        <div class="goods-cta">点击进入下一步购买 →</div>
+                        <div class="goods-hint">首次开通用户直接点这里</div>
+                    </a>
+
+                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" rel="noopener" class="goods-card border-orange" data-shop-link>
+                        <span class="recommend-tag">推荐</span>
+                        <span class="goods-mini-label">适合已有账号续期</span>
+                        <h3 class="goods-title">GPT Plus<br>续费</h3>
+                        <div class="goods-price-box">
+                            <div class="goods-price">¥169</div>
+                            <div class="goods-desc">适合已有会员继续续期，稳定省心</div>
+                        </div>
+                        <div class="goods-cta">点击进入下一步购买 →</div>
+                        <div class="goods-hint">老用户继续开通选这里</div>
+                    </a>
+
+                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" rel="noopener" class="goods-card border-blue" data-shop-link>
+                        <span class="goods-mini-label">偏代码与长文档</span>
+                        <h3 class="goods-title">Claude Pro<br>官方会员</h3>
+                        <div class="goods-price-box">
+                            <div class="goods-price">¥169</div>
+                            <div class="goods-desc">适合代码、写作、长文档处理等场景</div>
+                        </div>
+                        <div class="goods-cta">点击进入下一步购买 →</div>
+                        <div class="goods-hint">重度办公或编程可考虑</div>
+                    </a>
+
+                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" rel="noopener" class="goods-card border-blue" data-shop-link>
+                        <span class="goods-mini-label">偏热点和实时信息</span>
+                        <h3 class="goods-title">Grok 4.2<br>官方会员</h3>
+                        <div class="goods-price-box">
+                            <div class="goods-price">¥180</div>
+                            <div class="goods-desc">适合资讯、热点追踪、快速观点整理</div>
+                        </div>
+                        <div class="goods-cta">点击进入下一步购买 →</div>
+                        <div class="goods-hint">需要实时感较强可选</div>
+                    </a>
+                </div>
+
+                <div class="guide-footnote">点击任意商品卡片后，即可进入对应购买页面继续操作。</div>
+
+                <section class="guarantee-section">
+                    <h3 class="guarantee-title">服务保障</h3>
+                    <div class="guarantee-list">
+                        <div class="guarantee-item">
+                            <div class="guarantee-icon">🔒</div>
+                            <div class="guarantee-text">
+                                <h4>流程清晰</h4>
+                                <p>页面结构简洁明了，新手也能快速找到对应购买入口。</p>
+                            </div>
+                        </div>
+                        <div class="guarantee-item">
+                            <div class="guarantee-icon">⚡</div>
+                            <div class="guarantee-text">
+                                <h4>响应较快</h4>
+                                <p>支持自助流程与人工协助并行，减少等待与沟通成本。</p>
+                            </div>
+                        </div>
+                        <div class="guarantee-item">
+                            <div class="guarantee-icon">🎬</div>
+                            <div class="guarantee-text">
+                                <h4>视频引导</h4>
+                                <p>右上角可直接查看视频教程，跟着操作更省时间。</p>
+                            </div>
+                        </div>
+                        <div class="guarantee-item">
+                            <div class="guarantee-icon">🧾</div>
+                            <div class="guarantee-text">
+                                <h4>售后沟通</h4>
+                                <p>如遇特殊情况，可联系客服说明订单信息与具体问题。</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
 
-            <div class="goods-grid">
-                <div class="goods-card border-orange">
-                    <span class="recommend-tag">推荐</span>
-                    <h3 class="goods-title">GPT Plus<br>首充</h3>
-                    <div class="goods-price-box">
-                        <div class="goods-price">¥149</div>
-                        <div class="goods-desc">账号首次充值官方特惠</div>
-                    </div>
-</div>
+            <section class="proof-section">
+                <div class="proof-wrap">
+                    <h3 class="proof-title">真实成交截图</h3>
+                    <p class="proof-subtitle">下方最多可展示 6 张成交截图。默认已经预留好位置，你只需要把图片放到当前 HTML 同目录下，命名为“成交截图1.jpg”到“成交截图6.jpg”即可自动显示。</p>
 
-                <div class="goods-card border-orange">
-                    <span class="recommend-tag">推荐</span>
-                    <h3 class="goods-title">GPT Plus<br>续费</h3>
-                    <div class="goods-price-box">
-                        <div class="goods-price">¥169</div>
-                        <div class="goods-desc">稳定续费不掉线</div>
-                    </div>
-</div>
+                    <div class="proof-grid" id="proofGrid">
+                        <div class="proof-card">
+                            <div class="proof-thumb">
+                                <img src="./成交截图1.jpg" alt="成交截图1" data-proof-image data-proof-title="成交截图 1">
+                                <div class="proof-placeholder">请放入图片<br>成交截图1.jpg</div>
+                            </div>
+                            <div class="proof-meta">
+                                <h4>成交记录展示 1</h4>
+                                <p>用于展示真实下单或到账相关截图，增强用户信任感。</p>
+                            </div>
+                        </div>
 
-                <div class="goods-card border-blue">
-                    <h3 class="goods-title">Claude Pro<br>官方会员</h3>
-                    <div class="goods-price-box">
-                        <div class="goods-price">¥169</div>
-                        <div class="goods-desc">代码之神</div>
-                    </div>
-</div>
+                        <div class="proof-card">
+                            <div class="proof-thumb">
+                                <img src="./成交截图2.jpg" alt="成交截图2" data-proof-image data-proof-title="成交截图 2">
+                                <div class="proof-placeholder">请放入图片<br>成交截图2.jpg</div>
+                            </div>
+                            <div class="proof-meta">
+                                <h4>成交记录展示 2</h4>
+                                <p>建议优先放成功付款、到账结果、沟通确认等高信任截图。</p>
+                            </div>
+                        </div>
 
-                <div class="goods-card border-blue">
-                    <h3 class="goods-title">Grok 4.1<br>官方会员</h3>
-                    <div class="goods-price-box">
-                        <div class="goods-price">¥209</div>
-                        <div class="goods-desc">道德底线较低</div>
-                    </div>
-</div>
-            </div>
+                        <div class="proof-card">
+                            <div class="proof-thumb">
+                                <img src="./成交截图3.jpg" alt="成交截图3" data-proof-image data-proof-title="成交截图 3">
+                                <div class="proof-placeholder">请放入图片<br>成交截图3.jpg</div>
+                            </div>
+                            <div class="proof-meta">
+                                <h4>成交记录展示 3</h4>
+                                <p>图片建议适当打码，仅保留能体现结果的信息即可。</p>
+                            </div>
+                        </div>
 
-            <section class="guarantee-section">
-                <h3 class="guarantee-title">🛡️ 服务保障</h3>
-                <div class="guarantee-list">
-                    <div class="guarantee-item">
-                        <div class="guarantee-icon">🔒</div>
-                        <div class="guarantee-text">
-                            <h4>正规可靠</h4>
-                            <p>iOS 官方订阅路径对接，稳定可靠。</p>
+                        <div class="proof-card">
+                            <div class="proof-thumb">
+                                <img src="./成交截图4.jpg" alt="成交截图4" data-proof-image data-proof-title="成交截图 4">
+                                <div class="proof-placeholder">请放入图片<br>成交截图4.jpg</div>
+                            </div>
+                            <div class="proof-meta">
+                                <h4>成交记录展示 4</h4>
+                                <p>可展示不同商品、不同时间段、不同到账结果的截图内容。</p>
+                            </div>
+                        </div>
+
+                        <div class="proof-card">
+                            <div class="proof-thumb">
+                                <img src="./成交截图5.jpg" alt="成交截图5" data-proof-image data-proof-title="成交截图 5">
+                                <div class="proof-placeholder">请放入图片<br>成交截图5.jpg</div>
+                            </div>
+                            <div class="proof-meta">
+                                <h4>成交记录展示 5</h4>
+                                <p>如果图片不足 6 张，未上传的图片位会自动显示占位提示。</p>
+                            </div>
+                        </div>
+
+                        <div class="proof-card">
+                            <div class="proof-thumb">
+                                <img src="./成交截图6.jpg" alt="成交截图6" data-proof-image data-proof-title="成交截图 6">
+                                <div class="proof-placeholder">请放入图片<br>成交截图6.jpg</div>
+                            </div>
+                            <div class="proof-meta">
+                                <h4>成交记录展示 6</h4>
+                                <p>用户点击截图可放大查看，适合展示关键信息与成交氛围。</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="guarantee-item">
-                        <div class="guarantee-icon">💰</div>
-                        <div class="guarantee-text">
-                            <h4>保障机制</h4>
-                            <p>异常封号零触发；售后无忧。</p>
-                        </div>
-                    </div>
-                    <div class="guarantee-item">
-                        <div class="guarantee-icon">⚡</div>
-                        <div class="guarantee-text">
-                            <h4>快速开通</h4>
-                            <p>自助与人工并行，5分钟完成。</p>
-                        </div>
-                    </div>
-                    <div class="guarantee-item">
-                        <div class="guarantee-icon">🧾</div>
-                        <div class="guarantee-text">
-                            <h4>开票支持</h4>
-                            <p>如需发票可加客服说明。</p>
-                        </div>
-                    </div>
+
+                    <div class="proof-note">建议图片统一裁剪比例，视觉会更整齐；涉及隐私信息请先打码。</div>
                 </div>
             </section>
         </div>
     </div>
 
-    <!-- 新增：左上角菜单按钮（B方案：按钮 + 侧栏） -->
-    <button class="top-left-nav-btn" id="navMenuBtn" aria-label="打开导航菜单">
+    <button class="top-left-nav-btn" id="navMenuBtn" type="button" aria-label="打开导航菜单" aria-expanded="false">
         <span class="nav-hamburger" aria-hidden="true">
             <span></span><span></span><span></span>
         </span>
         <span>菜单</span>
     </button>
 
-    <!-- 新增：右上角视频教程按钮 -->
-    <button class="top-right-video-btn" id="videoBtn" aria-label="打开视频教程">
+    <button class="top-right-video-btn" id="videoBtn" type="button" aria-label="打开视频教程">
         🎬 <span class="video-text">视频教程</span>
     </button>
 
-    <!-- 新增：侧栏与蒙层 -->
     <div class="drawer-overlay" id="drawerOverlay"></div>
     <aside class="side-drawer" id="sideDrawer" aria-hidden="true">
         <div class="drawer-header">
             <div class="drawer-title">导航菜单</div>
-            <button class="drawer-close" id="drawerClose" aria-label="关闭菜单">×</button>
+            <button class="drawer-close" id="drawerClose" type="button" aria-label="关闭菜单">×</button>
         </div>
 
         <a class="drawer-item" href="https://chongzhi.chat/" target="_self">
@@ -694,13 +1386,15 @@
             <span class="drawer-icon">❓</span>
             <span>常见问题解答</span>
         </button>
+
         <button type="button" class="drawer-item drawer-action" data-article="claude">
-          <span class="drawer-icon">🤖</span>
-          <span class="drawer-title">Claude Pro 使用指南</span>
+            <span class="drawer-icon">🤖</span>
+            <span>Claude Pro 使用指南</span>
         </button>
+
         <button type="button" class="drawer-item drawer-action" data-article="grok">
-          <span class="drawer-icon">𝕏</span>
-          <span class="drawer-title">Grok 使用指南</span>
+            <span class="drawer-icon">𝕏</span>
+            <span>Grok 使用指南</span>
         </button>
 
         <div class="drawer-footer">
@@ -709,10 +1403,9 @@
         </div>
     </aside>
 
-    <!-- 新增：视频教程弹窗 -->
     <div class="video-modal-overlay" id="videoModal" aria-hidden="true">
-        <div class="video-modal-content" role="dialog" aria-label="充值视频教程">
-            <button class="video-modal-close" id="videoClose" aria-label="关闭视频">×</button>
+        <div class="video-modal-content" role="dialog" aria-modal="true" aria-label="充值视频教程">
+            <button class="video-modal-close" id="videoClose" type="button" aria-label="关闭视频">×</button>
             <div class="video-modal-title">充值视频教程</div>
             <video id="tutorialVideo" controls playsinline preload="metadata">
                 <source src="./视频教程.mp4" type="video/mp4">
@@ -720,24 +1413,30 @@
             </video>
             <a class="video-fallback-link" href="./视频教程.mp4" target="_blank" rel="noopener">无法播放？点此在新窗口打开</a>
 
-              <div class="video-key-cta">
+            <div class="video-key-cta">
+                <a class="cta-primary" href="https://www.chatgpt.com" target="_blank" rel="noopener">登录 GPT 账号</a>
                 <a class="cta-primary" href="https://chatgpt.com/api/auth/session" target="_blank" rel="noopener">获取充值密钥</a>
+                <a class="cta-primary" href="https://gcn6188hiuwm.feishu.cn/wiki/XCeCwqkOHiRBzLkw3c6cQSugnuc?from=from_copylink" target="_blank" rel="noopener">超详细充值文档</a>
                 <div class="cta-note">只做转发，不留存，无存档</div>
-              </div>
+            </div>
         </div>
     </div>
 
-
-
-    <!-- 新增：文章阅读弹窗（使用指南 / 对比 / FAQ） -->
     <div class="article-modal-overlay" id="articleModal" aria-hidden="true">
-        <div class="article-modal-content" role="dialog" aria-label="内容说明">
-            <button class="article-modal-close" id="articleClose" aria-label="关闭内容">×</button>
+        <div class="article-modal-content" role="dialog" aria-modal="true" aria-label="内容说明">
+            <button class="article-modal-close" id="articleClose" type="button" aria-label="关闭内容">×</button>
             <div class="article-modal-body" id="articleBody"></div>
         </div>
     </div>
 
-    <!-- 新增：内容模板（可自行修改文案） -->
+    <div class="notice-modal-overlay" id="noticeModal" aria-hidden="true">
+        <div class="notice-modal-content" role="dialog" aria-modal="true" aria-label="网站公告">
+            <div class="notice-modal-title">网站公告</div>
+            <div class="notice-modal-text" id="noticeText">公告加载中...</div>
+            <div class="notice-modal-tip">点击任意位置关闭</div>
+        </div>
+    </div>
+
     <template id="tpl-guide">
         <h1>📖 ChatGPT 使用指南</h1>
         <p class="article-lead">这不是“玄学使用手册”，只是让你更快写出有效提示词的正常说明。</p>
@@ -768,12 +1467,11 @@
 
         <h2>4. 小提醒</h2>
         <p>不同订阅方案的可用功能与额度可能会调整，以官方页面显示为准。你也可以把自己的需求直接发给客服，让对接更快。</p>
-    
 
         <div class="article-cta">
-          <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary" onclick="buyNowFromArticle(event)">点此购买</a>
+            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>点此购买</a>
         </div>
-</template>
+    </template>
 
     <template id="tpl-compare">
         <h1>🆚 Plus 与 Pro 怎么选</h1>
@@ -811,12 +1509,11 @@
         </ul>
 
         <p class="article-note">注：不同产品（ChatGPT / Claude / Grok 等）定位不同，优势也不同。别信“一招通吃”的宣传，测试两天就知道你要什么。</p>
-    
 
         <div class="article-cta">
-          <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary" onclick="buyNowFromArticle(event)">点此购买</a>
+            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>点此购买</a>
         </div>
-</template>
+    </template>
 
     <template id="tpl-faq">
         <h1>❓ 常见问题解答</h1>
@@ -831,14 +1528,7 @@
         <div class="faq-item">
             <div class="faq-q">需要提供账号密码吗？ <span class="faq-icon">▼</span></div>
             <div class="faq-a">
-                <p>不需要提供密码</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-q">会不会有封号风险？ <span class="faq-icon">▼</span></div>
-            <div class="faq-a">
-                <p>2025 年 6 月开始用密钥充值，目前0 封号，如若因支付问题封号，咱们这边会按天赔付。</p>
+                <p>不需要提供密码。</p>
             </div>
         </div>
 
@@ -857,265 +1547,326 @@
         </div>
 
         <p class="article-note">如果你不想看文字，右上角“视频教程”更省时间。人类看视频的耐心永远比看说明书强。</p>
-    
 
         <div class="article-cta">
-          <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary" onclick="buyNowFromArticle(event)">点此购买</a>
+            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>点此购买</a>
         </div>
-</template>
+    </template>
 
     <template id="tpl-claude">
-      <h2>Claude 是什么</h2>
-      <p>Claude 是 Anthropic 推出的对话式大模型，主打更稳的长文本理解、写作与代码协作，适合做文档、总结、需求拆解、代码评审、重构建议等。</p>
+        <h2>Claude 是什么</h2>
+        <p>Claude 是 Anthropic 推出的对话式大模型，主打更稳的长文本理解、写作与代码协作，适合做文档、总结、需求拆解、代码评审、重构建议等。</p>
 
-      <h3>适合哪些人</h3>
-      <ul>
-        <li><b>写作/运营</b>：长文大纲、改写润色、脚本与文案批量产出</li>
-        <li><b>程序员</b>：读代码、改 Bug、写测试、做重构方案对比</li>
-        <li><b>产品/项目</b>：PRD、会议纪要、方案评审、风险清单</li>
-      </ul>
+        <h3>适合哪些人</h3>
+        <ul>
+            <li><b>写作/运营</b>：长文大纲、改写润色、脚本与文案批量产出</li>
+            <li><b>程序员</b>：读代码、改 Bug、写测试、做重构方案对比</li>
+            <li><b>产品/项目</b>：PRD、会议纪要、方案评审、风险清单</li>
+        </ul>
 
-      <h3>常用提示词（可直接复制）</h3>
-      <pre><code>你是资深工程师，请先复述我的需求，再给出 3 套实现方案（优缺点、复杂度、风险、测试点）。</code></pre>
-      <pre><code>把下面这段内容整理成：要点列表、行动项、负责人、截止时间，并补充遗漏的问题。</code></pre>
+        <h3>常用提示词（可直接复制）</h3>
+        <pre><code>你是资深工程师，请先复述我的需求，再给出 3 套实现方案（优缺点、复杂度、风险、测试点）。</code></pre>
+        <pre><code>把下面这段内容整理成：要点列表、行动项、负责人、截止时间，并补充遗漏的问题。</code></pre>
 
-      <h3>小提醒</h3>
-      <ul>
-        <li>模型很强，但它也会“自信地胡说”。关键结论请你自己做最终确认。</li>
-        <li>涉及隐私/账号信息，别乱贴，安全这事永远靠自己。</li>
-      </ul>
-    
+        <h3>小提醒</h3>
+        <ul>
+            <li>模型很强，但它也会“自信地胡说”。关键结论请你自己做最终确认。</li>
+            <li>涉及隐私/账号信息，别乱贴，安全这事永远靠自己。</li>
+        </ul>
 
         <div class="article-cta">
-          <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary" onclick="buyNowFromArticle(event)">点此购买</a>
+            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>点此购买</a>
         </div>
-</template>
+    </template>
 
     <template id="tpl-grok">
-      <h2>Grok 是什么</h2>
-      <p>Grok 是 xAI 推出的对话式模型，偏实时信息检索、热点追踪和快速讨论，适合做资讯解读、趋势整理、话题拆解、观点碰撞等。</p>
+        <h2>Grok 是什么</h2>
+        <p>Grok 是 xAI 推出的对话式模型，偏实时信息检索、热点追踪和快速讨论，适合做资讯解读、趋势整理、话题拆解、观点碰撞等。</p>
 
-      <h3>适合哪些场景</h3>
-      <ul>
-        <li><b>热点跟进</b>：把复杂新闻拆成时间线、利害关系、关键数据</li>
-        <li><b>观点对撞</b>：同一问题给出正反立场与证据清单</li>
-        <li><b>内容创作</b>：选题、标题、段落结构、短视频脚本</li>
-      </ul>
+        <h3>适合哪些场景</h3>
+        <ul>
+            <li><b>热点跟进</b>：把复杂新闻拆成时间线、利害关系、关键数据</li>
+            <li><b>观点对撞</b>：同一问题给出正反立场与证据清单</li>
+            <li><b>内容创作</b>：选题、标题、段落结构、短视频脚本</li>
+        </ul>
 
-      <h3>常用提示词（可直接复制）</h3>
-      <pre><code>请把这个热点按：事件经过、核心争议、各方观点、可能走向、我该怎么看 进行结构化整理。</code></pre>
-      <pre><code>围绕这个主题给我 10 个选题角度，每个角度附 3 条可验证的信息点（需要来源就标注）。</code></pre>
+        <h3>常用提示词（可直接复制）</h3>
+        <pre><code>请把这个热点按：事件经过、核心争议、各方观点、可能走向、我该怎么看 进行结构化整理。</code></pre>
+        <pre><code>围绕这个主题给我 10 个选题角度，每个角度附 3 条可验证的信息点（需要来源就标注）。</code></pre>
 
-      <h3>小提醒</h3>
-      <ul>
-        <li>任何“实时”内容都可能有误，重要信息请二次核对来源。</li>
-        <li>别把模型当权威，把它当助手就行了。</li>
-      </ul>
-    
+        <h3>小提醒</h3>
+        <ul>
+            <li>任何“实时”内容都可能有误，重要信息请二次核对来源。</li>
+            <li>别把模型当权威，把它当助手就行了。</li>
+        </ul>
 
         <div class="article-cta">
-          <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary" onclick="buyNowFromArticle(event)">点此购买</a>
+            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>点此购买</a>
         </div>
-</template>
+    </template>
 
-    <div class="fixed-contact-btn" id="fixed-contact-btn">
+    <div class="fixed-contact-btn" id="fixed-contact-btn" aria-label="联系客服">
         <img src="/企业微信.jpg" alt="企业微信图标">
     </div>
 
-    <div class="image-modal-overlay" id="image-modal">
-        <div class="image-modal-content">
+    <div class="image-modal-overlay" id="image-modal" aria-hidden="true">
+        <div class="image-modal-content" role="dialog" aria-modal="true" aria-label="图片预览">
             <span class="image-modal-close" id="image-modal-close">&times;</span>
-            <img src="/企业微信.jpg" alt="企业微信二维码">
+            <img src="/企业微信.jpg" alt="预览图片" id="image-modal-target">
             <div class="image-modal-meta">
-              <div class="image-modal-title">联系客服</div>
-              <div class="image-modal-desc">微信：jg-3355　QQ：552309781</div>
+                <div class="image-modal-title" id="image-modal-title">联系客服</div>
+                <div class="image-modal-desc" id="image-modal-desc">微信：jg-3355　QQ：552309781</div>
             </div>
         </div>
     </div>
 
     <script>
-      const SHOP_URL = 'https://chongzhigpt.com';
-    (function() {
-        const fixedContactBtn = document.getElementById('fixed-contact-btn');
-        const imageModal = document.getElementById('image-modal');
-        const imageModalCloseBtn = document.getElementById('image-modal-close');
+        const SHOP_URL = 'https://fe.dtyuedan.cn/shop/VA3AB5CB';
 
-        function showImageModal() {
-            imageModal.classList.add('show');
-        }
+        (function() {
+            const fixedContactBtn = document.getElementById('fixed-contact-btn');
+            const imageModal = document.getElementById('image-modal');
+            const imageModalCloseBtn = document.getElementById('image-modal-close');
+            const imageModalTarget = document.getElementById('image-modal-target');
+            const imageModalTitle = document.getElementById('image-modal-title');
+            const imageModalDesc = document.getElementById('image-modal-desc');
+            const proofImages = document.querySelectorAll('[data-proof-image]');
 
-        function hideImageModal() {
-            imageModal.classList.remove('show');
-        }
-
-        fixedContactBtn && fixedContactBtn.addEventListener('click', showImageModal);
-        imageModalCloseBtn && imageModalCloseBtn.addEventListener('click', hideImageModal);
-
-        imageModal && imageModal.addEventListener('click', (e) => {
-            if (e.target === imageModal) {
-                hideImageModal();
+            function showImageModal(src, title, desc) {
+                if (!imageModal || !imageModalTarget) return;
+                imageModalTarget.src = src;
+                imageModalTitle.textContent = title || '图片预览';
+                imageModalDesc.textContent = desc || '';
+                imageModal.classList.add('show');
+                imageModal.setAttribute('aria-hidden', 'false');
             }
-        });
 
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                hideImageModal();
+            function hideImageModal() {
+                if (!imageModal) return;
+                imageModal.classList.remove('show');
+                imageModal.setAttribute('aria-hidden', 'true');
             }
-        });
-    })();
 
-    /* ================= 新增：左上角菜单 + 右上角视频教程 ================= */
-    (function(){
-        const navMenuBtn = document.getElementById('navMenuBtn');
-        const sideDrawer = document.getElementById('sideDrawer');
-        const drawerOverlay = document.getElementById('drawerOverlay');
-        const drawerClose = document.getElementById('drawerClose');
-        const drawerActions = document.querySelectorAll('.drawer-action');
+            fixedContactBtn && fixedContactBtn.addEventListener('click', () => {
+                showImageModal('/企业微信.jpg', '联系客服', '微信：jg-3355　QQ：552309781');
+            });
 
-        const videoBtn = document.getElementById('videoBtn');
-        const videoModal = document.getElementById('videoModal');
-        const videoClose = document.getElementById('videoClose');
-        const tutorialVideo = document.getElementById('tutorialVideo');
+            imageModalCloseBtn && imageModalCloseBtn.addEventListener('click', hideImageModal);
 
-        const articleModal = document.getElementById('articleModal');
-        const articleClose = document.getElementById('articleClose');
-        const articleBody = document.getElementById('articleBody');
+            imageModal && imageModal.addEventListener('click', (e) => {
+                if (e.target === imageModal) {
+                    hideImageModal();
+                }
+            });
 
-        function isDrawerOpen(){ return !!(sideDrawer && sideDrawer.classList.contains('open')); }
-        function isVideoOpen(){ return !!(videoModal && videoModal.classList.contains('show')); }
-        function isArticleOpen(){ return !!(articleModal && articleModal.classList.contains('show')); }
+            proofImages.forEach((img, index) => {
+                const card = img.closest('.proof-card');
 
-        function syncScrollLock(){
-            const anyOpen = isDrawerOpen() || isVideoOpen() || isArticleOpen();
-            document.body.classList.toggle('drawer-open', anyOpen);
-        }
+                img.addEventListener('error', () => {
+                    card && card.classList.add('is-placeholder');
+                });
 
-        function openDrawer(){
-            if(!sideDrawer || !drawerOverlay || !navMenuBtn) return;
-            sideDrawer.classList.add('open');
-            drawerOverlay.classList.add('open');
-            navMenuBtn.classList.add('active');
-            sideDrawer.setAttribute('aria-hidden', 'false');
-            syncScrollLock();
-        }
+                img.addEventListener('click', () => {
+                    const title = img.getAttribute('data-proof-title') || ('成交截图 ' + (index + 1));
+                    showImageModal(img.src, title, '点击空白处可关闭预览');
+                });
 
-        function closeDrawer(){
-            if(!sideDrawer || !drawerOverlay || !navMenuBtn) return;
-            sideDrawer.classList.remove('open');
-            drawerOverlay.classList.remove('open');
-            navMenuBtn.classList.remove('active');
-            sideDrawer.setAttribute('aria-hidden', 'true');
-            syncScrollLock();
-        }
+                if (img.complete && img.naturalWidth === 0) {
+                    card && card.classList.add('is-placeholder');
+                }
+            });
 
-        function toggleDrawer(){
-            isDrawerOpen() ? closeDrawer() : openDrawer();
-        }
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') hideImageModal();
+            });
+        })();
 
-        function openVideo(){
-            if(!videoModal) return;
-            // 只保留一个浮层打开，避免叠加
-            closeArticle();
-            closeDrawer();
+        (function() {
+            const noticeModal = document.getElementById('noticeModal');
+            const noticeText = document.getElementById('noticeText');
 
-            videoModal.classList.add('show');
-            videoModal.setAttribute('aria-hidden', 'false');
-            syncScrollLock();
-        }
-
-        function closeVideo(){
-            if(!videoModal) return;
-            videoModal.classList.remove('show');
-            videoModal.setAttribute('aria-hidden', 'true');
-            if(tutorialVideo){
-                tutorialVideo.pause();
-                // tutorialVideo.currentTime = 0; // 如需关闭后归零可打开
+            function closeNotice() {
+                if (!noticeModal) return;
+                noticeModal.classList.remove('show');
+                noticeModal.setAttribute('aria-hidden', 'true');
             }
-            syncScrollLock();
-        }
 
-        function openArticle(type){
-            if(!articleModal || !articleBody) return;
+            async function loadNotice() {
+                if (!noticeModal || !noticeText) return;
 
-            // 只保留一个浮层打开，避免叠加
-            closeVideo();
-            closeDrawer();
+                try {
+                    const response = await fetch('./公告.txt', { cache: 'no-store' });
+                    if (!response.ok) throw new Error('notice load failed');
+                    const text = (await response.text()).trim();
+                    if (!text) return;
+                    noticeText.textContent = text;
+                    noticeModal.classList.add('show');
+                    noticeModal.setAttribute('aria-hidden', 'false');
+                } catch (error) {
+                    console.warn('公告加载失败:', error);
+                }
+            }
 
-            const tpl = document.getElementById('tpl-' + type);
-            if(!tpl) return;
+            noticeModal && noticeModal.addEventListener('click', closeNotice);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeNotice();
+            });
 
-            articleBody.innerHTML = tpl.innerHTML;
-            articleModal.classList.add('show');
-            articleModal.setAttribute('aria-hidden', 'false');
-            syncScrollLock();
+            loadNotice();
+        })();
 
-            if(type === 'faq') bindFaqEvents();
-        }
+        (function() {
+            const shopLinks = document.querySelectorAll('[data-shop-link]');
+            const navMenuBtn = document.getElementById('navMenuBtn');
+            const sideDrawer = document.getElementById('sideDrawer');
+            const drawerOverlay = document.getElementById('drawerOverlay');
+            const drawerClose = document.getElementById('drawerClose');
+            const drawerActions = document.querySelectorAll('.drawer-action');
 
-        function closeArticle(){
-            if(!articleModal || !articleBody) return;
-            articleModal.classList.remove('show');
-            articleModal.setAttribute('aria-hidden', 'true');
-            // 清空内容，避免残留事件引用
-            articleBody.innerHTML = '';
-            syncScrollLock();
-        }
+            const videoBtn = document.getElementById('videoBtn');
+            const videoModal = document.getElementById('videoModal');
+            const videoClose = document.getElementById('videoClose');
+            const tutorialVideo = document.getElementById('tutorialVideo');
 
-        
+            const articleModal = document.getElementById('articleModal');
+            const articleClose = document.getElementById('articleClose');
+            const articleBody = document.getElementById('articleBody');
 
-        function buyNowFromArticle(e) {
-            // Always open in a new tab/window (avoid replacing the current page).
-            if (e && typeof e.preventDefault === 'function') e.preventDefault();
-            closeArticle();
-            window.open(SHOP_URL, '_blank');
-        }
+            shopLinks.forEach((link) => {
+                link.setAttribute('href', SHOP_URL);
+                if (link.getAttribute('target') === '_blank') {
+                    link.setAttribute('rel', 'noopener');
+                }
+            });
 
-function bindFaqEvents(){
-            const items = articleBody.querySelectorAll('.faq-item');
-            items.forEach(item => {
-                const q = item.querySelector('.faq-q');
-                if(!q) return;
-                q.addEventListener('click', () => {
-                    items.forEach(i => { if(i !== item) i.classList.remove('active'); });
-                    item.classList.toggle('active');
+            function isDrawerOpen() { return !!(sideDrawer && sideDrawer.classList.contains('open')); }
+            function isVideoOpen() { return !!(videoModal && videoModal.classList.contains('show')); }
+            function isArticleOpen() { return !!(articleModal && articleModal.classList.contains('show')); }
+
+            function syncScrollLock() {
+                const anyOpen = isDrawerOpen() || isVideoOpen() || isArticleOpen();
+                document.body.classList.toggle('drawer-open', anyOpen);
+            }
+
+            function openDrawer() {
+                if (!sideDrawer || !drawerOverlay || !navMenuBtn) return;
+                sideDrawer.classList.add('open');
+                drawerOverlay.classList.add('open');
+                navMenuBtn.classList.add('active');
+                navMenuBtn.setAttribute('aria-expanded', 'true');
+                sideDrawer.setAttribute('aria-hidden', 'false');
+                syncScrollLock();
+            }
+
+            function closeDrawer() {
+                if (!sideDrawer || !drawerOverlay || !navMenuBtn) return;
+                sideDrawer.classList.remove('open');
+                drawerOverlay.classList.remove('open');
+                navMenuBtn.classList.remove('active');
+                navMenuBtn.setAttribute('aria-expanded', 'false');
+                sideDrawer.setAttribute('aria-hidden', 'true');
+                syncScrollLock();
+            }
+
+            function toggleDrawer() {
+                isDrawerOpen() ? closeDrawer() : openDrawer();
+            }
+
+            function openVideo() {
+                if (!videoModal) return;
+                closeArticle();
+                closeDrawer();
+                videoModal.classList.add('show');
+                videoModal.setAttribute('aria-hidden', 'false');
+                syncScrollLock();
+            }
+
+            function closeVideo() {
+                if (!videoModal) return;
+                videoModal.classList.remove('show');
+                videoModal.setAttribute('aria-hidden', 'true');
+                if (tutorialVideo) tutorialVideo.pause();
+                syncScrollLock();
+            }
+
+            function bindFaqEvents() {
+                const items = articleBody.querySelectorAll('.faq-item');
+                items.forEach((item) => {
+                    const q = item.querySelector('.faq-q');
+                    if (!q) return;
+                    q.addEventListener('click', () => {
+                        items.forEach((current) => {
+                            if (current !== item) current.classList.remove('active');
+                        });
+                        item.classList.toggle('active');
+                    });
+                });
+            }
+
+            function openArticle(type) {
+                if (!articleModal || !articleBody) return;
+                closeVideo();
+                closeDrawer();
+
+                const tpl = document.getElementById('tpl-' + type);
+                if (!tpl) return;
+
+                articleBody.innerHTML = tpl.innerHTML;
+                articleModal.classList.add('show');
+                articleModal.setAttribute('aria-hidden', 'false');
+                syncScrollLock();
+
+                if (type === 'faq') bindFaqEvents();
+            }
+
+            function closeArticle() {
+                if (!articleModal || !articleBody) return;
+                articleModal.classList.remove('show');
+                articleModal.setAttribute('aria-hidden', 'true');
+                articleBody.innerHTML = '';
+                syncScrollLock();
+            }
+
+            navMenuBtn && navMenuBtn.addEventListener('click', toggleDrawer);
+            drawerOverlay && drawerOverlay.addEventListener('click', closeDrawer);
+            drawerClose && drawerClose.addEventListener('click', closeDrawer);
+
+            drawerActions.forEach((btn) => {
+                btn.addEventListener('click', () => {
+                    const type = btn.getAttribute('data-article');
+                    openArticle(type);
                 });
             });
-        }
 
-        navMenuBtn && navMenuBtn.addEventListener('click', toggleDrawer);
-        drawerOverlay && drawerOverlay.addEventListener('click', closeDrawer);
-        drawerClose && drawerClose.addEventListener('click', closeDrawer);
+            videoBtn && videoBtn.addEventListener('click', openVideo);
+            videoClose && videoClose.addEventListener('click', closeVideo);
 
-        drawerActions && drawerActions.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const type = btn.getAttribute('data-article');
-                openArticle(type);
+            videoModal && videoModal.addEventListener('click', (e) => {
+                if (e.target === videoModal) closeVideo();
             });
-        });
 
-        videoBtn && videoBtn.addEventListener('click', openVideo);
-        videoClose && videoClose.addEventListener('click', closeVideo);
+            articleClose && articleClose.addEventListener('click', closeArticle);
+            articleModal && articleModal.addEventListener('click', (e) => {
+                if (e.target === articleModal) closeArticle();
+            });
 
-        videoModal && videoModal.addEventListener('click', (e) => {
-            if(e.target === videoModal) closeVideo();
-        });
+            articleBody && articleBody.addEventListener('click', (e) => {
+                const target = e.target.closest('.article-buy-link');
+                if (!target) return;
+                e.preventDefault();
+                closeArticle();
+                window.open(SHOP_URL, '_blank', 'noopener');
+            });
 
-        articleClose && articleClose.addEventListener('click', closeArticle);
-        articleModal && articleModal.addEventListener('click', (e) => {
-            if(e.target === articleModal) closeArticle();
-        });
+            document.addEventListener('keydown', (e) => {
+                if (e.key !== 'Escape') return;
+                if (isVideoOpen()) return closeVideo();
+                if (isArticleOpen()) return closeArticle();
+                if (isDrawerOpen()) return closeDrawer();
+            });
 
-        // Esc：优先关视频，其次关文章，再关抽屉
-        document.addEventListener('keydown', (e) => {
-            if(e.key !== 'Escape') return;
-            if(isVideoOpen()) return closeVideo();
-            if(isArticleOpen()) return closeArticle();
-            if(isDrawerOpen()) return closeDrawer();
-        });
-
-        // 防止点击抽屉内部导致误触
-        sideDrawer && sideDrawer.addEventListener('click', (e)=> e.stopPropagation());
-    })();;
+            sideDrawer && sideDrawer.addEventListener('click', (e) => e.stopPropagation());
+        })();
     </script>
 </body>
 </html>
