@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Plus 代充服务</title>
+    <meta name="description" content="简洁清晰的 ChatGPT Plus 代充服务页面，支持新客户首单、续费、视频教程与客服协助。">
+    <meta name="keywords" content="ChatGPT Plus, GPT Plus 代充, GPT 续费, GPT 新客户首单">
+
+    <style>
+        :root {
+            --bg: #081321;
+            --bg-2: #0c1b2d;
+            --panel: #ffffff;
+            --line: #e2e8f0;
+            --soft: #f8fafc;
+            --text: #0f172a;
+            --muted: #64748b;
+            --white: rgba(255, 255, 255, 0.94);
+            --white-soft: rgba(255, 255, 255, 0.7);
+            --brand: #2563eb;
+            --brand-dark: #1d4ed8;
+            --danger: #dc2626;
+            --shadow: 0 24px 48px rgba(2, 8, 23, 0.16);
+            --radius-xl: 28px;
+            --radius-lg: 22px;
+            --radius-md: 18px;
+            --radius-sm: 14px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Segoe UI", sans-serif;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent 24%),
+                linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font: inherit;
+        }
+
+        .container {
+            width: min(1160px, calc(100% - 32px));
+            margin: 0 auto;
+        }
+
+        .hero {
+            padding: 94px 0 34px;
+            text-align: center;
+        }
+
+        .hero-mark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 34px;
+            padding: 0 14px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--white-soft);
+            font-size: 13px;
+            letter-spacing: 0.08em;
+            backdrop-filter: blur(10px);
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            color: #ffffff;
+            font-size: clamp(2.1rem, 5vw, 3.5rem);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: 0 auto;
+            color: var(--white-soft);
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        .main-shell {
+            background: var(--panel);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .section {
+            padding: 42px 28px;
+        }
+
+        .section + .section {
+            border-top: 1px solid #edf2f7;
+        }
+
+        .section-head {
+            text-align: center;
+            margin-bottom: 26px;
+        }
+
+        .section-head h2 {
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.03em;
+            margin-bottom: 8px;
+        }
+
+        .section-head p {
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .goods-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+        .goods-card {
+            display: flex;
+            flex-direction: column;
+            min-height: 292px;
+            padding: 22px 20px 20px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--line);
+            background: #ffffff;
+            box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+        }
+
+        .goods-card:hover {
+            transform: translateY(-4px);
+            border-color: #cbd5e1;
+            box-shadow: 0 18px 36px rgba(15, 23, 42, 0.1);
+        }
+
+        .goods-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        .goods-badge {
+            display: inline-flex;
+            align-items: center;
+            min-height: 28px;
+            padding: 0 10px;
+            border-radius: 999px;
+            background: #eff6ff;
+            color: var(--brand-dark);
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .goods-note {
+            color: #94a3b8;
+            font-size: 12px;
+        }
+
+        .goods-title {
+            font-size: 22px;
+            line-height: 1.45;
+            color: var(--text);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 12px;
+        }
+
+        .goods-desc {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+            min-height: 52px;
+            margin-bottom: 18px;
+        }
+
+        .goods-price {
+            display: flex;
+            align-items: baseline;
+            gap: 6px;
+            margin-bottom: 18px;
+        }
+
+        .goods-price .currency,
+        .goods-price .unit {
+            color: var(--danger);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .goods-price .value {
+            color: var(--danger);
+            font-size: 35px;
+            line-height: 1;
+            font-weight: 800;
+            letter-spacing: -0.05em;
+        }
+
+        .goods-action {
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            border-radius: 14px;
+            background: #0f172a;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 700;
+            transition: background 0.2s ease;
+        }
+
+        .goods-card:hover .goods-action {
+            background: #111f35;
+        }
+
+        .goods-foot {
+            text-align: center;
+            margin-top: 14px;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .proof-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 18px;
+            border: 1px solid var(--line);
+            background: var(--soft);
+            aspect-ratio: 4 / 5;
+            cursor: zoom-in;
+            box-shadow: 0 12px 26px rgba(15, 23, 42, 0.06);
+        }
+
+        .proof-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.24s ease;
+        }
+
+        .proof-card:hover img {
+            transform: scale(1.02);
+        }
+
+        .proof-note {
+            text-align: center;
+            margin-top: 14px;
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 14px;
+        }
+
+        .service-item {
+            padding: 18px 16px;
+            border-radius: 18px;
+            border: 1px solid var(--line);
+            background: var(--soft);
+        }
+
+        .service-item h3 {
+            color: var(--text);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .service-item p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .fixed-contact-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1100;
+            width: 62px;
+            height: 62px;
+            border: 0;
+            border-radius: 50%;
+            background: #ffffff;
+            box-shadow: 0 16px 30px rgba(15, 23, 42, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .fixed-contact-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .fixed-contact-btn img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .top-left-nav-btn,
+        .top-right-video-btn {
+            position: fixed;
+            top: calc(16px + env(safe-area-inset-top));
+            z-index: 1200;
+            min-height: 44px;
+            padding: 0 14px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.08);
+            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 700;
+            backdrop-filter: blur(12px);
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .top-left-nav-btn:hover,
+        .top-right-video-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .top-left-nav-btn {
+            left: calc(16px + env(safe-area-inset-left));
+        }
+
+        .top-right-video-btn {
+            right: calc(16px + env(safe-area-inset-right));
+        }
+
+        .nav-hamburger {
+            width: 18px;
+            height: 14px;
+            display: inline-flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.94);
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+
+        .top-left-nav-btn.active .nav-hamburger span:nth-child(1) {
+            transform: translateY(6px) rotate(45deg);
+        }
+
+        .top-left-nav-btn.active .nav-hamburger span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .top-left-nav-btn.active .nav-hamburger span:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
+        .drawer-overlay,
+        .image-modal-overlay,
+        .video-modal-overlay,
+        .article-modal-overlay,
+        .notice-modal-overlay {
+            position: fixed;
+            inset: 0;
+        }
+
+        .drawer-overlay {
+            z-index: 1180;
+            background: rgba(2, 6, 23, 0.42);
+            backdrop-filter: blur(2px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .drawer-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .side-drawer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1190;
+            width: min(320px, 86vw);
+            height: 100vh;
+            padding: calc(18px + env(safe-area-inset-top)) 16px 18px;
+            background: rgba(10, 19, 33, 0.96);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(16px);
+            transform: translateX(-105%);
+            transition: transform 0.24s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .side-drawer.open {
+            transform: translateX(0);
+        }
+
+        .drawer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 6px 4px 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .drawer-title {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .drawer-close {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.06);
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .drawer-item {
+            width: 100%;
+            min-height: 48px;
+            padding: 0 14px;
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.92);
+            font-size: 14px;
+            font-weight: 600;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.18s ease;
+        }
+
+        .drawer-item:hover {
+            background: rgba(255, 255, 255, 0.09);
+        }
+
+        .drawer-footer {
+            margin-top: auto;
+            padding-top: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            color: rgba(255, 255, 255, 0.56);
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .image-modal-overlay,
+        .video-modal-overlay,
+        .article-modal-overlay,
+        .notice-modal-overlay {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .image-modal-overlay.show,
+        .video-modal-overlay.show,
+        .article-modal-overlay.show,
+        .notice-modal-overlay.show {
+            display: flex;
+        }
+
+        .image-modal-overlay,
+        .video-modal-overlay,
+        .article-modal-overlay,
+        .notice-modal-overlay {
+            z-index: 1300;
+            background: rgba(2, 6, 23, 0.76);
+            backdrop-filter: blur(4px);
+        }
+
+        .image-modal-content,
+        .video-modal-content,
+        .article-modal-content,
+        .notice-modal-content {
+            position: relative;
+            width: min(920px, 96vw);
+            background: #ffffff;
+            border-radius: 22px;
+            box-shadow: 0 30px 80px rgba(2, 6, 23, 0.24);
+            overflow: hidden;
+        }
+
+        .image-modal-content {
+            width: min(560px, 94vw);
+        }
+
+        .image-modal-close,
+        .video-modal-close,
+        .article-modal-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 38px;
+            height: 38px;
+            border: 0;
+            border-radius: 12px;
+            background: rgba(15, 23, 42, 0.72);
+            color: #ffffff;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .image-modal-card img {
+            display: block;
+            width: 100%;
+            max-height: 78vh;
+            object-fit: contain;
+            background: var(--soft);
+        }
+
+        .image-modal-meta {
+            padding: 16px 18px 18px;
+        }
+
+        .image-modal-title {
+            color: var(--text);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .image-modal-desc {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .video-modal-content {
+            background: #0f172a;
+            padding: 18px;
+        }
+
+        .video-modal-title {
+            color: #ffffff;
+            text-align: center;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 14px;
+        }
+
+        #tutorialVideo {
+            width: 100%;
+            max-height: 72vh;
+            display: block;
+            border-radius: 16px;
+            background: #000000;
+        }
+
+        .video-fallback-link {
+            display: block;
+            text-align: center;
+            margin-top: 12px;
+            color: rgba(255, 255, 255, 0.76);
+            font-size: 14px;
+        }
+
+        .video-key-cta {
+            margin-top: 16px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .cta-primary {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 42px;
+            padding: 0 16px;
+            border-radius: 12px;
+            background: #ffffff;
+            color: #0f172a;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .article-modal-content,
+        .notice-modal-content {
+            max-height: 86vh;
+        }
+
+        .article-modal-body,
+        .notice-modal-body {
+            padding: 46px 24px 26px;
+            overflow-y: auto;
+            max-height: 86vh;
+        }
+
+        .article-modal-body h1 {
+            text-align: center;
+            font-size: 28px;
+            color: var(--text);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .article-modal-body h2 {
+            margin: 22px 0 10px;
+            color: var(--brand-dark);
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .article-modal-body h3 {
+            margin: 18px 0 8px;
+            color: var(--text);
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .article-modal-body p,
+        .article-modal-body li {
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.85;
+        }
+
+        .article-modal-body ul {
+            margin-left: 18px;
+        }
+
+        .article-modal-body pre {
+            margin-top: 12px;
+            padding: 14px;
+            border-radius: 14px;
+            background: #0f172a;
+            color: #e2e8f0;
+            white-space: pre-wrap;
+            word-break: break-word;
+            overflow-x: auto;
+        }
+
+        .article-note,
+        .article-box,
+        .faq-item,
+        .compare-card {
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            background: var(--soft);
+        }
+
+        .article-box,
+        .compare-card {
+            padding: 14px;
+        }
+
+        .article-note {
+            margin-top: 16px;
+            padding: 12px 14px;
+            color: #1e3a8a;
+        }
+
+        .compare-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+            margin-top: 12px;
+        }
+
+        .faq-item {
+            margin-top: 12px;
+            overflow: hidden;
+        }
+
+        .faq-q {
+            min-height: 52px;
+            padding: 0 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            color: var(--text);
+            font-weight: 700;
+        }
+
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 14px;
+            transition: max-height 0.22s ease, padding 0.22s ease;
+        }
+
+        .faq-item.active .faq-a {
+            max-height: 320px;
+            padding: 0 14px 14px;
+        }
+
+        .faq-icon {
+            color: var(--muted);
+            transition: transform 0.2s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .article-cta {
+            margin-top: 18px;
+            text-align: center;
+        }
+
+        .notice-modal-title {
+            text-align: center;
+            font-size: 24px;
+            color: var(--text);
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .notice-modal-text {
+            color: #475569;
+            font-size: 15px;
+            line-height: 1.9;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        body.drawer-open {
+            overflow: hidden;
+        }
+
+        @media (max-width: 1100px) {
+            .goods-grid,
+            .service-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 760px) {
+            .container {
+                width: min(100% - 20px, 1160px);
+            }
+
+            .hero {
+                padding: 82px 0 26px;
+            }
+
+            .section {
+                padding: 28px 16px;
+            }
+
+            .goods-grid,
+            .proof-grid,
+            .service-grid,
+            .compare-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .goods-card {
+                min-height: auto;
+            }
+
+            .top-right-video-btn span:last-child {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="hero">
+            <div class="hero-mark">CHONGZHI.CHAT</div>
+            <h1>ChatGPT Plus 代充服务</h1>
+            <p>请选择对应商品后进入下一步购买。新客户首单 149 元，已有会员请选择续费。</p>
+        </header>
+
+        <main class="main-shell">
+            <section class="section">
+                <div class="section-head">
+                    <h2>商品种类</h2>
+                </div>
+
+                <div class="goods-grid">
+                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" rel="noopener" class="goods-card" data-shop-link>
+                        <div class="goods-top">
+                            <span class="goods-badge">推荐</span>
+                            <span class="goods-note">新客户</span>
+                        </div>
+                        <h3 class="goods-title">GPT Plus 新客户首单</h3>
+                        <p class="goods-desc">适合新客户首单购买，确认需求后直接进入下一步。</p>
+                        <div class="goods-price">
+                            <span class="currency">¥</span>
+                            <span class="value">149</span>
+                            <span class="unit">元</span>
+                        </div>
+                        <div class="goods-action">进入下一步购买</div>
+                    </a>
+
+                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" rel="noopener" class="goods-card" data-shop-link>
+                        <div class="goods-top">
+                            <span class="goods-badge">常用</span>
+                            <span class="goods-note">老用户</span>
+                        </div>
+                        <h3 class="goods-title">GPT Plus 续费</h3>
+                        <p class="goods-desc">适合已有会员继续续费，点击后按页面提示继续操作即可。</p>
+                        <div class="goods-price">
+                            <span class="currency">¥</span>
+                            <span class="value">169</span>
+                            <span class="unit">元</span>
+                        </div>
+                        <div class="goods-action">进入下一步购买</div>
+                    </a>
+
+                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" rel="noopener" class="goods-card" data-shop-link>
+                        <div class="goods-top">
+                            <span class="goods-badge">代码 / 长文档</span>
+                            <span class="goods-note">Claude</span>
+                        </div>
+                        <h3 class="goods-title">Claude Pro 官方会员</h3>
+                        <p class="goods-desc">适合代码协作、长文档处理、写作整理等场景。</p>
+                        <div class="goods-price">
+                            <span class="currency">¥</span>
+                            <span class="value">169</span>
+                            <span class="unit">元</span>
+                        </div>
+                        <div class="goods-action">进入下一步购买</div>
+                    </a>
+
+                    <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" rel="noopener" class="goods-card" data-shop-link>
+                        <div class="goods-top">
+                            <span class="goods-badge">实时 / 热点</span>
+                            <span class="goods-note">Grok</span>
+                        </div>
+                        <h3 class="goods-title">Grok 4.2 官方会员</h3>
+                        <p class="goods-desc">适合热点跟进、资讯整理、快速观点梳理等需求。</p>
+                        <div class="goods-price">
+                            <span class="currency">¥</span>
+                            <span class="value">180</span>
+                            <span class="unit">元</span>
+                        </div>
+                        <div class="goods-action">进入下一步购买</div>
+                    </a>
+                </div>
+
+                <div class="goods-foot">点击任意商品卡片即可进入对应购买页面。</div>
+            </section>
+
+            <section class="section">
+                <div class="section-head">
+                    <h2>真实成交截图</h2>
+                    <p>支持最多 6 张，放在当前页面同级目录即可直接显示。</p>
+                </div>
+
+                <div class="proof-grid">
+                    <div class="proof-card"><img src="./成交截图1.jpg" alt="成交截图1" loading="lazy" data-proof-title="成交截图 1"></div>
+                    <div class="proof-card"><img src="./成交截图2.jpg" alt="成交截图2" loading="lazy" data-proof-title="成交截图 2"></div>
+                    <div class="proof-card"><img src="./成交截图3.jpg" alt="成交截图3" loading="lazy" data-proof-title="成交截图 3"></div>
+                    <div class="proof-card"><img src="./成交截图4.jpg" alt="成交截图4" loading="lazy" data-proof-title="成交截图 4"></div>
+                    <div class="proof-card"><img src="./成交截图5.jpg" alt="成交截图5" loading="lazy" data-proof-title="成交截图 5"></div>
+                    <div class="proof-card"><img src="./成交截图6.jpg" alt="成交截图6" loading="lazy" data-proof-title="成交截图 6"></div>
+                </div>
+
+                <div class="proof-note">如果图片仍不显示，请确认你打开的是当前这个 `index.html`，并且图片文件和它在同一目录。</div>
+            </section>
+
+            <section class="section">
+                <div class="section-head">
+                    <h2>服务说明</h2>
+                </div>
+
+                <div class="service-grid">
+                    <div class="service-item">
+                        <h3>商品卡片即入口</h3>
+                        <p>不再额外增加购买说明模块，点卡片即可进入下一步。</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>视频教程可看</h3>
+                        <p>右上角可直接查看视频教程，适合先看后操作。</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>客服可直接联系</h3>
+                        <p>右下角悬浮按钮可打开客服二维码，遇到问题更方便。</p>
+                    </div>
+                    <div class="service-item">
+                        <h3>公告单独展示</h3>
+                        <p>如有临时通知，会通过公告弹窗展示，不影响主页面结构。</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <button class="top-left-nav-btn" id="navMenuBtn" type="button" aria-label="打开导航菜单" aria-expanded="false">
+        <span class="nav-hamburger" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <span>菜单</span>
+    </button>
+
+    <button class="top-right-video-btn" id="videoBtn" type="button" aria-label="打开视频教程">
+        <span>视频教程</span>
+    </button>
+
+    <div class="drawer-overlay" id="drawerOverlay"></div>
+
+    <aside class="side-drawer" id="sideDrawer" aria-hidden="true">
+        <div class="drawer-header">
+            <div class="drawer-title">导航菜单</div>
+            <button class="drawer-close" id="drawerClose" type="button" aria-label="关闭菜单">×</button>
+        </div>
+
+        <a class="drawer-item" href="https://chongzhi.chat/" target="_self">充值主页</a>
+        <button type="button" class="drawer-item drawer-action" data-article="guide">ChatGPT 使用指南</button>
+        <button type="button" class="drawer-item drawer-action" data-article="compare">Plus 与 Pro 对比</button>
+        <button type="button" class="drawer-item drawer-action" data-article="faq">常见问题解答</button>
+        <button type="button" class="drawer-item drawer-action" data-article="claude">Claude Pro 使用指南</button>
+        <button type="button" class="drawer-item drawer-action" data-article="grok">Grok 使用指南</button>
+
+        <div class="drawer-footer">
+            右上角可查看视频教程。<br>
+            右下角可直接联系人工客服。<br>
+            域名：chongzhi.chat
+        </div>
+    </aside>
+
+    <div class="video-modal-overlay" id="videoModal" aria-hidden="true">
+        <div class="video-modal-content" role="dialog" aria-modal="true" aria-label="视频教程">
+            <button class="video-modal-close" id="videoClose" type="button" aria-label="关闭视频">×</button>
+            <div class="video-modal-title">视频教程</div>
+            <video id="tutorialVideo" controls playsinline preload="metadata">
+                <source src="./视频教程.mp4" type="video/mp4">
+                您的浏览器不支持视频播放。<a href="./视频教程.mp4" target="_blank" rel="noopener">点此打开视频</a>
+            </video>
+            <a class="video-fallback-link" href="./视频教程.mp4" target="_blank" rel="noopener">无法播放时，可在新窗口打开</a>
+
+            <div class="video-key-cta">
+                <a class="cta-primary" href="https://www.chatgpt.com" target="_blank" rel="noopener">登录 GPT 账号</a>
+                <a class="cta-primary" href="https://chatgpt.com/api/auth/session" target="_blank" rel="noopener">获取充值密钥</a>
+                <a class="cta-primary" href="https://gcn6188hiuwm.feishu.cn/wiki/XCeCwqkOHiRBzLkw3c6cQSugnuc?from=from_copylink" target="_blank" rel="noopener">查看详细文档</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="article-modal-overlay" id="articleModal" aria-hidden="true">
+        <div class="article-modal-content" role="dialog" aria-modal="true" aria-label="内容说明">
+            <button class="article-modal-close" id="articleClose" type="button" aria-label="关闭内容">×</button>
+            <div class="article-modal-body" id="articleBody"></div>
+        </div>
+    </div>
+
+    <div class="notice-modal-overlay" id="noticeModal" aria-hidden="true">
+        <div class="notice-modal-content" role="dialog" aria-modal="true" aria-label="网站公告">
+            <div class="notice-modal-body">
+                <div class="notice-modal-title">网站公告</div>
+                <div class="notice-modal-text" id="noticeText">公告加载中...</div>
+            </div>
+        </div>
+    </div>
+
+    <template id="tpl-guide">
+        <h1>ChatGPT 使用指南</h1>
+        <p>使用时把需求说清楚，通常会比堆很多话更有效。目标、限制、素材、输出格式，越明确越稳定。</p>
+
+        <h2>建议写法</h2>
+        <div class="article-box">
+            <p>角色：你希望它以什么身份来回答。</p>
+            <p>任务：你具体想让它完成什么目标。</p>
+            <p>输入：这是你已有的资料或上下文。</p>
+            <p>输出：请按什么格式、语气、长度输出。</p>
+        </div>
+
+        <h2>常见用法</h2>
+        <ul>
+            <li>写作：先列提纲，再逐段展开，再统一润色。</li>
+            <li>办公：把会议纪要整理成待办、负责人和风险点。</li>
+            <li>学习：按你的水平解释，再配练习题和答案。</li>
+            <li>代码：贴报错、关键代码和你的预期行为。</li>
+        </ul>
+
+        <div class="article-cta">
+            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>进入购买</a>
+        </div>
+    </template>
+
+    <template id="tpl-compare">
+        <h1>Plus 与 Pro 对比</h1>
+        <p>先看你的实际用途，不用只看名称。</p>
+
+        <div class="compare-grid">
+            <div class="compare-card">
+                <h3>ChatGPT Plus</h3>
+                <p>更适合大多数用户，日常写作、办公、学习、通用问答都比较合适。</p>
+            </div>
+            <div class="compare-card">
+                <h3>更高阶方案</h3>
+                <p>更适合重度用户，通常更看重额度、能力范围和长期使用效率。</p>
+            </div>
+        </div>
+
+        <h2>选择建议</h2>
+        <ul>
+            <li>通用需求优先看 Plus。</li>
+            <li>高频重度使用，再考虑更高阶方案。</li>
+            <li>代码、长文档、实时信息类场景，可以按产品特点分别选择。</li>
+        </ul>
+
+        <div class="article-cta">
+            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>进入购买</a>
+        </div>
+    </template>
+
+    <template id="tpl-faq">
+        <h1>常见问题解答</h1>
+
+        <div class="faq-item">
+            <div class="faq-q">购买后一般多久处理？ <span class="faq-icon">▼</span></div>
+            <div class="faq-a">
+                <p>多数情况下处理较快。若遇到高峰期或特殊情况，建议先查看视频教程，再联系客服协助确认。</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">不会操作怎么办？ <span class="faq-icon">▼</span></div>
+            <div class="faq-a">
+                <p>可先看右上角视频教程；如果仍不清楚，直接联系右下角客服即可。</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">如果有问题怎么处理？ <span class="faq-icon">▼</span></div>
+            <div class="faq-a">
+                <p>可提供订单信息和具体情况，方便客服快速协助处理。</p>
+            </div>
+        </div>
+
+        <div class="article-cta">
+            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>进入购买</a>
+        </div>
+    </template>
+
+    <template id="tpl-claude">
+        <h1>Claude Pro 使用指南</h1>
+        <p>Claude 更适合长文档理解、写作整理、代码协作和需求拆解等场景。</p>
+
+        <h2>适合哪些人</h2>
+        <ul>
+            <li>程序员：读代码、改 Bug、写测试、做重构建议。</li>
+            <li>写作者：长文整理、改写润色、结构梳理。</li>
+            <li>产品或项目角色：PRD、总结、方案评审、风险清单。</li>
+        </ul>
+
+        <h2>提示词示例</h2>
+        <pre><code>你是资深工程师，请先复述我的需求，再给出 3 套实现方案（优缺点、复杂度、风险、测试点）。</code></pre>
+
+        <div class="article-cta">
+            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>进入购买</a>
+        </div>
+    </template>
+
+    <template id="tpl-grok">
+        <h1>Grok 使用指南</h1>
+        <p>Grok 更适合热点整理、资讯跟进、观点碰撞和实时感较强的使用需求。</p>
+
+        <h2>适合哪些场景</h2>
+        <ul>
+            <li>热点事件拆解和时间线整理。</li>
+            <li>正反观点对照和论点梳理。</li>
+            <li>内容创作选题、标题和脚本方向整理。</li>
+        </ul>
+
+        <h2>提示词示例</h2>
+        <pre><code>请把这个热点按：事件经过、核心争议、各方观点、可能走向、我该怎么看 进行结构化整理。</code></pre>
+
+        <div class="article-cta">
+            <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" class="cta-primary article-buy-link" target="_blank" rel="noopener" data-shop-link>进入购买</a>
+        </div>
+    </template>
+
+    <button class="fixed-contact-btn" id="fixedContactBtn" type="button" aria-label="联系客服">
+        <img src="./企业微信.jpg" alt="联系客服">
+    </button>
+
+    <div class="image-modal-overlay" id="imageModal" aria-hidden="true">
+        <div class="image-modal-content" role="dialog" aria-modal="true" aria-label="图片预览">
+            <button class="image-modal-close" id="imageModalClose" type="button" aria-label="关闭图片">×</button>
+            <div class="image-modal-card">
+                <img id="imageModalTarget" src="./企业微信.jpg" alt="预览图片">
+                <div class="image-modal-meta">
+                    <div class="image-modal-title" id="imageModalTitle">图片预览</div>
+                    <div class="image-modal-desc" id="imageModalDesc"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const SHOP_URL = "https://fe.dtyuedan.cn/shop/VA3AB5CB";
+
+        (function () {
+            const shopLinks = document.querySelectorAll("[data-shop-link]");
+
+            shopLinks.forEach((link) => {
+                link.setAttribute("href", SHOP_URL);
+                if (link.getAttribute("target") === "_blank") {
+                    link.setAttribute("rel", "noopener");
+                }
+            });
+        })();
+
+        (function () {
+            const fixedContactBtn = document.getElementById("fixedContactBtn");
+            const imageModal = document.getElementById("imageModal");
+            const imageModalClose = document.getElementById("imageModalClose");
+            const imageModalTarget = document.getElementById("imageModalTarget");
+            const imageModalTitle = document.getElementById("imageModalTitle");
+            const imageModalDesc = document.getElementById("imageModalDesc");
+            const proofImages = document.querySelectorAll(".proof-card img");
+
+            function openImageModal(src, title, desc) {
+                imageModalTarget.src = src;
+                imageModalTitle.textContent = title || "图片预览";
+                imageModalDesc.textContent = desc || "";
+                imageModal.classList.add("show");
+                imageModal.setAttribute("aria-hidden", "false");
+                document.body.classList.add("drawer-open");
+            }
+
+            function closeImageModal() {
+                imageModal.classList.remove("show");
+                imageModal.setAttribute("aria-hidden", "true");
+                document.body.classList.remove("drawer-open");
+            }
+
+            fixedContactBtn && fixedContactBtn.addEventListener("click", () => {
+                openImageModal("./企业微信.jpg", "联系客服", "微信：jg-3355    QQ：552309781");
+            });
+
+            imageModalClose && imageModalClose.addEventListener("click", closeImageModal);
+
+            imageModal && imageModal.addEventListener("click", (e) => {
+                if (e.target === imageModal) closeImageModal();
+            });
+
+            proofImages.forEach((img, index) => {
+                img.addEventListener("click", () => {
+                    const title = img.getAttribute("data-proof-title") || ("成交截图 " + (index + 1));
+                    openImageModal(img.currentSrc || img.src, title, "");
+                });
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeImageModal();
+            });
+        })();
+
+        (function () {
+            const noticeModal = document.getElementById("noticeModal");
+            const noticeText = document.getElementById("noticeText");
+
+            function closeNotice() {
+                if (!noticeModal) return;
+                noticeModal.classList.remove("show");
+                noticeModal.setAttribute("aria-hidden", "true");
+                document.body.classList.remove("drawer-open");
+            }
+
+            async function loadNotice() {
+                if (!noticeModal || !noticeText) return;
+
+                try {
+                    const response = await fetch("./公告.txt", { cache: "no-store" });
+                    if (!response.ok) throw new Error("notice load failed");
+
+                    const text = (await response.text()).trim();
+                    if (!text) return;
+
+                    noticeText.textContent = text;
+                    noticeModal.classList.add("show");
+                    noticeModal.setAttribute("aria-hidden", "false");
+                    document.body.classList.add("drawer-open");
+                } catch (error) {
+                    console.warn("公告加载失败:", error);
+                }
+            }
+
+            noticeModal && noticeModal.addEventListener("click", closeNotice);
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape") closeNotice();
+            });
+
+            loadNotice();
+        })();
+
+        (function () {
+            const navMenuBtn = document.getElementById("navMenuBtn");
+            const sideDrawer = document.getElementById("sideDrawer");
+            const drawerOverlay = document.getElementById("drawerOverlay");
+            const drawerClose = document.getElementById("drawerClose");
+            const drawerActions = document.querySelectorAll(".drawer-action");
+
+            const videoBtn = document.getElementById("videoBtn");
+            const videoModal = document.getElementById("videoModal");
+            const videoClose = document.getElementById("videoClose");
+            const tutorialVideo = document.getElementById("tutorialVideo");
+
+            const articleModal = document.getElementById("articleModal");
+            const articleClose = document.getElementById("articleClose");
+            const articleBody = document.getElementById("articleBody");
+
+            function isDrawerOpen() {
+                return !!(sideDrawer && sideDrawer.classList.contains("open"));
+            }
+
+            function isVideoOpen() {
+                return !!(videoModal && videoModal.classList.contains("show"));
+            }
+
+            function isArticleOpen() {
+                return !!(articleModal && articleModal.classList.contains("show"));
+            }
+
+            function syncScrollLock() {
+                const hasModalOpen = isDrawerOpen() || isVideoOpen() || isArticleOpen();
+                document.body.classList.toggle("drawer-open", hasModalOpen);
+            }
+
+            function openDrawer() {
+                if (!sideDrawer || !drawerOverlay || !navMenuBtn) return;
+                sideDrawer.classList.add("open");
+                drawerOverlay.classList.add("open");
+                navMenuBtn.classList.add("active");
+                navMenuBtn.setAttribute("aria-expanded", "true");
+                sideDrawer.setAttribute("aria-hidden", "false");
+                syncScrollLock();
+            }
+
+            function closeDrawer() {
+                if (!sideDrawer || !drawerOverlay || !navMenuBtn) return;
+                sideDrawer.classList.remove("open");
+                drawerOverlay.classList.remove("open");
+                navMenuBtn.classList.remove("active");
+                navMenuBtn.setAttribute("aria-expanded", "false");
+                sideDrawer.setAttribute("aria-hidden", "true");
+                syncScrollLock();
+            }
+
+            function toggleDrawer() {
+                isDrawerOpen() ? closeDrawer() : openDrawer();
+            }
+
+            function openVideo() {
+                if (!videoModal) return;
+                closeArticle();
+                closeDrawer();
+                videoModal.classList.add("show");
+                videoModal.setAttribute("aria-hidden", "false");
+                syncScrollLock();
+            }
+
+            function closeVideo() {
+                if (!videoModal) return;
+                videoModal.classList.remove("show");
+                videoModal.setAttribute("aria-hidden", "true");
+                if (tutorialVideo) tutorialVideo.pause();
+                syncScrollLock();
+            }
+
+            function bindFaqEvents() {
+                const items = articleBody.querySelectorAll(".faq-item");
+                items.forEach((item) => {
+                    const q = item.querySelector(".faq-q");
+                    if (!q) return;
+                    q.addEventListener("click", () => {
+                        items.forEach((current) => {
+                            if (current !== item) current.classList.remove("active");
+                        });
+                        item.classList.toggle("active");
+                    });
+                });
+            }
+
+            function openArticle(type) {
+                if (!articleModal || !articleBody) return;
+
+                closeVideo();
+                closeDrawer();
+
+                const tpl = document.getElementById("tpl-" + type);
+                if (!tpl) return;
+
+                articleBody.innerHTML = tpl.innerHTML;
+                articleModal.classList.add("show");
+                articleModal.setAttribute("aria-hidden", "false");
+
+                if (type === "faq") bindFaqEvents();
+                syncScrollLock();
+            }
+
+            function closeArticle() {
+                if (!articleModal || !articleBody) return;
+                articleModal.classList.remove("show");
+                articleModal.setAttribute("aria-hidden", "true");
+                articleBody.innerHTML = "";
+                syncScrollLock();
+            }
+
+            navMenuBtn && navMenuBtn.addEventListener("click", toggleDrawer);
+            drawerOverlay && drawerOverlay.addEventListener("click", closeDrawer);
+            drawerClose && drawerClose.addEventListener("click", closeDrawer);
+
+            drawerActions.forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const type = btn.getAttribute("data-article");
+                    openArticle(type);
+                });
+            });
+
+            videoBtn && videoBtn.addEventListener("click", openVideo);
+            videoClose && videoClose.addEventListener("click", closeVideo);
+
+            videoModal && videoModal.addEventListener("click", (e) => {
+                if (e.target === videoModal) closeVideo();
+            });
+
+            articleClose && articleClose.addEventListener("click", closeArticle);
+            articleModal && articleModal.addEventListener("click", (e) => {
+                if (e.target === articleModal) closeArticle();
+            });
+
+            articleBody && articleBody.addEventListener("click", (e) => {
+                const target = e.target.closest(".article-buy-link");
+                if (!target) return;
+                e.preventDefault();
+                closeArticle();
+                window.open(SHOP_URL, "_blank", "noopener");
+            });
+
+            document.addEventListener("keydown", (e) => {
+                if (e.key !== "Escape") return;
+                if (isVideoOpen()) return closeVideo();
+                if (isArticleOpen()) return closeArticle();
+                if (isDrawerOpen()) return closeDrawer();
+            });
+        })();
+    </script>
+</body>
+</html>
