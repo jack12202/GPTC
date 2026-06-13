@@ -309,6 +309,58 @@
             line-height: 1.8;
         }
 
+        .purchase-toast {
+            position: fixed;
+            left: 20px;
+            bottom: 20px;
+            z-index: 1090;
+            width: min(340px, calc(100vw - 40px));
+            padding: 13px 15px;
+            border: 1px solid rgba(226, 232, 240, 0.82);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.94);
+            box-shadow: 0 18px 38px rgba(15, 23, 42, 0.16);
+            backdrop-filter: blur(12px);
+            transform: translateY(18px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.28s ease, transform 0.28s ease;
+        }
+
+        .purchase-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .purchase-toast-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #64748b;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .purchase-toast-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #22c55e;
+            box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.12);
+        }
+
+        .purchase-toast-text {
+            color: var(--text);
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 700;
+        }
+
+        .purchase-toast-product {
+            color: var(--brand-dark);
+        }
+
         .fixed-contact-btn {
             position: fixed;
             right: 20px;
@@ -812,8 +864,24 @@
                 min-height: auto;
             }
 
-            .top-right-video-btn span:last-child {
-                display: none;
+            .top-left-nav-btn,
+            .top-right-video-btn {
+                min-height: 42px;
+                padding: 0 12px;
+                font-size: 13px;
+            }
+
+            .purchase-toast {
+                left: 12px;
+                right: 88px;
+                bottom: calc(20px + env(safe-area-inset-bottom));
+                width: auto;
+                padding: 11px 12px;
+                border-radius: 14px;
+            }
+
+            .purchase-toast-text {
+                font-size: 13px;
             }
         }
     </style>
@@ -823,7 +891,7 @@
         <header class="hero">
             <div class="hero-mark">CHONGZHI.CHAT</div>
             <h1>ChatGPT Plus 代充服务</h1>
-            <p>请选择对应商品后进入下一步购买。新客户首单 149 元，已有会员请选择续费。</p>
+            <p>179 无需密码，人工代付</p>
         </header>
 
         <main class="main-shell">
@@ -838,11 +906,11 @@
                             <span class="goods-badge">推荐</span>
                             <span class="goods-note">新客户</span>
                         </div>
-                        <h3 class="goods-title">GPT Plus 新客户首单</h3>
+                        <h3 class="goods-title">GPT以及Codex Plus</h3>
                         <p class="goods-desc">适合新客户首单购买，确认需求后直接进入下一步。</p>
                         <div class="goods-price">
                             <span class="currency">¥</span>
-                            <span class="value">149</span>
+                            <span class="value">179</span>
                             <span class="unit">元</span>
                         </div>
                         <div class="goods-action">进入下一步购买</div>
@@ -851,13 +919,13 @@
                     <a href="https://fe.dtyuedan.cn/shop/VA3AB5CB" target="_blank" rel="noopener" class="goods-card" data-shop-link>
                         <div class="goods-top">
                             <span class="goods-badge">常用</span>
-                            <span class="goods-note">老用户</span>
+                            <span class="goods-note"></span>
                         </div>
-                        <h3 class="goods-title">GPT Plus 续费</h3>
-                        <p class="goods-desc">适合已有会员继续续费，点击后按页面提示继续操作即可。</p>
+                        <h3 class="goods-title">GPT Pro</h3>
+                        <p class="goods-desc">对应官网100刀/200刀</p>
                         <div class="goods-price">
                             <span class="currency">¥</span>
-                            <span class="value">169</span>
+                            <span class="value">880</span>
                             <span class="unit">元</span>
                         </div>
                         <div class="goods-action">进入下一步购买</div>
@@ -900,6 +968,7 @@
             <section class="section">
                 <div class="section-head">
                     <h2>真实成交截图</h2>
+                    <p>支持最多 6 张，放在当前页面同级目录即可直接显示。</p>
                 </div>
 
                 <div class="proof-grid">
@@ -933,12 +1002,20 @@
                         <p>右下角悬浮按钮可打开客服二维码，遇到问题更方便。</p>
                     </div>
                     <div class="service-item">
-                        <h3>可开发票</h3>
-                        <p>联系客服，咨询相关类目是否能报销</p>
+                        <h3>公告单独展示</h3>
+                        <p>如有临时通知，会通过公告弹窗展示，不影响主页面结构。</p>
                     </div>
                 </div>
             </section>
         </main>
+    </div>
+
+    <div class="purchase-toast" id="purchaseToast" aria-live="polite" aria-hidden="true">
+        <div class="purchase-toast-label">
+            <span class="purchase-toast-dot" aria-hidden="true"></span>
+            <span>最近成交</span>
+        </div>
+        <div class="purchase-toast-text" id="purchaseToastText"></div>
     </div>
 
     <button class="top-left-nav-btn" id="navMenuBtn" type="button" aria-label="打开导航菜单" aria-expanded="false">
@@ -1150,6 +1227,109 @@
         const SHOP_URL = "https://fe.dtyuedan.cn/shop/VA3AB5CB";
 
         (function () {
+            const toast = document.getElementById("purchaseToast");
+            const toastText = document.getElementById("purchaseToastText");
+
+            if (!toast || !toastText) return;
+
+            const purchases = [
+                ["131****4563", "GPT Plus"],
+                ["152****8821", "ChatGPT Pro"],
+                ["188****2047", "Claude Pro"],
+                ["176****5930", "Grok 4.2"],
+                ["135****7619", "GPT Plus"],
+                ["189****0362", "ChatGPT Pro"],
+                ["166****7284", "Claude Pro"],
+                ["157****4906", "GPT Plus"],
+                ["138****2158", "Grok 4.2"],
+                ["173****6841", "GPT Plus"],
+                ["199****3470", "ChatGPT Pro"],
+                ["181****9026", "Claude Pro"],
+                ["132****5718", "GPT Plus"],
+                ["186****4093", "Grok 4.2"],
+                ["155****8260", "GPT Plus"],
+                ["177****1348", "ChatGPT Pro"],
+                ["139****6085", "Claude Pro"],
+                ["158****2974", "GPT Plus"],
+                ["180****7359", "Grok 4.2"],
+                ["136****4827", "GPT Plus"],
+                ["198****6195", "ChatGPT Pro"],
+                ["150****2741", "Claude Pro"],
+                ["178****9506", "GPT Plus"],
+                ["133****8052", "Grok 4.2"],
+                ["187****3186", "GPT Plus"],
+                ["159****6420", "ChatGPT Pro"],
+                ["171****5069", "Claude Pro"],
+                ["137****0934", "GPT Plus"],
+                ["191****7258", "Grok 4.2"],
+                ["151****3867", "GPT Plus"],
+                ["185****9724", "ChatGPT Pro"],
+                ["134****6501", "Claude Pro"],
+                ["175****2197", "GPT Plus"],
+                ["188****5472", "Grok 4.2"],
+                ["156****8039", "GPT Plus"],
+                ["193****4615", "ChatGPT Pro"],
+                ["130****7296", "Claude Pro"],
+                ["182****0568", "GPT Plus"],
+                ["147****3841", "Grok 4.2"],
+                ["165****9180", "GPT Plus"],
+                ["190****2375", "ChatGPT Pro"],
+                ["153****6048", "Claude Pro"],
+                ["172****8493", "GPT Plus"],
+                ["183****1756", "Grok 4.2"],
+                ["149****5207", "GPT Plus"],
+                ["196****3084", "ChatGPT Pro"],
+                ["145****7629", "Claude Pro"],
+                ["170****4913", "GPT Plus"],
+                ["184****6350", "Grok 4.2"],
+                ["162****8571", "GPT Plus"],
+                ["195****2046", "ChatGPT Pro"],
+                ["148****9735", "Claude Pro"],
+                ["174****3162", "GPT Plus"],
+                ["187****6904", "Grok 4.2"],
+                ["156****4280", "GPT Plus"],
+                ["192****7516", "ChatGPT Pro"],
+                ["133****2695", "Claude Pro"],
+                ["181****5847", "GPT Plus"],
+                ["166****0379", "Grok 4.2"],
+                ["159****8134", "GPT Plus"],
+                ["197****4268", "ChatGPT Pro"],
+                ["135****9702", "Claude Pro"],
+                ["176****2419", "GPT Plus"],
+                ["189****5086", "Grok 4.2"],
+                ["151****7340", "GPT Plus"],
+                ["198****0625", "ChatGPT Pro"],
+                ["137****6951", "Claude Pro"],
+                ["180****3294", "GPT Plus"],
+                ["173****8462", "Grok 4.2"],
+                ["152****5089", "GPT Plus"],
+                ["186****1743", "ChatGPT Pro"],
+                ["139****7628", "Claude Pro"]
+            ];
+
+            let index = Math.floor(Math.random() * purchases.length);
+
+            function renderPurchase() {
+                const current = purchases[index % purchases.length];
+                toastText.innerHTML = `用户 ${current[0]} 购买了 <span class="purchase-toast-product">${current[1]}</span>`;
+                toast.classList.add("show");
+                toast.setAttribute("aria-hidden", "false");
+
+                window.setTimeout(() => {
+                    toast.classList.remove("show");
+                    toast.setAttribute("aria-hidden", "true");
+                }, 3800);
+
+                index += 1;
+            }
+
+            window.setTimeout(() => {
+                renderPurchase();
+                window.setInterval(renderPurchase, 6200);
+            }, 3200);
+        })();
+
+        (function () {
             const shopLinks = document.querySelectorAll("[data-shop-link]");
 
             shopLinks.forEach((link) => {
@@ -1185,7 +1365,7 @@
             }
 
             fixedContactBtn && fixedContactBtn.addEventListener("click", () => {
-                openImageModal("./企业微信.jpg", "联系客服", "微信：jg-3355    QQ：552309781");
+                openImageModal("./企业微信.jpg", "联系客服", "微信：552309781    QQ：552309781");
             });
 
             imageModalClose && imageModalClose.addEventListener("click", closeImageModal);
