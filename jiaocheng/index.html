@@ -17,13 +17,22 @@
   </header>
 
   <main class="container">
-    <aside class="security-notice" aria-labelledby="security-title">
-      <div class="notice-icon" aria-hidden="true">!</div>
-      <div>
-        <h2 id="security-title">客服微信QQ：552309781</h2>
-        <p></p>
-      </div>
-    </aside>
+    <aside class="security-notice" aria-labelledby="service-title">
+  <div class="notice-icon" aria-hidden="true">☎</div>
+  <div>
+    <h2 id="service-title">联系客服</h2>
+
+    <div class="contact-copy-row">
+      <strong>微信 / QQ：552309781</strong>
+      <button
+        class="copy-button"
+        type="button"
+        data-copy="552309781">
+        复制号码
+      </button>
+    </div>
+  </div>
+</aside>
 
     <section class="section" aria-labelledby="steps-title">
       <div class="section-heading">
@@ -118,17 +127,87 @@
         <p>咨询订单状态时，请提供经过遮盖的订单信息。客服不应索取任何账号登录凭证。</p>
       </div>
       <div class="contact-placeholder">
-        <strong>微信 / QQ：552309781</strong>
-        <span>请同时补充客服工作时间和售后范围</span>
-      </div>
+  <strong>微信 / QQ：552309781</strong>
+
+  <button
+    class="copy-button copy-button-light"
+    type="button"
+    data-copy="552309781">
+    复制号码
+  </button>
+</div>
     </section>
   </main>
+<dialog class="image-dialog" id="image-dialog">
+  <button
+    class="dialog-close"
+    type="button"
+    aria-label="关闭图片">
+    ×
+  </button>
 
+  <img id="dialog-image" src="" alt="">
+</dialog>
   <footer>
     <div class="container">
       <p>本页面为独立教程模板，并非 OpenAI 官方网站，也不代表 OpenAI。</p>
       <p>最后更新：2026 年 7 月 26 日</p>
     </div>
   </footer>
-</body>
+<script>
+  // 复制客服号码
+  document.querySelectorAll("[data-copy]").forEach(function (button) {
+    button.addEventListener("click", async function () {
+      const text = button.dataset.copy;
+      const originalText = button.textContent;
+
+      try {
+        await navigator.clipboard.writeText(text);
+        button.textContent = "已复制";
+      } catch (error) {
+        window.prompt("请复制客服号码：", text);
+      }
+
+      window.setTimeout(function () {
+        button.textContent = originalText;
+      }, 1600);
+    });
+  });
+
+  // 点击教程图片放大
+  const imageDialog = document.getElementById("image-dialog");
+  const dialogImage = document.getElementById("dialog-image");
+  const closeButton = imageDialog.querySelector(".dialog-close");
+
+  document.querySelectorAll(".tutorial-image").forEach(function (image) {
+    image.setAttribute("tabindex", "0");
+    image.setAttribute("role", "button");
+    image.setAttribute("aria-label", "点击放大：" + image.alt);
+
+    function openImage() {
+      dialogImage.src = image.src;
+      dialogImage.alt = image.alt;
+      imageDialog.showModal();
+    }
+
+    image.addEventListener("click", openImage);
+
+    image.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openImage();
+      }
+    });
+  });
+
+  closeButton.addEventListener("click", function () {
+    imageDialog.close();
+  });
+
+  imageDialog.addEventListener("click", function (event) {
+    if (event.target === imageDialog) {
+      imageDialog.close();
+    }
+  });
+</script></body>
 </html>
